@@ -1,9 +1,6 @@
 {
-  "dependencies": {
-    "react": "16.4.0",
-    "react-dom": "16.4.0",
-    "react-scripts": "1.1.4",
-    "styled-components": "3.3.2"
+  "peerDependencies": {
+    "react": ">=16.3.0"
   },
   "devDependencies": {
     "babel-eslint": "8.2.3",
@@ -11,10 +8,16 @@
     "eslint-config-airbnb": "16.1.0",
     "eslint-plugin-import": "2.12.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
-    "eslint-plugin-react": "7.9.1"
+    "eslint-plugin-react": "7.9.1",
+    "react": "16.4.0",
+    "react-dom": "16.4.0",
+    "react-scripts": "1.1.4",
+    "react-test-renderer": "16.4.0",
+    "styled-components": "3.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "test": "CI=true react-scripts test src/test --env=jsdom"
   }
 }
