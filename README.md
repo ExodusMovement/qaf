@@ -27,7 +27,7 @@ export default class CounterStore extends ContextStore {
     // do your thing here, e.g. make an async call
   }
 
-  // TODO: computed values
+  // computed values
   get sadCounter() {
     return `${this.state.counter} :(`;
   }

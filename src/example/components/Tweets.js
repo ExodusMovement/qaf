@@ -15,8 +15,13 @@ class Tweets extends React.PureComponent {
   };
 
   render() {
-    const { tweetsStore } = this.props;
+    const { length, loading, tweets, remove } = this.props.tweetsStore;
     const { tweetInput } = this.state;
+
+    const tweetCount =
+      length > 0
+        ? `${length} ${length === 1 ? 'tweet' : 'tweets'} so far and counting!`
+        : 'No tweets :(';
 
     return (
       <React.Fragment>
@@ -29,16 +34,16 @@ class Tweets extends React.PureComponent {
           />{' '}
           <button disabled={!tweetInput} onClick={this.handleClick}>
             Tweet
-          </button>
+          </button>{' '}
+          {tweetCount}
         </div>
 
-        {tweetsStore.loading && <div>Loading ..</div>}
+        {loading && <div>Loading ..</div>}
 
-        {tweetsStore.tweets.length > 0 &&
-          tweetsStore.tweets.map((tweet, index) => (
+        {length > 0 &&
+          tweets.map((tweet, index) => (
             <div key={index}>
-              {tweet}{' '}
-              <button onClick={() => tweetsStore.remove(index)}>Remove</button>
+              {tweet} <button onClick={() => remove(index)}>Remove</button>
             </div>
           ))}
       </React.Fragment>

@@ -21,6 +21,10 @@ export default class TweetsStore extends ContextStore {
     this.setState(state => ({
       tweets: state.tweets.filter((tweet, i) => index !== i)
     }));
+
+  get length() {
+    return this.state.tweets.length;
+  }
 }
 
 export const withTweetsStore = TweetsStore.inject('tweetsStore');

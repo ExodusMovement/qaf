@@ -12,6 +12,17 @@ export default class ContextStore extends React.PureComponent {
       .filter(key => typeof this[key] === 'function')
       .reduce((obj, key) => ({ ...obj, [key]: this[key] }), {});
 
-    return <Provider {...this.props} value={{ ...this.state, ...actions }} />;
+    const prototype = Object.getPrototypeOf(this);
+
+    const computed = Object.getOwnPropertyNames(prototype)
+      .filter(key => {
+        const desc = Object.getOwnPropertyDescriptor(prototype, key);
+        return desc && typeof desc.get === 'function';
+      })
+      .reduce((obj, key) => ({ ...obj, [key]: this[key] }), {});
+
+    const value = { ...computed, ...actions, ...this.state };
+
+    return <Provider {...this.props} {...{ value }} />;
   }
 }
