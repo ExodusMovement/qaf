@@ -101,4 +101,4 @@ const AppWithStores = inject(FooStore, BarStore)(App);
 
 ## Example
 
-Available [here]().
+Available [here](https://github.com/sonaye/create-context-store/blob/master/src/example).
