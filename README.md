@@ -1,5 +1,7 @@
 # create-context-store
 
+[![Build Status](https://travis-ci.org/sonaye/create-context-store.svg?branch=master)](https://travis-ci.org/sonaye/create-context-store)
+
 _WORK IN PROGRESS_
 
 ## Usage
