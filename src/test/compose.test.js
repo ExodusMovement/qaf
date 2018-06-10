@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React, { Fragment } from 'react';
 
 import { create as r } from 'react-test-renderer';
