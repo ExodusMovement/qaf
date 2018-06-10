@@ -5,8 +5,14 @@ const el = (Component, ...args) =>
     ? React.cloneElement
     : React.createElement)(Component, ...args);
 
-const reducer = (memo, Component) => (...props) =>
-  el(Component, { children: childProps => memo(...props.concat(childProps)) });
+export default components => props => {
+  const reducer = (memo, key) => allProps =>
+    el(components[key], {
+      children: childProps => memo({ ...allProps, [key]: childProps })
+    });
 
-export default (...components) => props =>
-  components.reduceRight(reducer, props.children || props.render)();
+  return Object.keys(components).reduceRight(
+    reducer,
+    props.children || props.render
+  )();
+};
