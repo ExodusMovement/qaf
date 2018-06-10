@@ -1,10 +1,16 @@
 import React from 'react';
 
-import { Consumer } from './contextFactory';
+import compose from './compose';
 
-export default prop => Component =>
-  React.forwardRef((props, ref) => (
-    <Consumer>
-      {store => <Component {...props} {...{ ref, [prop]: store }} />}
-    </Consumer>
-  ));
+export default stores => Component => {
+  const consumers = Object.keys(stores).reduce(
+    (obj, key) => ({ ...obj, [key]: stores[key].Consumer }),
+    {}
+  );
+
+  const Composed = compose(consumers);
+
+  return () => <Composed render={props => <Component {...props} />} />;
+};
+
+// TODO: test if refs work properly or if forwardRef is needed

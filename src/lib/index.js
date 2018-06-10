@@ -1,4 +1,4 @@
-import compose from './compose';
 import ContextStore from './ContextStore';
+import inject from './inject';
 
-export { compose, ContextStore as default };
+export { ContextStore as default, inject };

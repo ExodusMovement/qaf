@@ -1,11 +1,9 @@
 import React from 'react';
 
-import { Provider } from './contextFactory';
-
-import inject from './inject';
+const { Provider, Consumer } = React.createContext();
 
 export default class ContextStore extends React.PureComponent {
-  static inject = inject;
+  static Consumer = Consumer;
 
   render() {
     const actions = Object.keys(this)
