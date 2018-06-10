@@ -12,5 +12,3 @@ export default stores => Component => {
 
   return () => <Composed render={props => <Component {...props} />} />;
 };
-
-// TODO: test if refs work properly or if forwardRef is needed

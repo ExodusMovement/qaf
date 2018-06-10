@@ -34,11 +34,6 @@ export default class CounterStore extends ContextStore {
     return `${this.state.counter} :(`;
   }
 }
-
-// a store is an enhanced react component
-// which statically provides a custom HOC you can use
-// to decorate any component subscribed to the store
-export const withCounterStore = CounterStore.inject('counterStore');
 ```
 
 ### The component
@@ -48,35 +43,34 @@ export const withCounterStore = CounterStore.inject('counterStore');
 
 import React from 'react';
 
-// our special HOC
-import { withCounterStore } from './CounterStore';
+import CounterStore from '../stores/Counter';
+
+import { inject } from 'create-context-store';
 
 // a typical react component
-class Counter extends React.PureComponent {
-  render() {
-    // will have this prop available once injected
-    const { counterStore } = this.props;
+const Counter = ({ counterStore }) => (
+  <React.Fragment>
+    {/* state is available */}
+    <div>{counterStore.counter}</div>
+    {/* it's not counterStore.state.counter, notice */}
 
-    return (
-      <React.Fragment>
-        {/* state is available */}
-        <div>{counterStore.counter}</div>
-
-        {/* actions are available */}
-        <div>
-          <button onClick={counterStore.inc}>+</button>{' '}
-          <button onClick={counterStore.dec}>-</button>
-        </div>
-      </React.Fragment>
-    );
-  }
-}
+    {/* actions are available */}
+    <div>
+      <button onClick={counterStore.inc}>+</button>{' '}
+      <button onClick={counterStore.dec}>-</button>
+    </div>
+  </React.Fragment>
+);
 
 // injecting the store under under the `counterStore` prop
-export default withCounterStore(Counter);
+export default inject({ counterStore: CounterStore })(Counter);
 
-// TODO: ability to inject multiple stores without nesting hell
-const FoobarWithStores = inject(withFooStore, withBarStore)(Foobar);
+// TODO: test if refs work properly or whether forwardRef is needed
+
+// TODO: test when two components subscribe to the same store
+// it should utilize a single store instance
+
+// TODO: investigate displayName, should show something friendly
 ```
 
 ### The app
@@ -86,6 +80,10 @@ const FoobarWithStores = inject(withFooStore, withBarStore)(Foobar);
 
 import CounterStore from './CounterStore';
 import Counter from './Counter';
+
+// BUG: it only provides the most inner store at the moment (why?)
+// in other words: we are limited to a single store
+// chances I'm doing something stupid somewhere, will fix this
 
 const App = () => (
   <CounterStore>
