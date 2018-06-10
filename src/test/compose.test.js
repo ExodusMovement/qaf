@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import compose from '../lib/composeStores';
+import compose from '../lib/compose';
 
 it('works', () => {
   const Foo = props => (
