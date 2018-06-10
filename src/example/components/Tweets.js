@@ -1,8 +1,13 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react';
 
-import styled from 'styled-components';
+import styled from 'styled-components'; // eslint-disable-line import/no-extraneous-dependencies
 
-import { withTweetsStore } from '../stores/Tweets';
+import { inject } from '../../lib';
+
+import TweetsStore from '../stores/Tweets';
+import UserStore from '../stores/User';
 
 class Tweets extends React.PureComponent {
   state = { tweetInput: 'Hello World!' };
@@ -15,13 +20,22 @@ class Tweets extends React.PureComponent {
   };
 
   render() {
+    const { name, signedIn, signIn } = this.props.userStore;
+
+    if (!signedIn)
+      return (
+        <div>
+          You are not signed in. <button onClick={signIn}>Sign In</button>
+        </div>
+      );
+
     const { length, loading, tweets, remove } = this.props.tweetsStore;
     const { tweetInput } = this.state;
 
     const tweetCount =
       length > 0
         ? `${length} ${length === 1 ? 'tweet' : 'tweets'} so far and counting!`
-        : 'No tweets :(';
+        : 'no tweets yet :(';
 
     return (
       <React.Fragment>
@@ -35,7 +49,7 @@ class Tweets extends React.PureComponent {
           <button disabled={!tweetInput} onClick={this.handleClick}>
             Tweet
           </button>{' '}
-          {tweetCount}
+          Hi {name}, {tweetCount}
         </div>
 
         {loading && <div>Loading ..</div>}
@@ -55,4 +69,7 @@ const Input = styled.input`
   margin-bottom: 10px;
 `;
 
-export default withTweetsStore(Tweets);
+export default inject({
+  userStore: UserStore,
+  tweetsStore: TweetsStore
+})(Tweets);

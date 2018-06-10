@@ -1,26 +1,27 @@
 import React from 'react';
 
-import styled from 'styled-components';
+import styled from 'styled-components'; // eslint-disable-line import/no-extraneous-dependencies
 
 import './style.css';
 
 import CounterStore from './stores/Counter';
 import TweetsStore from './stores/Tweets';
+import UserStore from './stores/User';
 
 import Counter from './components/Counter';
 import Tweets from './components/Tweets';
 
-const AppContainer = () => (
+const App = () => (
   <Container>
     <CounterStore>
-      <Counter />
+      <UserStore>
+        <TweetsStore>
+          <Counter />
+          <Divider />
+          <Tweets />
+        </TweetsStore>
+      </UserStore>
     </CounterStore>
-
-    <Divider />
-
-    <TweetsStore>
-      <Tweets />
-    </TweetsStore>
   </Container>
 );
 
@@ -41,4 +42,4 @@ const Divider = styled.div`
   width: 256px;
 `;
 
-export default AppContainer;
+export default App;

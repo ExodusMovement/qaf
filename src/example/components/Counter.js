@@ -1,22 +1,20 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react';
 
-import { withCounterStore } from '../stores/Counter';
+import CounterStore from '../stores/Counter';
 
-class Counter extends React.PureComponent {
-  render() {
-    const { counterStore } = this.props;
+import { inject } from '../../lib';
 
-    return (
-      <React.Fragment>
-        <div>{counterStore.counter}</div>
+const Counter = ({ counterStore }) => (
+  <React.Fragment>
+    <div>{counterStore.counter}</div>
 
-        <div>
-          <button onClick={counterStore.inc}>+</button>{' '}
-          <button onClick={counterStore.dec}>-</button>
-        </div>
-      </React.Fragment>
-    );
-  }
-}
+    <div>
+      <button onClick={counterStore.inc}>+</button>{' '}
+      <button onClick={counterStore.dec}>-</button>
+    </div>
+  </React.Fragment>
+);
 
-export default withCounterStore(Counter);
+export default inject({ counterStore: CounterStore })(Counter);

@@ -26,5 +26,3 @@ export default class TweetsStore extends ContextStore {
     return this.state.tweets.length;
   }
 }
-
-export const withTweetsStore = TweetsStore.inject('tweetsStore');
