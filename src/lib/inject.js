@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Consumer } from './context';
+import { Consumer } from './contextFactory';
 
 export default prop => Component =>
   React.forwardRef((props, ref) => (
