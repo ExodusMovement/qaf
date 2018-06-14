@@ -9,12 +9,12 @@ _WORK IN PROGRESS_
 #### The store
 
 ```js
-// CounterStore.js
+// Store.js
 
 import ContextStore from 'create-context-store';
 
 // every store is a react component
-export default class CounterStore extends ContextStore {
+export default class Store extends ContextStore {
   state = { counter: 0 };
 
   // actions are regular functions
@@ -45,25 +45,25 @@ import React from 'react';
 
 import { inject } from 'create-context-store';
 
-import CounterStore from '../stores/Counter';
+import Store from './Store';
 
 // a typical react component
-const Counter = ({ counterStore }) => (
+const Counter = ({ store }) => (
   <div>
     {/* state is available */}
-    <div>{counterStore.counter}</div>
-    {/* it's not counterStore.state.counter, notice */}
+    <div>{store.counter}</div>
+    {/* notice it's not store.state.counter */}
 
     {/* actions are available */}
     <div>
-      <button onClick={counterStore.inc}>+</button>{' '}
-      <button onClick={counterStore.dec}>-</button>
+      <button onClick={store.inc}>+</button>{' '}
+      <button onClick={store.dec}>-</button>
     </div>
   </div>
 );
 
-// injecting the store under the `counterStore` prop
-export default inject({ counterStore: CounterStore })(Counter);
+// injecting the store under the `store` prop
+export default inject({ store: Store })(Counter);
 ```
 
 ### The app
@@ -71,16 +71,14 @@ export default inject({ counterStore: CounterStore })(Counter);
 ```js
 // App.js
 
-import CounterStore from './CounterStore';
+import Store from './Store';
 import Counter from './Counter';
 
-const App = () => (
-  <CounterStore>
+export default () => (
+  <Store>
     <Counter />
-  </CounterStore>
+  </Store>
 );
-
-export default App;
 ```
 
 ## Example
