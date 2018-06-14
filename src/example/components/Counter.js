@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import CounterStore from '../stores/Counter';
-
 import { inject } from '../../lib';
+
+import CounterStore from '../stores/Counter';
 
 const Counter = ({ counterStore }) => (
   <React.Fragment>
