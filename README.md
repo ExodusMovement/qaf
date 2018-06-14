@@ -64,13 +64,6 @@ const Counter = ({ counterStore }) => (
 
 // injecting the store under the `counterStore` prop
 export default inject({ counterStore: CounterStore })(Counter);
-
-// TODO: test if refs work properly or whether forwardRef is needed
-
-// TODO: test when two components subscribe to the same store
-// it should utilize a single store instance
-
-// TODO: investigate displayName, should show something friendly
 ```
 
 ### The app
@@ -81,10 +74,6 @@ export default inject({ counterStore: CounterStore })(Counter);
 import CounterStore from './CounterStore';
 import Counter from './Counter';
 
-// BUG: it only provides the most inner store at the moment (why?)
-// in other words: we are limited to a single store
-// chances I'm doing something stupid somewhere, will fix this
-
 const App = () => (
   <CounterStore>
     <Counter />
@@ -92,11 +81,6 @@ const App = () => (
 );
 
 export default App;
-
-// TODO: ability to inject multiple store providers without nesting hell
-const AppWithStores = inject(FooStore, BarStore)(App);
-
-// NOTE: API method names are still not decided
 ```
 
 ## Example
