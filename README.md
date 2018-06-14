@@ -43,13 +43,13 @@ export default class CounterStore extends ContextStore {
 
 import React from 'react';
 
-import CounterStore from '../stores/Counter';
-
 import { inject } from 'create-context-store';
+
+import CounterStore from '../stores/Counter';
 
 // a typical react component
 const Counter = ({ counterStore }) => (
-  <React.Fragment>
+  <div>
     {/* state is available */}
     <div>{counterStore.counter}</div>
     {/* it's not counterStore.state.counter, notice */}
@@ -59,10 +59,10 @@ const Counter = ({ counterStore }) => (
       <button onClick={counterStore.inc}>+</button>{' '}
       <button onClick={counterStore.dec}>-</button>
     </div>
-  </React.Fragment>
+  </div>
 );
 
-// injecting the store under under the `counterStore` prop
+// injecting the store under the `counterStore` prop
 export default inject({ counterStore: CounterStore })(Counter);
 
 // TODO: test if refs work properly or whether forwardRef is needed
