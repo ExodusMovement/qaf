@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import compose from './compose';
 
 import { Stores } from './Provider';
 
 export default (...injected) => Component =>
-  React.forwardRef((props, ref) => (
+  forwardRef((props, ref) => (
     <Stores.Consumer>
       {stores => {
         const consumers = Object.keys(stores).reduce(

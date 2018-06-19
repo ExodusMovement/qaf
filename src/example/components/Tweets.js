@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 
-import React from 'react';
+import React, { PureComponent } from 'react';
 
 import styled from 'styled-components'; // eslint-disable-line import/no-extraneous-dependencies
 
 import { inject } from '../../lib';
 
-class Tweets extends React.PureComponent {
+class Tweets extends PureComponent {
   state = { tweetInput: 'Hello World!' };
 
   handleChange = e => this.setState({ tweetInput: e.target.value });
@@ -35,7 +35,7 @@ class Tweets extends React.PureComponent {
         : 'no tweets yet :(';
 
     return (
-      <React.Fragment>
+      <div>
         <div>
           Hi {name}
           {loading ? (
@@ -67,7 +67,7 @@ class Tweets extends React.PureComponent {
               {tweet} <button onClick={() => remove(index)}>Remove</button>
             </div>
           ))}
-      </React.Fragment>
+      </div>
     );
   }
 }

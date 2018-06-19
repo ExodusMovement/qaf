@@ -1,8 +1,8 @@
-import React from 'react';
+import { createElement } from 'react';
 
 export default components => props => {
   const reducer = (memo, key) => allProps =>
-    React.createElement(components[key], {}, childProps =>
+    createElement(components[key], {}, childProps =>
       memo({ ...allProps, [key]: childProps })
     );
 

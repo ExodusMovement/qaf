@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { PureComponent, createContext } from 'react';
 
 export default () => {
-  const { Provider, Consumer } = React.createContext();
+  const { Provider, Consumer } = createContext();
 
-  return class ContextStore extends React.PureComponent {
+  return class ContextStore extends PureComponent {
     static Consumer = Consumer;
 
     render() {

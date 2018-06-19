@@ -1,7 +1,7 @@
-import React from 'react';
+import { createElement } from 'react';
 
 const nestify = (components, children, index = 0) =>
-  React.createElement(
+  createElement(
     components[index],
     {},
     index === components.length - 1

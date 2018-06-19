@@ -5,14 +5,14 @@ import React from 'react';
 import { inject } from '../../lib';
 
 const Counter = ({ counterStore }) => (
-  <React.Fragment>
+  <div>
     <div>{counterStore.counter}</div>
 
     <div>
       <button onClick={counterStore.inc}>+</button>{' '}
       <button onClick={counterStore.dec}>-</button>
     </div>
-  </React.Fragment>
+  </div>
 );
 
 export default inject('counterStore')(Counter);
