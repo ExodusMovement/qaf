@@ -1,3 +1,5 @@
+// @flow
+
 import { createElement } from 'react';
 
 export default components => props => {

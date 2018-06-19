@@ -1,3 +1,5 @@
+// @flow
+
 import React, { forwardRef } from 'react';
 
 import compose from './utils/compose';

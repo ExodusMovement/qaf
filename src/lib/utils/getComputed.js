@@ -1,4 +1,6 @@
-export default obj => {
+// @flow
+
+export default (obj: {}) => {
   const prototype = Object.getPrototypeOf(obj);
 
   return Object.getOwnPropertyNames(prototype)

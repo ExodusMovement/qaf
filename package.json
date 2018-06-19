@@ -31,6 +31,7 @@
   "scripts": {
     "start": "react-scripts start",
     "lint": "eslint src",
+    "flow": "flow",
     "test": "CI=true react-scripts test src/test --env=jsdom",
     "prebuild": "rm -rf dist",
     "build": "NODE_ENV=production babel src/lib --out-dir dist"

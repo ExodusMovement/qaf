@@ -1,3 +1,5 @@
+// @flow
+
 import { createElement } from 'react';
 
 const nestify = (components, children, index = 0) =>
