@@ -2,11 +2,11 @@
 
 /* eslint-disable react/prop-types */
 
-import Qaf from '../src';
+import qaf from '../src';
 import getProps from '../src/utils/getProps';
 
 it('gets actions', () => {
-  const Foo = class extends Qaf() {
+  const Foo = class extends qaf() {
     static staticProp = {};
 
     // eslint-disable-next-line no-useless-constructor

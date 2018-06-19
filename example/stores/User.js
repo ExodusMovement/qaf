@@ -1,6 +1,6 @@
-import Qaf from '../../src';
+import qaf from '../../src';
 
-export default class UserStore extends Qaf() {
+export default class UserStore extends qaf() {
   state = {
     name: 'Alice',
     signedIn: true

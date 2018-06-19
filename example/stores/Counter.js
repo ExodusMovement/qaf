@@ -1,6 +1,6 @@
-import Qaf from '../../src';
+import qaf from '../../src';
 
-export default class CounterStore extends Qaf() {
+export default class CounterStore extends qaf() {
   state = { counter: 0 };
 
   inc = () => this.setState(state => ({ counter: state.counter + 1 }));

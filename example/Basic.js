@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import Qaf, { inject, Provider } from '../src';
+import qaf, { inject, Provider } from '../src';
 
-class Store extends Qaf() {
+class Store extends qaf() {
   state = { counter: 0 };
 
   inc = () => this.setState(state => ({ counter: state.counter + 1 }));

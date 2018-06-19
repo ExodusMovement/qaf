@@ -1,8 +1,8 @@
-# Qaf
+# qaf
 
 [![npm version](https://badge.fury.io/js/qaf.svg)](https://badge.fury.io/js/qaf) [![Build Status](https://travis-ci.org/sonaye/qaf.svg?branch=master)](https://travis-ci.org/sonaye/qaf)
 
-<img src="qaf.svg" alt="Qaf Logo" width="96">
+<img src="qaf.svg" alt="qaf logo" width="96">
 
 This work is the result of investigating a stores pattern based on React's new context API (`16.3.0`).
 
@@ -17,21 +17,21 @@ This work is the result of investigating a stores pattern based on React's new c
 ```js
 // Store.js
 
-import Qaf from 'qaf';
+import qaf from 'qaf';
 
 // this creates a store instant with context hooks
-const Qaf = Qaf();
-// you need to do this for every store you intend to have
+// you should do this for every store you intend to have
+const Qaf = qaf();
 
 // e.g. if you have two stores Foo and Bar
-const FooQaf = Qaf(); // class Foo extends FooQaf
-const BarQaf = Qaf(); // class Bar extends BarQaf
+const FooQaf = qaf(); // class Foo extends FooQaf
+const BarQaf = qaf(); // class Bar extends BarQaf
 
 // every store is a typical React class pure component
 export default class Store extends Qaf { /* .. */ }
 
 // or invoke directly
-export default class Store extends Qaf() {
+export default class Store extends qaf() {
   state = { counter: 0 };
 
   // actions are regular functions
@@ -65,7 +65,7 @@ export default class Store extends Qaf() {
     this.setState({ new: 'state' }, () => alert('Peekaboo!'));
   }
 
-  // NOTE: dont't declare `render`, Qaf will take care of that for you
+  // NOTE: dont't declare `render`, qaf will take care of that for you
 }
 ```
 

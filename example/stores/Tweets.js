@@ -1,6 +1,6 @@
-import Qaf from '../../src';
+import qaf from '../../src';
 
-export default class TweetsStore extends Qaf() {
+export default class TweetsStore extends qaf() {
   state = { tweets: [], loading: true };
 
   componentDidMount() {

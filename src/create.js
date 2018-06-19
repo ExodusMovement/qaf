@@ -8,7 +8,7 @@ import getProps from './utils/getProps';
 export default () => {
   const { Provider, Consumer } = createContext();
 
-  return class Qaf extends PureComponent<{}> {
+  return class qaf extends PureComponent<{}> {
     static Consumer = Consumer;
 
     render() {

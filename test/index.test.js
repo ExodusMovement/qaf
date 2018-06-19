@@ -6,17 +6,17 @@ import React from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import Qaf, { inject, Provider } from '../src';
+import qaf, { inject, Provider } from '../src';
 
 it('works', () => {
-  class Store extends Qaf() {
+  class Store extends qaf() {
     state = { counter: 0 };
 
     inc = () => this.setState(state => ({ counter: state.counter + 1 }));
     dec = () => this.setState(state => ({ counter: state.counter - 1 }));
   }
 
-  class AnotherStore extends Qaf() {}
+  class AnotherStore extends qaf() {}
 
   const StatelessCounter = ({ store }) => (
     <div>
