@@ -8,39 +8,41 @@ import { create as r } from 'react-test-renderer';
 
 import qaf, { inject, Provider } from '../src';
 
-it('works', () => {
-  class Store extends qaf() {
-    state = { counter: 0 };
+describe('qaf', () => {
+  it('works', () => {
+    class Store extends qaf() {
+      state = { counter: 0 };
 
-    inc = () => this.setState(state => ({ counter: state.counter + 1 }));
-    dec = () => this.setState(state => ({ counter: state.counter - 1 }));
-  }
+      inc = () => this.setState(state => ({ counter: state.counter + 1 }));
+      dec = () => this.setState(state => ({ counter: state.counter - 1 }));
+    }
 
-  class AnotherStore extends qaf() {}
+    class AnotherStore extends qaf() {}
 
-  const StatelessCounter = ({ store }) => (
-    <div>
-      <div>{store.counter}</div>
-
+    const StatelessCounter = ({ store }) => (
       <div>
-        <button onClick={store.inc}>+</button>{' '}
-        <button onClick={store.dec}>-</button>
+        <div>{store.counter}</div>
+
+        <div>
+          <button onClick={store.inc}>+</button>{' '}
+          <button onClick={store.dec}>-</button>
+        </div>
       </div>
-    </div>
-  );
+    );
 
-  const Counter = inject('store')(StatelessCounter);
+    const Counter = inject('store')(StatelessCounter);
 
-  const App = () => (
-    <Provider store={Store} anotherStore={AnotherStore}>
-      <Counter />
-    </Provider>
-  );
+    const App = () => (
+      <Provider store={Store} anotherStore={AnotherStore}>
+        <Counter />
+      </Provider>
+    );
 
-  const app = r(<App />).toTree();
+    const app = r(<App />).toTree();
 
-  expect(app.rendered.props.store).toBeDefined();
-  expect(app.rendered.rendered.instance.state.counter).toBeDefined();
-  expect(app.rendered.rendered.instance.inc).toBeDefined();
-  expect(app.rendered.rendered.instance.dec).toBeDefined();
+    expect(app.rendered.props.store).toBeDefined();
+    expect(app.rendered.rendered.instance.state.counter).toBeDefined();
+    expect(app.rendered.rendered.instance.inc).toBeDefined();
+    expect(app.rendered.rendered.instance.dec).toBeDefined();
+  });
 });
