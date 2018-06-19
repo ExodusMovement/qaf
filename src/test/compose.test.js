@@ -51,7 +51,4 @@ it('works', () => {
   ).toJSON();
 
   expect(composed).toEqual(tree);
-
-  expect(tree).toMatchSnapshot();
-  expect(composed).toMatchSnapshot();
 });
