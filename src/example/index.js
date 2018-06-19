@@ -56,7 +56,7 @@ const Divider = styled.div`
 `;
 
 const AppContainer = () => (
-  <Provider {...{ stores }}>
+  <Provider {...stores}>
     <App />
   </Provider>
 );

@@ -25,7 +25,7 @@ const StatelessCounter = ({ store }) => (
 const Counter = inject('store')(StatelessCounter);
 
 const App = () => (
-  <Provider stores={{ store: Store }}>
+  <Provider store={Store}>
     <Counter />
   </Provider>
 );

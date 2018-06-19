@@ -85,7 +85,7 @@ import Store from './Store';
 import Counter from './Counter';
 
 const App = () => (
-  <Provider stores={{ store: Store }}>
+  <Provider store={Store} anotherStore={AnotherStore} ..>
     <Counter />
   </Provider>
 );

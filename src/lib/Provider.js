@@ -6,7 +6,7 @@ import { StoresProvider } from './context';
 
 import nestify from './utils/nestify';
 
-const Provider = ({ stores = {}, children = null }) => (
+const Provider = ({ children, ...stores }) => (
   <StoresProvider value={stores}>
     {nestify(Object.values(stores), children)}
   </StoresProvider>
