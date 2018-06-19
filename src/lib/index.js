@@ -1,5 +1,5 @@
-import ContextStore from './ContextStore';
+import create from './create';
 import inject from './inject';
 import Provider from './Provider';
 
-export { ContextStore as default, inject, Provider };
+export { create as default, inject, Provider };
