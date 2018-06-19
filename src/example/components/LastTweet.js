@@ -1,17 +1,25 @@
 /* eslint-disable react/prop-types */
 
-import { PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 
 import { inject } from '../../lib';
 
 class LastTweet extends PureComponent {
-  sayHi = () => console.log('Hi!');
+  // testing refs
+  func = () => null;
+
+  // eslint-disable-next-line no-alert
+  show = () => alert(this.props.tweetsStore.tweets.slice(-1)[0]);
 
   render() {
     const { userStore, tweetsStore } = this.props;
 
     if (userStore.signedIn && tweetsStore.tweets.length > 0)
-      console.log(tweetsStore.tweets.slice(-1)[0]);
+      return (
+        <div>
+          <button onClick={this.show}>Last tweet</button>
+        </div>
+      );
 
     return null;
   }

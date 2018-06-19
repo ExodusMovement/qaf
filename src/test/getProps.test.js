@@ -2,13 +2,14 @@
 
 /* eslint-disable react/prop-types */
 
-import Qaf from '../lib';
+import Qaf from '../../dist';
 import getProps from '../lib/utils/getProps';
 
 it('gets actions', () => {
   const Foo = class extends Qaf() {
     static staticProp = {};
 
+    // eslint-disable-next-line no-useless-constructor
     constructor() {
       super();
     }
@@ -21,6 +22,7 @@ it('gets actions', () => {
 
     arrowAsyncFunction = async () => {};
 
+    // eslint-disable-next-line no-empty-function
     async regularAsyncFunction() {}
 
     get computedValue() {
@@ -35,9 +37,9 @@ it('gets actions', () => {
     componentWillUnmount() {}
     componentDidCatch() {}
 
-    UNSAFE_componentWillMount() {}
-    UNSAFE_componentWillReceiveProps() {}
-    UNSAFE_componentWillUpdate() {}
+    UNSAFE_componentWillMount() {} // eslint-disable-line camelcase
+    UNSAFE_componentWillReceiveProps() {} // eslint-disable-line camelcase
+    UNSAFE_componentWillUpdate() {} // eslint-disable-line camelcase
   };
 
   const foo = new Foo();

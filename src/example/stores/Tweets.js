@@ -14,10 +14,6 @@ export default class TweetsStore extends Qaf() {
     );
   }
 
-  componentDidUpdate() {
-    console.log('TWEETS_STORE_HAS_BEEN_UPDATED');
-  }
-
   compose = tweet =>
     tweet && this.setState(state => ({ tweets: state.tweets.concat(tweet) }));
 

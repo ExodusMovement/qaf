@@ -46,6 +46,11 @@ export default class Store extends Qaf() {
     // do your thing here, e.g. make an async call
   }
 
+  // or write a custom logger
+  componentDidUpdate() {
+    if (process.env.NODE_ENV !== 'production') console.log('STORE_HAS_BEEN_UPDATED');
+  }
+
   // computed values
   get sadCounter() {
     return `${this.state.counter} :(`;

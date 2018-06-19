@@ -15,7 +15,7 @@ import LastTweet from './components/LastTweet';
 class App extends PureComponent {
   componentDidMount() {
     // testing refs
-    this.lastTweet.current.sayHi();
+    this.lastTweet.current.func();
   }
 
   lastTweet = createRef();
