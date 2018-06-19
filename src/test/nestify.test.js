@@ -4,7 +4,7 @@ import React from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import nestify from '../lib/nestify';
+import nestify from '../lib/utils/nestify';
 
 it('nests stuff', () => {
   const Foo = props => <div {...props} />;

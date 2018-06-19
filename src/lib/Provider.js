@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import { StoresProvider } from './storesContext';
+import { StoresProvider } from './stores';
 
-import nestify from './nestify';
+import nestify from './utils/nestify';
 
 const Provider = ({ stores = {}, children = null }) => {
   const Providers = () => nestify(Object.values(stores), children);

@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import compose from '../lib/compose';
+import compose from '../lib/utils/compose';
 
 it('works', () => {
   const Foo = props => (
