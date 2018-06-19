@@ -17,7 +17,7 @@ class Tweets extends React.PureComponent {
   };
 
   render() {
-    const { name, signedIn, signIn } = this.props.userStore;
+    const { name, signedIn, signIn, signOut } = this.props.userStore;
 
     if (!signedIn)
       return (
@@ -37,6 +37,17 @@ class Tweets extends React.PureComponent {
     return (
       <React.Fragment>
         <div>
+          Hi {name}
+          {loading ? (
+            '!'
+          ) : (
+            <span>
+              , {tweetCount} <button onClick={signOut}>Sign Out</button>
+            </span>
+          )}
+        </div>
+
+        <div>
           <Input
             onChange={this.handleChange}
             placeholder="What's up?"
@@ -46,7 +57,6 @@ class Tweets extends React.PureComponent {
           <button disabled={!tweetInput} onClick={this.handleClick}>
             Tweet
           </button>{' '}
-          Hi {name}, {tweetCount}
         </div>
 
         {loading && <div>Loading ..</div>}
