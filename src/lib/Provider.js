@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 
-import React from 'react';
+import React, { createContext } from 'react';
 
 import nestify from './nestify';
 
-export const Stores = React.createContext();
+export const Stores = createContext();
 
 const Provider = ({ stores = {}, children = null }) => {
   const Providers = () => nestify(Object.values(stores), children);
