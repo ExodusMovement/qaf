@@ -11,11 +11,17 @@ _WORK IN PROGRESS_
 ```js
 // Store.js
 
-import ContextStore from 'create-context-store';
+import createContextStore from 'create-context-store';
 
-// every store is a react component
+// this creates a store instant with context hooks
+const ContextStore = createContextStore();
+
+// every store is a typical react component
+export default class Store extends ContextStore { /* .. */ }
+
+// or invoke directly, notice it's not `extends ContextStore`, don't forget the parentheses
 export default class Store extends ContextStore() {
-  // notice it's not `extends ContextStore`, don't forget the parentheses
+  // store's state
   state = { counter: 0 };
 
   // actions are regular functions
