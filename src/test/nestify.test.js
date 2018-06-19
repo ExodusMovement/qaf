@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react';
 
 import { create as r } from 'react-test-renderer';
@@ -5,9 +7,9 @@ import { create as r } from 'react-test-renderer';
 import nestify from '../lib/nestify';
 
 it('nests stuff', () => {
-  const Foo = props => <h1 {...props} />;
-  const Bar = props => <h2 {...props} />;
-  const Baz = props => <h3 {...props} />;
+  const Foo = props => <div {...props} />;
+  const Bar = props => <div {...props} />;
+  const Baz = props => <div {...props} />;
 
   const Nested = props => (
     <Foo>
