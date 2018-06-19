@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/siaq.svg)](https://badge.fury.io/js/siaq) [![Build Status](https://travis-ci.org/sonaye/siaq.svg?branch=master)](https://travis-ci.org/sonaye/siaq)
 
-This work is the result of investigating a stores pattern based on the new React's context API (16.3.0).
+This work is the result of investigating a stores pattern based on React's new context API (16.3.0).
 
 ## Installation
 
@@ -19,8 +19,9 @@ import Siaq from 'siaq';
 
 // this creates a store instant with context hooks
 const SiaqStore = Siaq();
+// you need to do this for every store you intend to have
 
-// every store is a typical react component
+// every store is a typical react class pure component
 export default class Store extends SiaqStore { /* .. */ }
 
 // or invoke directly
@@ -43,6 +44,8 @@ export default class Store extends Siaq() {
   get sadCounter() {
     return `${this.state.counter} :(`;
   }
+
+  // NOTE: dont't declare `render`, siaq will take care of that for you
 }
 ```
 
