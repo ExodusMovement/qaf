@@ -2,11 +2,11 @@ import React, { forwardRef } from 'react';
 
 import compose from './compose';
 
-import { Stores } from './Provider';
+import { StoresConsumer } from './storesContext';
 
 export default (...injected) => Component =>
   forwardRef((props, ref) => (
-    <Stores.Consumer>
+    <StoresConsumer>
       {stores => {
         const consumers = Object.keys(stores).reduce(
           (obj, key) =>
@@ -29,5 +29,5 @@ export default (...injected) => Component =>
           />
         );
       }}
-    </Stores.Consumer>
+    </StoresConsumer>
   ));
