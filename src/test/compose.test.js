@@ -8,7 +8,7 @@ import { create as r } from 'react-test-renderer';
 
 import compose from '../lib/utils/compose';
 
-it('works', () => {
+it('composes stuff', () => {
   const Foo = props => (
     <Fragment>{props.children({ youGot: 'fooed' })} </Fragment>
   );
