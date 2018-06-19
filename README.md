@@ -1,8 +1,12 @@
-# siaq
+# Siaq
 
 [![npm version](https://badge.fury.io/js/siaq.svg)](https://badge.fury.io/js/siaq) [![Build Status](https://travis-ci.org/sonaye/siaq.svg?branch=master)](https://travis-ci.org/sonaye/siaq)
 
-This work is the result of investigating a stores pattern based on React's new context API (16.3.0).
+<center>
+  <img src="https://raw.githubusercontent.com/sonaye/siaq/master/qaf.svg" alt="Siaq Logo" width="240">
+</center>
+
+This work is the result of investigating a stores pattern based on React's new context API (`16.3.0`).
 
 ## Installation
 
@@ -18,11 +22,15 @@ This work is the result of investigating a stores pattern based on React's new c
 import Siaq from 'siaq';
 
 // this creates a store instant with context hooks
-const SiaqStore = Siaq();
+const Siaq = Siaq();
 // you need to do this for every store you intend to have
 
-// every store is a typical react class pure component
-export default class Store extends SiaqStore { /* .. */ }
+// e.g. if you have two stores Foo and Bar
+const FooSiaq = Siaq(); // class Foo extends FooSiaq
+const BarSiaq = Siaq(); // class Bar extends BarSiaq
+
+// every store is a typical React class pure component
+export default class Store extends Siaq { /* .. */ }
 
 // or invoke directly
 export default class Store extends Siaq() {
@@ -45,7 +53,16 @@ export default class Store extends Siaq() {
     return `${this.state.counter} :(`;
   }
 
-  // NOTE: dont't declare `render`, siaq will take care of that for you
+  // TODO: setState can return a promise
+  async action() {
+    await this.setState({ new: 'state' });
+    alert('Peekaboo!');
+
+    // or use as usual
+    this.setState({ new: 'state' }, () => alert('Peekaboo!'));
+  }
+
+  // NOTE: dont't declare `render`, Siaq will take care of that for you
 }
 ```
 
@@ -56,7 +73,7 @@ export default class Store extends Siaq() {
 
 import React from 'react';
 
-import { inject } from 'siaq';
+import { inject, Subscribe } from 'siaq';
 
 // a typical react component
 const Counter = ({ store }) => (
@@ -75,6 +92,11 @@ const Counter = ({ store }) => (
 
 // injecting the store by passing its key (as defined in `Provider`) as a string
 export default inject('store', 'anotherStore', ..)(Counter);
+
+// TODO: alternatively, you can use `<Subscribe />`
+<Subscribe store anotherStore>
+  {(store, anotherStore) => <div>{/* .. */}</div>}
+</Subscribe>
 ```
 
 ### The app

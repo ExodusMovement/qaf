@@ -29,4 +29,5 @@ const App = () => (
     <Counter />
   </Provider>
 );
+
 export default App;
