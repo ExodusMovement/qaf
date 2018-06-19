@@ -2,8 +2,8 @@
 
 import React, { PureComponent, createContext } from 'react';
 
-import getComputed from './utils/getComputed';
-import getActions from './utils/getActions';
+import getProps from './utils/getProps';
+import setState from './utils/setState';
 
 export default () => {
   const { Provider, Consumer } = createContext();
@@ -13,8 +13,7 @@ export default () => {
 
     render() {
       const value = {
-        ...getComputed(this),
-        ...getActions(this),
+        ...getProps(this),
         ...this.state
       };
 
