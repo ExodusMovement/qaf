@@ -2,9 +2,9 @@
 
 [![npm version](https://badge.fury.io/js/qaf.svg)](https://badge.fury.io/js/qaf) [![Build Status](https://travis-ci.org/sonaye/qaf.svg?branch=master)](https://travis-ci.org/sonaye/qaf)
 
-<center>
+<div align="center">
   <img src="qaf.svg" alt="Qaf Logo" width="96">
-</center>
+</div>
 
 This work is the result of investigating a stores pattern based on React's new context API (`16.3.0`).
 
