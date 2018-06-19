@@ -4,7 +4,7 @@ import React, { PureComponent } from 'react';
 
 import styled from 'styled-components'; // eslint-disable-line import/no-extraneous-dependencies
 
-import { inject } from '../../lib';
+import { inject } from '../../src';
 
 class Tweets extends PureComponent {
   state = { tweetInput: 'Hello World!' };

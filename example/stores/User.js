@@ -1,4 +1,4 @@
-import Qaf from '../../lib';
+import Qaf from '../../src';
 
 export default class UserStore extends Qaf() {
   state = {

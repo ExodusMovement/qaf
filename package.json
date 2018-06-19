@@ -3,7 +3,7 @@
   "name": "qaf",
   "description": "Stores as components. Simple state management for React based on context.",
   "version": "0.0.1",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sonaye/qaf.git"
@@ -31,20 +31,21 @@
     "styled-components": "3.3.2"
   },
   "scripts": {
-    "start": "parcel src/example/index.html --out-dir build --open",
-    "lint": "eslint src",
+    "prestart": "rm -rf .cache",
+    "start": "parcel example/index.html --out-dir build --open",
+    "lint": "eslint src test example",
     "flow": "flow",
-    "test": "jest src/test",
-    "prebuild": "rm -rf dist",
-    "build": "NODE_ENV=production babel src/lib --out-dir dist"
+    "test": "jest test",
+    "prebuild": "rm -rf lib",
+    "build": "NODE_ENV=production babel src --out-dir lib"
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/lib/**/*.js"
+      "src/**/*.js"
     ],
     "verbose": true
   },
   "files": [
-    "dist"
+    "lib"
   ]
 }

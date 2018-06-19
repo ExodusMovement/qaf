@@ -1,4 +1,4 @@
-import Qaf from '../../lib';
+import Qaf from '../../src';
 
 export default class TweetsStore extends Qaf() {
   state = { tweets: [], loading: true };

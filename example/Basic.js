@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import Qaf, { inject, Provider } from '../lib';
+import Qaf, { inject, Provider } from '../src';
 
 class Store extends Qaf() {
   state = { counter: 0 };

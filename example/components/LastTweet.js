@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from 'react';
 
-import { inject } from '../../lib';
+import { inject } from '../../src';
 
 class LastTweet extends PureComponent {
   // testing refs

@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { inject } from '../../lib';
+import { inject } from '../../src';
 
 const Counter = ({ counterStore }) => (
   <div>

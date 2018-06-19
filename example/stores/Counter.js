@@ -1,4 +1,4 @@
-import Qaf from '../../lib';
+import Qaf from '../../src';
 
 export default class CounterStore extends Qaf() {
   state = { counter: 0 };

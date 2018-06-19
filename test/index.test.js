@@ -6,7 +6,7 @@ import React from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import Qaf, { inject, Provider } from '../lib';
+import Qaf, { inject, Provider } from '../src';
 
 it('works', () => {
   class Store extends Qaf() {

@@ -2,7 +2,7 @@ import React, { PureComponent, createRef } from 'react';
 
 import styled from 'styled-components'; // eslint-disable-line import/no-extraneous-dependencies
 
-import { Provider } from '../lib';
+import { Provider } from '../src';
 
 import './style.css';
 

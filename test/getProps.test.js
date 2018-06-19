@@ -2,8 +2,8 @@
 
 /* eslint-disable react/prop-types */
 
-import Qaf from '../lib';
-import getProps from '../lib/utils/getProps';
+import Qaf from '../src';
+import getProps from '../src/utils/getProps';
 
 it('gets actions', () => {
   const Foo = class extends Qaf() {
