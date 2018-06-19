@@ -1,9 +1,22 @@
 {
+  "license": "MIT",
+  "name": "siaq",
+  "description": "State management for React based on the new context API.",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonaye/siaq.git"
+  },
   "peerDependencies": {
     "react": ">=16.3.0"
   },
   "devDependencies": {
+    "babel-cli": "6.26.0",
     "babel-eslint": "8.2.3",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-stage-0": "6.24.1",
     "eslint": "4.19.1",
     "eslint-config-airbnb": "16.1.0",
     "eslint-plugin-import": "2.12.0",
@@ -18,6 +31,23 @@
   "scripts": {
     "start": "react-scripts start",
     "lint": "eslint src",
-    "test": "CI=true react-scripts test src/test --env=jsdom"
-  }
+    "test": "CI=true react-scripts test src/test --env=jsdom",
+    "prebuild": "rm -rf dist",
+    "build": "NODE_ENV=production babel src/lib --out-dir dist"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/lib/**/*.js"
+    ]
+  },
+  "files": [
+    "dist"
+  ]
 }
