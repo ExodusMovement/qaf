@@ -1,6 +1,6 @@
-import ContextStore from '../../lib';
+import Siaq from '../../lib';
 
-export default class UserStore extends ContextStore() {
+export default class UserStore extends Siaq() {
   state = {
     name: 'Alice',
     signedIn: true

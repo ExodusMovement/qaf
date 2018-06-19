@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import ContextStore, { inject, Provider } from '../lib';
+import Siaq, { inject, Provider } from '../lib';
 
-class Store extends ContextStore() {
+class Store extends Siaq() {
   state = { counter: 0 };
 
   inc = () => this.setState(state => ({ counter: state.counter + 1 }));

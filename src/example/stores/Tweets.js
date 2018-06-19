@@ -1,6 +1,6 @@
-import ContextStore from '../../lib';
+import Siaq from '../../lib';
 
-export default class TweetsStore extends ContextStore() {
+export default class TweetsStore extends Siaq() {
   state = { tweets: [], loading: true };
 
   componentDidMount() {

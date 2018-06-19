@@ -1,30 +1,30 @@
-# create-context-store
+# siaq
 
-[![Build Status](https://travis-ci.org/sonaye/create-context-store.svg?branch=master)](https://travis-ci.org/sonaye/create-context-store)
+[![npm version](https://badge.fury.io/js/siaq.svg)](https://badge.fury.io/js/siaq) [![Build Status](https://travis-ci.org/sonaye/siaq.svg?branch=master)](https://travis-ci.org/sonaye/siaq)
 
-_WORK IN PROGRESS_
+This work is the result of investigating a stores pattern based on the new React's context API (16.3.0).
+
+## Installation
+
+`yarn add siaq`
 
 ## Usage
 
-#### The store
+### The store
 
 ```js
 // Store.js
 
-import createContextStore from 'create-context-store';
+import Siaq from 'siaq';
 
 // this creates a store instant with context hooks
-const ContextStore = createContextStore();
+const SiaqStore = Siaq();
 
 // every store is a typical react component
-export default class Store extends ContextStore { /* .. */ }
+export default class Store extends SiaqStore { /* .. */ }
 
 // or invoke directly
-import ContextStore from 'create-context-store';
-
-// notice it's not `extends ContextStore`, don't forget the parentheses
-export default class Store extends ContextStore() {
-  // store's state
+export default class Store extends Siaq() {
   state = { counter: 0 };
 
   // actions are regular functions
@@ -53,7 +53,7 @@ export default class Store extends ContextStore() {
 
 import React from 'react';
 
-import { inject } from 'create-context-store';
+import { inject } from 'siaq';
 
 // a typical react component
 const Counter = ({ store }) => (
@@ -79,18 +79,20 @@ export default inject('store', 'anotherStore', ..)(Counter);
 ```js
 // App.js
 
-import { Provider } from 'create-context-store';
+import { Provider } from 'siaq';
 
 import Store from './Store';
 import Counter from './Counter';
 
-export default () => (
+const App = () => (
   <Provider stores={{ store: Store }}>
     <Counter />
   </Provider>
 );
+
+export default App;
 ```
 
 ## Example
 
-Available [here](https://github.com/sonaye/create-context-store/blob/master/src/example).
+Available [here](https://github.com/sonaye/siaq/blob/master/src/example).

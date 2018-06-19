@@ -1,6 +1,6 @@
-import ContextStore from '../../lib';
+import Siaq from '../../lib';
 
-export default class CounterStore extends ContextStore() {
+export default class CounterStore extends Siaq() {
   state = { counter: 0 };
 
   inc = () => this.setState(state => ({ counter: state.counter + 1 }));

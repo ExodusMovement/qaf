@@ -6,7 +6,7 @@ import getActions from './utils/getActions';
 export default () => {
   const { Provider, Consumer } = createContext();
 
-  return class ContextStore extends PureComponent {
+  return class Siaq extends PureComponent {
     static Consumer = Consumer;
 
     render() {
