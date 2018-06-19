@@ -2,7 +2,7 @@
 
 /* eslint-disable react/prop-types */
 
-import Qaf from '../../dist';
+import Qaf from '../lib';
 import getProps from '../lib/utils/getProps';
 
 it('gets actions', () => {
