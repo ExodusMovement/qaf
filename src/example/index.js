@@ -54,8 +54,10 @@ const Divider = styled.div`
   width: 256px;
 `;
 
-export default () => (
+const AppContainer = () => (
   <Provider {...{ stores }}>
     <App />
   </Provider>
 );
+
+export default AppContainer;

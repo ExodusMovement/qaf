@@ -11,7 +11,7 @@ class Store extends ContextStore() {
   dec = () => this.setState(state => ({ counter: state.counter - 1 }));
 }
 
-const Counter = ({ store }) => (
+const StatelessCounter = ({ store }) => (
   <div>
     <div>{store.counter}</div>
 
@@ -22,10 +22,11 @@ const Counter = ({ store }) => (
   </div>
 );
 
-const CounterWithStore = inject('store')(Counter);
+const Counter = inject('store')(StatelessCounter);
 
-export default () => (
+const App = () => (
   <Provider stores={{ store: Store }}>
-    <CounterWithStore />
+    <Counter />
   </Provider>
 );
+export default App;

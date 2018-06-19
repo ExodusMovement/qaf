@@ -6,14 +6,10 @@ import { StoresProvider } from './stores';
 
 import nestify from './utils/nestify';
 
-const Provider = ({ stores = {}, children = null }) => {
-  const Providers = () => nestify(Object.values(stores), children);
-
-  return (
-    <StoresProvider value={stores}>
-      <Providers />
-    </StoresProvider>
-  );
-};
+const Provider = ({ stores = {}, children = null }) => (
+  <StoresProvider value={stores}>
+    {nestify(Object.values(stores), children)}
+  </StoresProvider>
+);
 
 export default Provider;

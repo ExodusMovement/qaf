@@ -10,7 +10,7 @@ export default class TweetsStore extends ContextStore() {
           tweets: ['A state walks into a bar ..'],
           loading: false
         }),
-      1000
+      1250
     );
   }
 

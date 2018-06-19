@@ -52,7 +52,6 @@ class Tweets extends PureComponent {
             onChange={this.handleChange}
             placeholder="What's up?"
             value={tweetInput}
-            style={{ marginBottom: 10 }}
           />{' '}
           <button disabled={!tweetInput} onClick={this.handleClick}>
             Tweet
