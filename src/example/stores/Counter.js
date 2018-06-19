@@ -1,6 +1,6 @@
-import Siaq from '../../lib';
+import Qaf from '../../lib';
 
-export default class CounterStore extends Siaq() {
+export default class CounterStore extends Qaf() {
   state = { counter: 0 };
 
   inc = () => this.setState(state => ({ counter: state.counter + 1 }));

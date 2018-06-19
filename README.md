@@ -1,16 +1,16 @@
-# Siaq
+# Qaf
 
-[![npm version](https://badge.fury.io/js/siaq.svg)](https://badge.fury.io/js/siaq) [![Build Status](https://travis-ci.org/sonaye/siaq.svg?branch=master)](https://travis-ci.org/sonaye/siaq)
+[![npm version](https://badge.fury.io/js/qaf.svg)](https://badge.fury.io/js/qaf) [![Build Status](https://travis-ci.org/sonaye/qaf.svg?branch=master)](https://travis-ci.org/sonaye/qaf)
 
 <center>
-  <img src="https://raw.githubusercontent.com/sonaye/siaq/master/qaf.svg" alt="Siaq Logo" width="240">
+  <img src="qaf.svg" alt="Qaf Logo" width="96">
 </center>
 
 This work is the result of investigating a stores pattern based on React's new context API (`16.3.0`).
 
 ## Installation
 
-`yarn add siaq`
+`yarn add qaf`
 
 ## Usage
 
@@ -19,21 +19,21 @@ This work is the result of investigating a stores pattern based on React's new c
 ```js
 // Store.js
 
-import Siaq from 'siaq';
+import Qaf from 'qaf';
 
 // this creates a store instant with context hooks
-const Siaq = Siaq();
+const Qaf = Qaf();
 // you need to do this for every store you intend to have
 
 // e.g. if you have two stores Foo and Bar
-const FooSiaq = Siaq(); // class Foo extends FooSiaq
-const BarSiaq = Siaq(); // class Bar extends BarSiaq
+const FooQaf = Qaf(); // class Foo extends FooQaf
+const BarQaf = Qaf(); // class Bar extends BarQaf
 
 // every store is a typical React class pure component
-export default class Store extends Siaq { /* .. */ }
+export default class Store extends Qaf { /* .. */ }
 
 // or invoke directly
-export default class Store extends Siaq() {
+export default class Store extends Qaf() {
   state = { counter: 0 };
 
   // actions are regular functions
@@ -62,7 +62,7 @@ export default class Store extends Siaq() {
     this.setState({ new: 'state' }, () => alert('Peekaboo!'));
   }
 
-  // NOTE: dont't declare `render`, Siaq will take care of that for you
+  // NOTE: dont't declare `render`, Qaf will take care of that for you
 }
 ```
 
@@ -73,7 +73,7 @@ export default class Store extends Siaq() {
 
 import React from 'react';
 
-import { inject, Subscribe } from 'siaq';
+import { inject, Subscribe } from 'qaf';
 
 // a typical react component
 const Counter = ({ store }) => (
@@ -104,7 +104,7 @@ export default inject('store', 'anotherStore', ..)(Counter);
 ```js
 // App.js
 
-import { Provider } from 'siaq';
+import { Provider } from 'qaf';
 
 import Store from './Store';
 import Counter from './Counter';
@@ -120,4 +120,4 @@ export default App;
 
 ## Example
 
-Available [here](https://github.com/sonaye/siaq/blob/master/src/example).
+Available [here](/blob/master/src/example).

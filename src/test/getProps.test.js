@@ -2,11 +2,11 @@
 
 /* eslint-disable react/prop-types */
 
-import Siaq from '../lib';
+import Qaf from '../lib';
 import getProps from '../lib/utils/getProps';
 
 it('gets actions', () => {
-  const Foo = class extends Siaq() {
+  const Foo = class extends Qaf() {
     static staticProp = {};
 
     constructor() {

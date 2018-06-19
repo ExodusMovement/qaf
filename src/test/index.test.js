@@ -6,17 +6,17 @@ import React from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import Siaq, { inject, Provider } from '../lib';
+import Qaf, { inject, Provider } from '../lib';
 
 it('works', () => {
-  class Store extends Siaq() {
+  class Store extends Qaf() {
     state = { counter: 0 };
 
     inc = () => this.setState(state => ({ counter: state.counter + 1 }));
     dec = () => this.setState(state => ({ counter: state.counter - 1 }));
   }
 
-  class AnotherStore extends Siaq() {}
+  class AnotherStore extends Qaf() {}
 
   const StatelessCounter = ({ store }) => (
     <div>

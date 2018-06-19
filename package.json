@@ -1,12 +1,12 @@
 {
   "license": "MIT",
-  "name": "siaq",
+  "name": "qaf",
   "description": "Stores as components. Simple state management for React based on context.",
-  "version": "0.0.4",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sonaye/siaq.git"
+    "url": "git+https://github.com/sonaye/qaf.git"
   },
   "peerDependencies": {
     "react": ">=16.3.0"

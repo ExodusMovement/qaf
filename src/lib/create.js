@@ -8,7 +8,7 @@ import setState from './utils/setState';
 export default () => {
   const { Provider, Consumer } = createContext();
 
-  return class Siaq extends PureComponent<{}> {
+  return class Qaf extends PureComponent<{}> {
     static Consumer = Consumer;
 
     render() {

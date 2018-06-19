@@ -1,6 +1,6 @@
-import Siaq from '../../lib';
+import Qaf from '../../lib';
 
-export default class TweetsStore extends Siaq() {
+export default class TweetsStore extends Qaf() {
   state = { tweets: [], loading: true };
 
   componentDidMount() {

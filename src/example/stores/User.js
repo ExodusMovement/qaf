@@ -1,6 +1,6 @@
-import Siaq from '../../lib';
+import Qaf from '../../lib';
 
-export default class UserStore extends Siaq() {
+export default class UserStore extends Qaf() {
   state = {
     name: 'Alice',
     signedIn: true

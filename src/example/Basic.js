@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import Siaq, { inject, Provider } from '../lib';
+import Qaf, { inject, Provider } from '../lib';
 
-class Store extends Siaq() {
+class Store extends Qaf() {
   state = { counter: 0 };
 
   inc = () => this.setState(state => ({ counter: state.counter + 1 }));
