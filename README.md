@@ -123,4 +123,4 @@ export default App;
 
 ## Example
 
-Available [here](/blob/master/src/example).
+Available [here](/src/example).
