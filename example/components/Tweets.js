@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 
 import styled from 'styled-components'; // eslint-disable-line import/no-extraneous-dependencies
 
 import { inject } from '../../src';
 
-class Tweets extends PureComponent {
+class Tweets extends Component {
   state = { tweetInput: 'Hello World!' };
 
   handleChange = e => this.setState({ tweetInput: e.target.value });
