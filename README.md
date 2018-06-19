@@ -19,7 +19,10 @@ const ContextStore = createContextStore();
 // every store is a typical react component
 export default class Store extends ContextStore { /* .. */ }
 
-// or invoke directly, notice it's not `extends ContextStore`, don't forget the parentheses
+// or invoke directly
+import ContextStore from 'create-context-store';
+
+// notice it's not `extends ContextStore`, don't forget the parentheses
 export default class Store extends ContextStore() {
   // store's state
   state = { counter: 0 };
