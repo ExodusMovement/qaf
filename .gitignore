@@ -1,4 +1,6 @@
+.cache/
 .DS_Store
+build/
 coverage/
 dist/
 node_modules/

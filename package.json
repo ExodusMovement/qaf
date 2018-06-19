@@ -22,24 +22,27 @@
     "eslint-plugin-import": "2.12.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.9.1",
+    "flow-bin": "0.74.0",
+    "jest": "23.1.0",
+    "parcel-bundler": "1.9.2",
     "react": "16.4.1",
     "react-dom": "16.4.1",
-    "react-scripts": "1.1.4",
     "react-test-renderer": "16.4.1",
     "styled-components": "3.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "parcel src/example/index.html --out-dir build --open",
     "lint": "eslint src",
     "flow": "flow",
-    "test": "CI=true react-scripts test src/test --env=jsdom",
+    "test": "jest src/test",
     "prebuild": "rm -rf dist",
     "build": "NODE_ENV=production babel src/lib --out-dir dist"
   },
   "jest": {
     "collectCoverageFrom": [
       "src/lib/**/*.js"
-    ]
+    ],
+    "verbose": true
   },
   "files": [
     "dist"
