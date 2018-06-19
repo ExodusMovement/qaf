@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 
 import compose from './utils/compose';
 
-import { StoresConsumer } from './stores';
+import { StoresConsumer } from './context';
 
 export default (...injected) => Component =>
   forwardRef((props, ref) => (

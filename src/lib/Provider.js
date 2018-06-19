@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { StoresProvider } from './stores';
+import { StoresProvider } from './context';
 
 import nestify from './utils/nestify';
 
