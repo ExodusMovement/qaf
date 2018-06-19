@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import ContextStore, { inject } from '../lib';
+import ContextStore, { inject, Provider } from '../lib';
 
-class Store extends ContextStore {
+class Store extends ContextStore() {
   state = { counter: 0 };
 
   inc = () => this.setState(state => ({ counter: state.counter + 1 }));
@@ -22,10 +22,10 @@ const Counter = ({ store }) => (
   </div>
 );
 
-const CounterWithStore = inject({ store: Store })(Counter);
+const CounterWithStore = inject('store')(Counter);
 
 export default () => (
-  <Store>
+  <Provider stores={{ store: Store }}>
     <CounterWithStore />
-  </Store>
+  </Provider>
 );

@@ -4,8 +4,6 @@ import React from 'react';
 
 import { inject } from '../../lib';
 
-import CounterStore from '../stores/Counter';
-
 const Counter = ({ counterStore }) => (
   <React.Fragment>
     <div>{counterStore.counter}</div>
@@ -17,4 +15,4 @@ const Counter = ({ counterStore }) => (
   </React.Fragment>
 );
 
-export default inject({ counterStore: CounterStore })(Counter);
+export default inject('counterStore')(Counter);

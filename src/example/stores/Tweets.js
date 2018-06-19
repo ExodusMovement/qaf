@@ -1,6 +1,6 @@
 import ContextStore from '../../lib';
 
-export default class TweetsStore extends ContextStore {
+export default class TweetsStore extends ContextStore() {
   state = { tweets: [], loading: true };
 
   componentDidMount() {

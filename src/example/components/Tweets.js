@@ -6,9 +6,6 @@ import styled from 'styled-components'; // eslint-disable-line import/no-extrane
 
 import { inject } from '../../lib';
 
-import TweetsStore from '../stores/Tweets';
-import UserStore from '../stores/User';
-
 class Tweets extends React.PureComponent {
   state = { tweetInput: 'Hello World!' };
 
@@ -69,7 +66,4 @@ const Input = styled.input`
   margin-bottom: 10px;
 `;
 
-export default inject({
-  userStore: UserStore,
-  tweetsStore: TweetsStore
-})(Tweets);
+export default inject('userStore', 'tweetsStore')(Tweets);

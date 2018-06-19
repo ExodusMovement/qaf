@@ -14,7 +14,8 @@ _WORK IN PROGRESS_
 import ContextStore from 'create-context-store';
 
 // every store is a react component
-export default class Store extends ContextStore {
+export default class Store extends ContextStore() {
+  // notice it's not `extends ContextStore`, don't forget the parentheses
   state = { counter: 0 };
 
   // actions are regular functions
@@ -45,14 +46,12 @@ import React from 'react';
 
 import { inject } from 'create-context-store';
 
-import Store from './Store';
-
 // a typical react component
 const Counter = ({ store }) => (
   <div>
     {/* state is available */}
     <div>{store.counter}</div>
-    {/* notice it's not store.state.counter */}
+    {/* notice it's not `store.state.counter` */}
 
     {/* actions are available */}
     <div>
@@ -62,8 +61,8 @@ const Counter = ({ store }) => (
   </div>
 );
 
-// injecting the store under the `store` prop
-export default inject({ store: Store })(Counter);
+// injecting the store by passing its key as a string
+export default inject('store', 'anotherStore', ..)(Counter);
 ```
 
 ### The app
@@ -71,13 +70,15 @@ export default inject({ store: Store })(Counter);
 ```js
 // App.js
 
+import { Provider } from 'create-context-store';
+
 import Store from './Store';
 import Counter from './Counter';
 
 export default () => (
-  <Store>
+  <Provider stores={{ store: Store }}>
     <Counter />
-  </Store>
+  </Provider>
 );
 ```
 

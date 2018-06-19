@@ -1,6 +1,6 @@
 import ContextStore from '../../lib';
 
-export default class CounterStore extends ContextStore {
+export default class CounterStore extends ContextStore() {
   state = { counter: 0 };
 
   inc = () => this.setState(state => ({ counter: state.counter + 1 }));
