@@ -70,7 +70,7 @@ const Counter = ({ store }) => (
   </div>
 );
 
-// injecting the store by passing its key as a string
+// injecting the store by passing its key (as defined in `Provider`) as a string
 export default inject('store', 'anotherStore', ..)(Counter);
 ```
 

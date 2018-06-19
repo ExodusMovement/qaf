@@ -14,6 +14,10 @@ export default class TweetsStore extends Siaq() {
     );
   }
 
+  componentDidUpdate() {
+    console.log('TWEETS_STORE_HAS_BEEN_UPDATED');
+  }
+
   compose = tweet =>
     tweet && this.setState(state => ({ tweets: state.tweets.concat(tweet) }));
 
