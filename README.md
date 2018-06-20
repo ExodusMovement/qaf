@@ -114,4 +114,4 @@ export default App;
 
 ## Example
 
-Available [here](/src/example).
+Available [here](/example).
