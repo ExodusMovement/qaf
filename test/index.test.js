@@ -1,7 +1,5 @@
 // @flow
 
-/* eslint-disable react/prop-types */
-
 import React from 'react';
 
 import { create as r } from 'react-test-renderer';
@@ -9,57 +7,75 @@ import { create as r } from 'react-test-renderer';
 import qaf, { inject, Provider, Subscribe } from '../src';
 
 describe('qaf', () => {
-  it('works', () => {
-    class Store extends qaf() {
-      state = { counter: 0 };
+  class Store extends qaf() {
+    state = { counter: 0 };
 
-      inc = () => this.setState(state => ({ counter: state.counter + 1 }));
-      dec = () => this.setState(state => ({ counter: state.counter - 1 }));
-    }
+    inc = () => this.setState(state => ({ counter: state.counter + 1 }));
+    dec = () => this.setState(state => ({ counter: state.counter - 1 }));
+  }
 
-    class AnotherStore extends qaf() {}
+  class AnotherStore extends qaf() {}
 
-    const StatelessCounter = () => null;
+  const StatelessCounter = () => null;
 
-    const CounterWithInject = inject('store')(StatelessCounter);
+  const CounterWithInject = inject('store', 'anotherStore')(StatelessCounter);
 
-    const App = props => (
-      <Provider store={Store} anotherStore={AnotherStore} {...props} />
-    );
+  const App = props => (
+    <Provider store={Store} anotherStore={AnotherStore} {...props} />
+  );
 
-    const AppWithInject = (
-      <App>
-        <CounterWithInject />
-      </App>
-    );
+  const AppWithInject = (
+    <App>
+      <CounterWithInject />
+    </App>
+  );
 
-    const AppWithSubscribe = (
-      <App>
-        <Subscribe store anotherStore>
-          {({ store }) => <StatelessCounter {...{ store }} />}
-        </Subscribe>
-      </App>
-    );
+  const AppWithSubscribe = (
+    <App>
+      <Subscribe store anotherStore>
+        {(store, anotherStore) => (
+          <StatelessCounter {...{ store, anotherStore }} />
+        )}
+      </Subscribe>
+    </App>
+  );
 
-    let awi = r(AppWithInject).toTree();
-    let aws = r(AppWithSubscribe).toTree();
+  let awi = r(AppWithInject).toTree();
+  let aws = r(AppWithSubscribe).toTree();
 
-    awi = awi.rendered.rendered.rendered.rendered.rendered.props;
-    aws = aws.rendered.rendered.rendered.rendered.rendered.rendered.props;
+  awi = awi.rendered.rendered.rendered.rendered.rendered.props;
+  aws = aws.rendered.rendered.rendered.rendered.rendered.rendered.props;
 
+  it('has injected stores', () => {
     expect(awi.store).toBeDefined();
+    expect(awi.anotherStore).toBeDefined();
+  });
+
+  it('has injected state', () => {
     expect(awi.store.counter).toBe(0);
+  });
+
+  it('has injected actions', () => {
     expect(awi.store.inc).toBeDefined();
     expect(awi.store.dec).toBeDefined();
+  });
 
+  it('subscribed to stores', () => {
     expect(aws.store).toBeDefined();
+    expect(aws.anotherStore).toBeDefined();
+  });
+
+  it('subscription exposes state', () => {
     expect(aws.store.counter).toBe(0);
+  });
+
+  it('subscription exposes actions', () => {
     expect(aws.store.inc).toBeDefined();
     expect(aws.store.dec).toBeDefined();
-
-    // await awi.store.inc();
-    // expect(awi.store.counter).toBe(1);
-    // await awi.store.dec();
-    // expect(awi.store.counter).toBe(0);
   });
+
+  // await awi.store.inc();
+  // expect(awi.store.counter).toBe(1);
+  // await awi.store.dec();
+  // expect(awi.store.counter).toBe(0);
 });

@@ -1,74 +1,78 @@
 // @flow
 
-/* eslint-disable react/prop-types */
-
 import qaf from '../src';
 import getProps from '../src/utils/getProps';
 
 describe('getProp', () => {
-  it('gets actions and computed values of an object', () => {
-    const Foo = class extends qaf() {
-      static staticProp = {};
+  const Foo = class extends qaf() {
+    static staticProp = {};
 
-      // eslint-disable-next-line no-useless-constructor
-      constructor() {
-        super();
-      }
+    state = {};
+    setState = () => {};
 
-      state = {};
+    arrowFunction = () => {};
+    arrowAsyncFunction = async () => {};
 
-      arrowFunction = () => {};
+    regularFunction() {}
+    async regularAsyncFunction() {} // eslint-disable-line no-empty-function
 
-      regularFunction() {}
+    componentWillMount() {}
+    componentDidMount() {}
+    componentWillReceiveProps() {}
+    componentWillUpdate() {}
+    componentDidUpdate() {}
+    componentWillUnmount() {}
+    componentDidCatch() {}
 
-      arrowAsyncFunction = async () => {};
+    UNSAFE_componentWillMount() {} // eslint-disable-line camelcase
+    UNSAFE_componentWillReceiveProps() {} // eslint-disable-line camelcase
+    UNSAFE_componentWillUpdate() {} // eslint-disable-line camelcase
 
-      // eslint-disable-next-line no-empty-function
-      async regularAsyncFunction() {}
+    get computedValue() {
+      return {};
+    }
 
-      get computedValue() {
-        return {};
-      }
+    render() {}
+  };
 
-      componentWillMount() {}
-      componentDidMount() {}
-      componentWillReceiveProps() {}
-      componentWillUpdate() {}
-      componentDidUpdate() {}
-      componentWillUnmount() {}
-      componentDidCatch() {}
+  const foo = new Foo();
 
-      UNSAFE_componentWillMount() {} // eslint-disable-line camelcase
-      UNSAFE_componentWillReceiveProps() {} // eslint-disable-line camelcase
-      UNSAFE_componentWillUpdate() {} // eslint-disable-line camelcase
-    };
+  const props = getProps(foo);
 
-    const foo = new Foo();
-
-    const props = getProps(foo);
-
-    expect(props.staticProp).not.toBeDefined();
-    expect(props.constructor).toBeDefined();
+  it('passes arrow functions', () => {
     expect(props.arrowFunction).toBeDefined();
-    expect(props.regularFunction).toBeDefined();
     expect(props.arrowAsyncFunction).toBeDefined();
+  });
+
+  it('passes regular functions', () => {
+    expect(props.regularFunction).toBeDefined();
     expect(props.regularAsyncFunction).toBeDefined();
-    expect(props.computedValue).toBeDefined();
+  });
 
-    expect(props.componentWillMount).toBeDefined();
-    expect(props.componentDidMount).toBeDefined();
-    expect(props.componentWillReceiveProps).toBeDefined();
-    expect(props.componentWillUpdate).toBeDefined();
-    expect(props.componentDidUpdate).toBeDefined();
-    expect(props.componentWillUnmount).toBeDefined();
-    expect(props.componentDidCatch).toBeDefined();
+  it('blocks static props', () => expect(props.staticProp).not.toBeDefined());
 
-    expect(props.UNSAFE_componentWillMount).toBeDefined();
-    expect(props.UNSAFE_componentWillReceiveProps).toBeDefined();
-    expect(props.UNSAFE_componentWillUpdate).toBeDefined();
-
+  it('blocks state', () => {
     expect(props.state).not.toBeDefined();
     expect(props.setState).not.toBeDefined();
-    expect(props.render).not.toBeDefined();
   });
+
+  it('blocks lifecycle methods', () => {
+    expect(props.componentWillMount).not.toBeDefined();
+    expect(props.componentDidMount).not.toBeDefined();
+    expect(props.componentWillReceiveProps).not.toBeDefined();
+    expect(props.componentWillUpdate).not.toBeDefined();
+    expect(props.componentDidUpdate).not.toBeDefined();
+    expect(props.componentWillUnmount).not.toBeDefined();
+    expect(props.componentDidCatch).not.toBeDefined();
+  });
+
+  it('blocks deprecated lifecycle methods', () => {
+    expect(props.UNSAFE_componentWillMount).not.toBeDefined();
+    expect(props.UNSAFE_componentWillReceiveProps).not.toBeDefined();
+    expect(props.UNSAFE_componentWillUpdate).not.toBeDefined();
+  });
+
+  it('passes computed values', () => expect(props.computedValue).toBeDefined());
+
+  it('blocks render', () => expect(props.render).not.toBeDefined());
 });

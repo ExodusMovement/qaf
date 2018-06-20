@@ -33,14 +33,14 @@ describe('compose', () => {
     expect(tree.includes('foo')).toBe(true);
     expect(tree.includes('bar')).toBe(true);
 
-    const Composed = compose({
-      foo: Foo,
-      bar: Bar
-    });
+    const Composed = compose(
+      Foo,
+      Bar
+    );
 
     const composed = r(
       <Composed
-        render={({ foo, bar }) => (
+        render={(foo, bar) => (
           <Fragment>
             <Fragment>{foo.str}</Fragment>
             <Fragment>{bar.str}</Fragment>
