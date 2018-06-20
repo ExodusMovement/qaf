@@ -96,9 +96,9 @@ const Counter = ({ store }) => (
 // injecting the store by passing its key (as defined in `Provider`) as a string
 export default inject('store', 'anotherStore', ..)(Counter);
 
-// TODO: alternatively, you can use `<Subscribe />`
+// alternatively, you can use `<Subscribe />`
 <Subscribe store anotherStore>
-  {(store, anotherStore) => <div>{/* .. */}</div>}
+  {({ store, anotherStore }) => <div>{/* .. */}</div>}
 </Subscribe>
 ```
 

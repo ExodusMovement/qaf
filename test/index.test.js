@@ -6,7 +6,7 @@ import React from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import qaf, { inject, Provider } from '../src';
+import qaf, { inject, Provider, Subscribe } from '../src';
 
 describe('qaf', () => {
   it('works', () => {
@@ -19,30 +19,47 @@ describe('qaf', () => {
 
     class AnotherStore extends qaf() {}
 
-    const StatelessCounter = ({ store }) => (
-      <div>
-        <div>{store.counter}</div>
+    const StatelessCounter = () => null;
 
-        <div>
-          <button onClick={store.inc}>+</button>{' '}
-          <button onClick={store.dec}>-</button>
-        </div>
-      </div>
+    const CounterWithInject = inject('store')(StatelessCounter);
+
+    const App = props => (
+      <Provider store={Store} anotherStore={AnotherStore} {...props} />
     );
 
-    const Counter = inject('store')(StatelessCounter);
-
-    const App = () => (
-      <Provider store={Store} anotherStore={AnotherStore}>
-        <Counter />
-      </Provider>
+    const AppWithInject = (
+      <App>
+        <CounterWithInject />
+      </App>
     );
 
-    const app = r(<App />).toTree();
+    const AppWithSubscribe = (
+      <App>
+        <Subscribe store anotherStore>
+          {({ store }) => <StatelessCounter {...{ store }} />}
+        </Subscribe>
+      </App>
+    );
 
-    expect(app.rendered.props.store).toBeDefined();
-    expect(app.rendered.rendered.instance.state.counter).toBeDefined();
-    expect(app.rendered.rendered.instance.inc).toBeDefined();
-    expect(app.rendered.rendered.instance.dec).toBeDefined();
+    let awi = r(AppWithInject).toTree();
+    let aws = r(AppWithSubscribe).toTree();
+
+    awi = awi.rendered.rendered.rendered.rendered.rendered.props;
+    aws = aws.rendered.rendered.rendered.rendered.rendered.rendered.props;
+
+    expect(awi.store).toBeDefined();
+    expect(awi.store.counter).toBe(0);
+    expect(awi.store.inc).toBeDefined();
+    expect(awi.store.dec).toBeDefined();
+
+    expect(aws.store).toBeDefined();
+    expect(aws.store.counter).toBe(0);
+    expect(aws.store.inc).toBeDefined();
+    expect(aws.store.dec).toBeDefined();
+
+    // await awi.store.inc();
+    // expect(awi.store.counter).toBe(1);
+    // await awi.store.dec();
+    // expect(awi.store.counter).toBe(0);
   });
 });

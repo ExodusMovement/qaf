@@ -2,27 +2,27 @@
 
 import React, { PureComponent } from 'react';
 
-import { inject } from '../../src';
+import { Subscribe } from '../../src';
 
-class LastTweet extends PureComponent {
+export default class LastTweet extends PureComponent {
   // testing refs
   func = () => null;
 
-  // eslint-disable-next-line no-alert
-  show = () => alert(this.props.tweetsStore.tweets.slice(-1)[0]);
-
   render() {
-    const { userStore, tweetsStore } = this.props;
-
-    if (userStore.signedIn && tweetsStore.tweets.length > 0)
-      return (
-        <div>
-          <button onClick={this.show}>Last tweet</button>
-        </div>
-      );
-
-    return null;
+    return (
+      <Subscribe userStore tweetsStore>
+        {({ userStore, tweetsStore }) =>
+          userStore.signedIn &&
+          tweetsStore.tweets.length > 0 && (
+            <div>
+              {/* eslint-disable-next-line no-alert */}
+              <button onClick={() => alert(tweetsStore.tweets.slice(-1)[0])}>
+                Last tweet
+              </button>
+            </div>
+          )
+        }
+      </Subscribe>
+    );
   }
 }
-
-export default inject('userStore', 'tweetsStore')(LastTweet);
