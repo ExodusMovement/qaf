@@ -14,11 +14,13 @@ const Subscribe = ({ children, ...props }) => (
     {stores => {
       const injected = Object.keys(props);
 
-      const Composed = compose(getConsumers(stores, injected));
+      const Composed = compose(...getConsumers(stores, injected));
 
       Composed.displayName = `subscribe(${injected.join(', ')})`;
 
-      return <Composed render={injectedStores => children(injectedStores)} />;
+      return (
+        <Composed render={(...injectedStores) => children(...injectedStores)} />
+      );
     }}
   </StoresConsumer>
 );

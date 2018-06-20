@@ -98,7 +98,7 @@ export default inject('store', 'anotherStore', ..)(Counter);
 
 // alternatively, you can use `<Subscribe />`
 <Subscribe store anotherStore>
-  {({ store, anotherStore }) => <div>{/* .. */}</div>}
+  {(store, anotherStore) => <div>{/* .. */}</div>}
 </Subscribe>
 ```
 

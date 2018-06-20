@@ -1,6 +1,6 @@
+// @flow
+
 export default (stores, injected) =>
-  Object.keys(stores).reduce(
-    (obj, key) =>
-      injected.includes(key) ? { ...obj, [key]: stores[key].Consumer } : obj,
-    {}
-  );
+  Object.keys(stores)
+    .filter(key => injected.includes(key))
+    .map(key => stores[key].Consumer);

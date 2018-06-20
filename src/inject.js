@@ -11,15 +11,25 @@ export default (...injected) => Component =>
   forwardRef((props, ref) => (
     <StoresConsumer>
       {stores => {
-        const Composed = compose(getConsumers(stores, injected));
+        const Composed = compose(...getConsumers(stores, injected));
 
         const name = Component.displayName || Component.name;
         Composed.displayName = `inject(${injected.join(', ')})(${name})`;
 
         return (
           <Composed
-            render={injectedStores => (
-              <Component {...props} {...{ ref }} {...injectedStores} />
+            render={(...injectedStores) => (
+              <Component
+                {...props}
+                {...{ ref }}
+                {...injectedStores.reduce(
+                  (obj, store, index) => ({
+                    ...obj,
+                    [injected[index]]: store
+                  }),
+                  {}
+                )}
+              />
             )}
           />
         );
