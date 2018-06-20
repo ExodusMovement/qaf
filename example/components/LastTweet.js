@@ -11,7 +11,7 @@ export default class LastTweet extends PureComponent {
   render() {
     return (
       <Subscribe userStore tweetsStore>
-        {({ userStore, tweetsStore }) =>
+        {(userStore, tweetsStore) =>
           userStore.signedIn &&
           tweetsStore.tweets.length > 0 && (
             <div>
