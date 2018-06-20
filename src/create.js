@@ -3,7 +3,6 @@
 import React, { PureComponent, createContext } from 'react';
 
 import getProps from './utils/getProps';
-// import setState from './utils/setState';
 
 export default () => {
   const { Provider, Consumer } = createContext();

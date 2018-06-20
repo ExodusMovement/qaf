@@ -34,7 +34,7 @@ export default class Store extends Qaf { /* .. */ }
 export default class Store extends qaf() {
   state = { counter: 0 };
 
-  // actions are regular functions (must be arrow functions)
+  // actions are regular functions (must be arrow functions though)
   inc = () => this.setState(state => ({ counter: state.counter + 1 }));
   dec = () => this.setState(state => ({ counter: state.counter - 1 }));
 
@@ -55,15 +55,6 @@ export default class Store extends qaf() {
   get sadCounter() {
     return `${this.state.counter} :(`;
   }
-
-  // TODO: setState can return a promise
-  action = async () => {
-    await this.setState({ new: 'state' });
-    alert('Peekaboo!');
-
-    // or use as usual
-    this.setState({ new: 'state' }, () => alert('Peekaboo!'));
-  };
 
   // NOTE: dont't declare `render`, qaf will take care of that for you
 }
