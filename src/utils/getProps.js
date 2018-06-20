@@ -1,10 +1,20 @@
 // @flow
 
-import getComputed from './getComputed';
-import getActions from './getActions';
+export default (obj: {}) => {
+  const prototype = Object.getPrototypeOf(obj);
 
-export default (obj: {}) =>
-  [...getComputed(obj), ...getActions(obj)].reduce(
-    (allProps, prop) => ({ ...allProps, [prop]: obj[prop] }),
+  const computed = Object.getOwnPropertyNames(prototype).filter(key => {
+    const desc = Object.getOwnPropertyDescriptor(prototype, key);
+
+    return desc && typeof desc.get === 'function';
+  });
+
+  const actions = Object.keys(obj).filter(
+    key => typeof obj[key] === 'function'
+  );
+
+  return [...computed, ...actions].reduce(
+    (props, prop) => ({ ...props, [prop]: obj[prop] }),
     {}
   );
+};
