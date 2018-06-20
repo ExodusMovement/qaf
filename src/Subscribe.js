@@ -11,7 +11,7 @@ import { StoresConsumer } from './context';
 const Subscribe = ({ children, ...props }) => (
   <StoresConsumer>
     {stores => {
-      const injected = Object.keys(props).reverse();
+      const injected = Object.keys(props);
 
       const consumers = Object.keys(stores)
         .filter(key => injected.includes(key))

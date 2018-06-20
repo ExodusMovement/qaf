@@ -3,7 +3,7 @@
 import { createElement } from 'react';
 
 export default (...components) => props =>
-  components.reduceRight(
+  components.reduce(
     (children, Component) => (...allProps) =>
       createElement(Component, {}, childProps =>
         children(...allProps.concat(childProps))
