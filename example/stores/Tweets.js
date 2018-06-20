@@ -7,7 +7,7 @@ export default class TweetsStore extends qaf() {
     setTimeout(
       () =>
         this.setState({
-          tweets: ['A state walks into a bar ..'],
+          tweets: ['State walks into a bar ..'],
           loading: false
         }),
       1250

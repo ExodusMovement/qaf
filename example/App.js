@@ -23,7 +23,7 @@ class App extends PureComponent {
   render() {
     return (
       <Container>
-        {/* testing multiple instances of a component subscribed to a store */}
+        {/* testing multiple instances of a component subscribing to a store */}
         <Counter />
         <Counter />
 

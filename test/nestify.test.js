@@ -25,11 +25,7 @@ describe('nestify', () => {
     const Nestified = props => nestify([Foo, Bar, Baz], props.children);
 
     const nested = r(<Nested>..</Nested>).toJSON();
-
     const nestified = r(<Nestified>..</Nestified>).toJSON();
-
-    // console.log(JSON.stringify(nested, null, 2));
-    // console.log(JSON.stringify(nestified, null, 2));
 
     expect(nestified).toEqual(nested);
   });

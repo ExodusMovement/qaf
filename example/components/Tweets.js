@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 import styled from 'styled-components'; // eslint-disable-line import/no-extraneous-dependencies
 
-import { inject, Subscribe } from '../../src';
+import { inject } from '../../src';
 
 class Tweets extends Component {
   state = { tweetInput: 'Hello World!' };

@@ -53,9 +53,7 @@ describe('qaf', () => {
     expect(awi.anotherStore).toBeDefined();
   });
 
-  it('has injected state', () => {
-    expect(awi.store.counter).toBe(0);
-  });
+  it('has injected state', () => expect(awi.store.counter).toBe(0));
 
   it('has injected actions', () => {
     expect(awi.store.inc).toBeDefined();
@@ -75,9 +73,4 @@ describe('qaf', () => {
   });
 
   it("doesn't overlap stores", () => expect(aws.store.counter).not.toBe(-1));
-
-  // await awi.store.inc();
-  // expect(awi.store.counter).toBe(1);
-  // await awi.store.dec();
-  // expect(awi.store.counter).toBe(0);
 });
