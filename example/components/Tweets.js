@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 import styled from 'styled-components'; // eslint-disable-line import/no-extraneous-dependencies
 
-import { inject } from '../../src';
+import { inject, Subscribe } from '../../src';
 
 class Tweets extends Component {
   state = { tweetInput: 'Hello World!' };
@@ -74,5 +74,11 @@ class Tweets extends Component {
 const Input = styled.input`
   margin-bottom: 10px;
 `;
+
+// export default () => (
+//   <Subscribe userStore tweetsStore>
+//     {(userStore, tweetsStore) => <Tweets {...{ userStore, tweetsStore }} />}
+//   </Subscribe>
+// );
 
 export default inject('userStore', 'tweetsStore')(Tweets);

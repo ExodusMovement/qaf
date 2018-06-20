@@ -2,37 +2,24 @@
 
 import React, { forwardRef } from 'react';
 
-import compose from './utils/compose';
-import getConsumers from './utils/getConsumers';
-
-import { StoresConsumer } from './context';
+import Subscribe from './Subscribe';
 
 export default (...injected) => Component =>
   forwardRef((props, ref) => (
-    <StoresConsumer>
-      {stores => {
-        const Composed = compose(...getConsumers(stores, injected));
-
-        const name = Component.displayName || Component.name;
-        Composed.displayName = `inject(${injected.join(', ')})(${name})`;
-
-        return (
-          <Composed
-            render={(...injectedStores) => (
-              <Component
-                {...props}
-                {...{ ref }}
-                {...injectedStores.reduce(
-                  (obj, store, index) => ({
-                    ...obj,
-                    [injected[index]]: store
-                  }),
-                  {}
-                )}
-              />
-            )}
-          />
-        );
-      }}
-    </StoresConsumer>
+    <Subscribe
+      {...injected.reduce((obj, store) => ({ ...obj, [store]: true }), {})}>
+      {(...injectedStores) => (
+        <Component
+          {...props}
+          {...{ ref }}
+          {...injectedStores.reduce(
+            (obj, store, index) => ({
+              ...obj,
+              [injected[index]]: store
+            }),
+            {}
+          )}
+        />
+      )}
+    </Subscribe>
   ));
