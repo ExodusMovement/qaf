@@ -8,7 +8,6 @@ describe('getProp', () => {
     static staticProp = {};
 
     state = {};
-    setState = () => {};
 
     arrowFunction = () => {};
     arrowAsyncFunction = async () => {};
@@ -44,17 +43,14 @@ describe('getProp', () => {
     expect(props.arrowAsyncFunction).toBeDefined();
   });
 
-  it('passes regular functions', () => {
-    expect(props.regularFunction).toBeDefined();
-    expect(props.regularAsyncFunction).toBeDefined();
+  it('blocks regular functions', () => {
+    expect(props.regularFunction).not.toBeDefined();
+    expect(props.regularAsyncFunction).not.toBeDefined();
   });
 
   it('blocks static props', () => expect(props.staticProp).not.toBeDefined());
 
-  it('blocks state', () => {
-    expect(props.state).not.toBeDefined();
-    expect(props.setState).not.toBeDefined();
-  });
+  it('blocks state', () => expect(props.state).not.toBeDefined());
 
   it('blocks lifecycle methods', () => {
     expect(props.componentWillMount).not.toBeDefined();
