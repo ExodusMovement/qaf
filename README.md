@@ -4,7 +4,13 @@
 
 <img src="qaf.svg" alt="qaf logo" width="96">
 
-This work is the result of investigating a stores pattern based on React's new context API (`16.3.0`).
+## Quick facts
+
+- Based on React's new context API (`16.3.0`).
+- Every store is a React component (state as a component).
+- Actions, computed values, lifecycle methods and more.
+- No dependencies, all just React goodness.
+- ~2 KB in size, with < 100 lines of code.
 
 ## Installation
 
@@ -21,12 +27,12 @@ import { createStore } from 'qaf';
 // you should do this for every store you intend to have
 const QafStore = createStore();
 
+// every store is a typical React class pure component
+class Store extends QafStore {}
+
 // e.g. if you have two stores Foo and Bar
 const Foo = createStore(); // class FooStore extends Foo {}
 const Bar = createStore(); // class BarStore extends Bar {}
-
-// every store is a typical React class pure component
-class Store extends QafStore {}
 
 // or invoke directly
 class Store extends createStore() {
@@ -99,3 +105,5 @@ import { Provider } from 'qaf';
 ## Example
 
 Available [here](/example).
+
+[![Edit 3mz6wrrv5](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/3mz6wrrv5)

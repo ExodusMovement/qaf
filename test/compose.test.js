@@ -37,14 +37,14 @@ describe('compose', () => {
     );
 
     const composed = r(
-      <Composed>
-        {(foo, bar) => (
+      <Composed
+        render={(foo, bar) => (
           <Fragment>
             <Fragment>{foo.str}</Fragment>
             <Fragment>{bar.str}</Fragment>
           </Fragment>
         )}
-      </Composed>
+      />
     ).toJSON();
 
     expect(composed).toEqual(tree);

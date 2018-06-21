@@ -12,11 +12,11 @@ export const compose = (...components) => props =>
       React.createElement(Component, {}, renderProp =>
         children(...renderProps.concat(renderProp))
       ),
-    props.children
+    props.children || props.render
   )();
 
 // allows children to subscribe to a store
-export const Subscribe = ({ children, ...props }) => (
+export const Subscribe = ({ children, render, ...props }) => (
   <StoresContext.Consumer>
     {stores => {
       // what stores are we subscribing to?
@@ -36,9 +36,11 @@ export const Subscribe = ({ children, ...props }) => (
       Composed.displayName = `Subscribe(${injected.join(', ')})`;
 
       return (
-        <Composed>
-          {(...injectedStores) => children(...injectedStores)}
-        </Composed>
+        <Composed
+          render={(...injectedStores) =>
+            children ? children(...injectedStores) : render(...injectedStores)
+          }
+        />
       );
     }}
   </StoresContext.Consumer>

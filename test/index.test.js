@@ -44,11 +44,25 @@ describe('qaf', () => {
     </App>
   );
 
+  const AppWithRender = r(
+    <App>
+      <Subscribe
+        store
+        anotherStore
+        render={(store, anotherStore) => (
+          <StatelessCounter {...{ store, anotherStore }} />
+        )}
+      />
+    </App>
+  );
+
   let awi = AppWithInject.toTree();
   let aws = AppWithSubscribe.toTree();
+  let awr = AppWithRender.toTree();
 
   awi = awi.rendered.rendered.rendered.rendered.rendered.rendered.props;
   aws = aws.rendered.rendered.rendered.rendered.rendered.rendered.props;
+  awr = awr.rendered.rendered.rendered.rendered.rendered.rendered.props;
 
   it('has injected stores', () => {
     expect(awi.store).toBeDefined();
@@ -65,14 +79,24 @@ describe('qaf', () => {
   it('subscribed to stores', () => {
     expect(aws.store).toBeDefined();
     expect(aws.anotherStore).toBeDefined();
+    expect(awr.store).toBeDefined();
+    expect(awr.anotherStore).toBeDefined();
   });
 
-  it('subscription exposes state', () => expect(aws.store.counter).toBe(0));
+  it('subscription exposes state', () => {
+    expect(aws.store.counter).toBe(0);
+    expect(awr.store.counter).toBe(0);
+  });
 
   it('subscription exposes actions', () => {
     expect(aws.store.inc).toBeDefined();
     expect(aws.store.dec).toBeDefined();
+    expect(awr.store.inc).toBeDefined();
+    expect(awr.store.dec).toBeDefined();
   });
 
-  it("doesn't overlap stores", () => expect(aws.store.counter).not.toBe(-1));
+  it("doesn't overlap stores", () => {
+    expect(aws.store.counter).not.toBe(-1);
+    expect(awr.store.counter).not.toBe(-1);
+  });
 });
