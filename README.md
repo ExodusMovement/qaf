@@ -69,17 +69,17 @@ class Store extends createStore() {
 import { Subscribe, subscribe } from 'qaf';
 
 // a typical react component
-const Counter = props => (
+const Counter = ({ store }) => (
   <div>
     {/* state is available, notice it's not `store.state.counter` */}
-    <div>{props.store.counter}</div>
+    <div>{store.counter}</div>
 
     {/* actions are available */}
-    <button onClick={props.store.inc}>+</button>
-    <button onClick={props.store.dec}>-</button>
+    <button onClick={store.inc}>+</button>
+    <button onClick={store.dec}>-</button>
 
     {/* computed values are available */}
-    <div>{props.store.sadCounter}</div>
+    <div>{store.sadCounter}</div>
   </div>
 );
 
