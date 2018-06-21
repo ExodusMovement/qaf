@@ -13,7 +13,7 @@ describe('getProps', () => {
     arrowAsyncFunction = async () => {};
 
     regularFunction() {}
-    async regularAsyncFunction() {}
+    async regularAsyncFunction() {} // eslint-disable-line no-empty-function
 
     componentWillMount() {}
     componentDidMount() {}
@@ -23,9 +23,9 @@ describe('getProps', () => {
     componentWillUnmount() {}
     componentDidCatch() {}
 
-    UNSAFE_componentWillMount() {}
-    UNSAFE_componentWillReceiveProps() {}
-    UNSAFE_componentWillUpdate() {}
+    UNSAFE_componentWillMount() {} // eslint-disable-line camelcase
+    UNSAFE_componentWillReceiveProps() {} // eslint-disable-line camelcase
+    UNSAFE_componentWillUpdate() {} // eslint-disable-line camelcase
 
     get computedValue() {
       return {};
