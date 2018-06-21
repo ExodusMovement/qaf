@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Subscribe } from '../../src';
+import { Subscribe } from '../../../src';
 
 import Todo from './Todo';
 
-const Todos = () => (
+const TodosList = () => (
   <Subscribe todosStore filterStore>
     {(todosStore, filterStore) => {
       const { toggle, remove } = todosStore;
@@ -29,4 +29,4 @@ const Todos = () => (
   </Subscribe>
 );
 
-export default Todos;
+export default TodosList;

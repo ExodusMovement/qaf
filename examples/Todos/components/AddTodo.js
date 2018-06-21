@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Subscribe } from '../../src';
+import { Subscribe } from '../../../src';
 
 const AddTodo = () => (
   <Subscribe todosStore>

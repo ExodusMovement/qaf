@@ -1,4 +1,4 @@
-import { createStore } from '../../src';
+import { createStore } from '../../../src';
 
 export default class TodosStore extends createStore() {
   state = {
@@ -8,6 +8,18 @@ export default class TodosStore extends createStore() {
       { id: Date.now() + 2, text: 'Hello Qaf!', completed: false }
     ]
   };
+
+  get all() {
+    return this.state.todos;
+  }
+
+  get active() {
+    return this.state.todos.filter(todo => !todo.completed);
+  }
+
+  get completed() {
+    return this.state.todos.filter(todo => todo.completed);
+  }
 
   add = text =>
     this.setState(state => ({
@@ -26,16 +38,4 @@ export default class TodosStore extends createStore() {
     this.setState(state => ({
       todos: state.todos.filter(todo => todo.id !== id)
     }));
-
-  get all() {
-    return this.state.todos;
-  }
-
-  get active() {
-    return this.state.todos.filter(todo => !todo.completed);
-  }
-
-  get completed() {
-    return this.state.todos.filter(todo => todo.completed);
-  }
 }

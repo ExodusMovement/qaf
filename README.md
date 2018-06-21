@@ -102,8 +102,8 @@ import { Provider } from 'qaf';
 </Provider>
 ```
 
-## Example
+## Examples
 
-Available [here](/example).
+Available [here](/examples).
 
 [![Edit qaf](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/3mz6wrrv5?module=%2Fsrc%2FApp.js)

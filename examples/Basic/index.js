@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { createStore, Provider, Subscribe } from '../src';
+import { createStore, Provider, Subscribe } from '../../src';
 
 class Store extends createStore() {
   state = { counter: 0 };

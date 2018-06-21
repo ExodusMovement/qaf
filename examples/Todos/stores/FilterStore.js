@@ -1,4 +1,4 @@
-import { createStore } from '../../src';
+import { createStore } from '../../../src';
 
 export default class FilterStore extends createStore() {
   state = { filter: 'all' };

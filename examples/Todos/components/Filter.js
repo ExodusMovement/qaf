@@ -4,9 +4,11 @@ const Filter = ({ filter, children, set }) => {
   const handleOnClick = () => set(children.toLowerCase());
 
   return (
-    <button disabled={filter === children} onClick={handleOnClick}>
-      {children}
-    </button>
+    <span>
+      <button disabled={filter === children} onClick={handleOnClick}>
+        {children}
+      </button>{' '}
+    </span>
   );
 };
 

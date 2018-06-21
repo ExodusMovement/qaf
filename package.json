@@ -30,8 +30,8 @@
   },
   "scripts": {
     "prestart": "rm -rf .cache",
-    "start": "parcel example/index.html --out-dir build --open",
-    "lint": "eslint src test example",
+    "start": "parcel examples/index.html --out-dir build --open",
+    "lint": "eslint src test examples",
     "flow": "flow",
     "test": "jest test",
     "coverage": "yarn test --coverage && open -a Chrome coverage/lcov-report/index.html",
