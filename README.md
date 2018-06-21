@@ -81,13 +81,13 @@ const Counter = ({ store }) => (
   </div>
 );
 
-// injecting the store by passing its key (as defined in `Provider`) as a string
-subscribe('store', 'anotherStore', ..)(Counter);
-
-// alternatively, you can use `<Subscribe />`
+// render props pattern: you can use `<Subscribe />` to inject stores
 <Subscribe store anotherStore>
   {(store, anotherStore) => <Counter {...{ store, anotherStore }} />}
 </Subscribe>
+
+// HOC pattern: injecting stores by passing their keys (as defined in `<Provider />`)
+subscribe('store', 'anotherStore', ..)(Counter);
 ```
 
 ### The app
@@ -95,14 +95,9 @@ subscribe('store', 'anotherStore', ..)(Counter);
 ```js
 import { Provider } from 'qaf';
 
-import Store from './Store';
-import Counter from './Counter';
-
-const App = () => (
-  <Provider store={Store} anotherStore={AnotherStore} ..>
-    <Counter />
-  </Provider>
-);
+<Provider store={Store} anotherStore={AnotherStore} ..>
+  <Counter />
+</Provider>
 ```
 
 ## Example
