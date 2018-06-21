@@ -7,7 +7,7 @@ import { StoresContext } from './Provider';
 // composes multiple render prop based components into one
 // in our case they are all instances of `<Store.Consumer />`
 export const compose = (...components) => props =>
-  components.reduce(
+  components.reduceRight(
     (children, Component) => (...renderProps) =>
       React.createElement(Component, {}, renderProp =>
         children(...renderProps.concat(renderProp))

@@ -12,6 +12,10 @@ describe('qaf', () => {
 
     inc = () => this.setState(state => ({ counter: state.counter + 1 }));
     dec = () => this.setState(state => ({ counter: state.counter - 1 }));
+
+    get double() {
+      return this.state.counter * 2;
+    }
   }
 
   class AnotherStore extends createStore() {
@@ -20,18 +24,8 @@ describe('qaf', () => {
 
   const StatelessCounter = (...props) => JSON.stringify(props);
 
-  const CounterWithInject = subscribe('store', 'anotherStore')(
-    StatelessCounter
-  );
-
   const App = props => (
     <Provider store={Store} anotherStore={AnotherStore} {...props} />
-  );
-
-  const AppWithInject = r(
-    <App>
-      <CounterWithInject />
-    </App>
   );
 
   const AppWithSubscribe = r(
@@ -56,13 +50,47 @@ describe('qaf', () => {
     </App>
   );
 
-  let awi = AppWithInject.toTree();
+  const CounterWithInject = subscribe('store', 'anotherStore')(
+    StatelessCounter
+  );
+
+  const AppWithInject = r(
+    <App>
+      <CounterWithInject />
+    </App>
+  );
+
   let aws = AppWithSubscribe.toTree();
   let awr = AppWithRender.toTree();
+  let awi = AppWithInject.toTree();
 
-  awi = awi.rendered.rendered.rendered.rendered.rendered.rendered.props;
   aws = aws.rendered.rendered.rendered.rendered.rendered.rendered.props;
   awr = awr.rendered.rendered.rendered.rendered.rendered.rendered.props;
+  awi = awi.rendered.rendered.rendered.rendered.rendered.rendered.props;
+
+  it('subscribes to stores', () => {
+    expect(aws.store).toBeDefined();
+    expect(aws.anotherStore).toBeDefined();
+    expect(awr.store).toBeDefined();
+    expect(awr.anotherStore).toBeDefined();
+  });
+
+  it('has exposed state through subscription', () => {
+    expect(aws.store.counter).toBe(0);
+    expect(awr.store.counter).toBe(0);
+  });
+
+  it('has exposed actions through subscription', () => {
+    expect(aws.store.inc).toBeDefined();
+    expect(aws.store.dec).toBeDefined();
+    expect(awr.store.inc).toBeDefined();
+    expect(awr.store.dec).toBeDefined();
+  });
+
+  it('has exposed computed values through subscription', () => {
+    expect(aws.store.double).toBe(0);
+    expect(awr.store.double).toBe(0);
+  });
 
   it('has injected stores', () => {
     expect(awi.store).toBeDefined();
@@ -76,24 +104,8 @@ describe('qaf', () => {
     expect(awi.store.dec).toBeDefined();
   });
 
-  it('subscribed to stores', () => {
-    expect(aws.store).toBeDefined();
-    expect(aws.anotherStore).toBeDefined();
-    expect(awr.store).toBeDefined();
-    expect(awr.anotherStore).toBeDefined();
-  });
-
-  it('subscription exposes state', () => {
-    expect(aws.store.counter).toBe(0);
-    expect(awr.store.counter).toBe(0);
-  });
-
-  it('subscription exposes actions', () => {
-    expect(aws.store.inc).toBeDefined();
-    expect(aws.store.dec).toBeDefined();
-    expect(awr.store.inc).toBeDefined();
-    expect(awr.store.dec).toBeDefined();
-  });
+  it('has injected computed values', () =>
+    expect(awi.store.double).toBeDefined());
 
   it("doesn't overlap stores", () => {
     expect(aws.store.counter).not.toBe(-1);
