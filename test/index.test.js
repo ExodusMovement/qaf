@@ -6,7 +6,7 @@ import { create as r } from 'react-test-renderer';
 
 import { createStore, Provider, Subscribe, subscribe } from '../src';
 
-describe('qaf', () => {
+describe('Qaf', () => {
   class Store extends createStore() {
     state = { counter: 0 };
 

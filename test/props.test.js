@@ -3,7 +3,7 @@
 import { createStore } from '../src';
 import { getProps } from '../src/createStore';
 
-describe('getProps', () => {
+describe('props', () => {
   class Foo extends createStore() {
     static staticProp = {};
 

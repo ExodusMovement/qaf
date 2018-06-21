@@ -57,8 +57,9 @@ export const subscribe = (...injected) => Component => {
   );
 
   return React.forwardRef((props, ref) => (
-    <Subscribe {...stores}>
-      {(...injectedStores) => (
+    <Subscribe
+      {...stores}
+      render={(...injectedStores) => (
         <Component
           // pass any custom props passed
           {...props}
@@ -71,6 +72,6 @@ export const subscribe = (...injected) => Component => {
           )}
         />
       )}
-    </Subscribe>
+    />
   ));
 };

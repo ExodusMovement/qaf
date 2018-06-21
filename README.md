@@ -1,13 +1,13 @@
-# qaf
+# Qaf
 
 [![npm version](https://badge.fury.io/js/qaf.svg)](https://badge.fury.io/js/qaf) [![Build Status](https://travis-ci.org/sonaye/qaf.svg?branch=master)](https://travis-ci.org/sonaye/qaf)
 
-<img src="qaf.svg" alt="qaf logo" width="96">
+<img src="qaf.svg" alt="Qaf logo" width="96">
 
 ## Quick facts
 
 - Based on React's new context API (`16.3.0`).
-- Every store is a React component (state as a component).
+- Every store is a React component.
 - Actions, computed values, lifecycle methods and more.
 - No dependencies, all just React goodness.
 - ~2 KB in size, with < 100 lines of code.
@@ -27,7 +27,7 @@ import { createStore } from 'qaf';
 // you should do this for every store you intend to have
 const QafStore = createStore();
 
-// every store is a typical React class pure component
+// every store is a typical React pure class component
 class Store extends QafStore {}
 
 // e.g. if you have two stores Foo and Bar
@@ -38,25 +38,25 @@ const Bar = createStore(); // class BarStore extends Bar {}
 class Store extends createStore() {
   state = { counter: 0 };
 
-  // actions are regular functions (must be arrow functions, better perf.)
-  // NOTE: avoid having action names that already exist in the state
+  // actions are regular functions (must be arrow functions, by design for better perf.)
+  // NOTE: avoid having action names that already exist in the state (state is spreaded)
   // e.g. counter = () => ..
   inc = () => this.setState(state => ({ counter: state.counter + 1 }));
   dec = () => this.setState(state => ({ counter: state.counter - 1 }));
 
-  // computed values
+  // computed values, because spreadsheets are cool
   get sadCounter() {
     return `${this.state.counter} :(`;
   }
 
-  // lifecycle methods
+  // lifecycle methods, all of them, did I mention it's a React component?
   componentDidMount() {
     // do your thing here, e.g. make an async call
   }
 
   // or write a custom logger
   componentDidUpdate() {
-    if (process.env.NODE_ENV !== 'production') console.log('I_WAS_UPDATED');
+    if (process.env.NODE_ENV !== 'production') console.log('UPDATED');
   }
 
   // NOTE: dont't declare `render`, qaf will take care of that for you
@@ -88,7 +88,7 @@ const Counter = props => (
   {(store, anotherStore, ..) => <Counter {...{ store, anotherStore, .. }} />}
 </Subscribe>
 
-// higher order component pattern: injecting stores by passing their keys (as defined in `<Provider />`)
+// higher order components pattern: injecting stores by passing their keys (as defined in `<Provider />`)
 subscribe('store', 'anotherStore', ..)(Counter);
 ```
 
