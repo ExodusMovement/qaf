@@ -56,10 +56,10 @@ class Store extends createStore() {
 
   // or write a custom logger
   componentDidUpdate() {
-    if (process.env.NODE_ENV !== 'production') console.log('UPDATED');
+    console.log('UPDATED');
   }
 
-  // NOTE: dont't declare `render`, qaf will take care of that for you
+  // NOTE: dont't declare `render`, Qaf will take care of that for you
 }
 ```
 
@@ -97,6 +97,7 @@ subscribe('store', 'anotherStore', ..)(Counter);
 ```js
 import { Provider } from 'qaf';
 
+// prop name is the key of the store to be used later in `<Subscribe />`
 <Provider store={Store} anotherStore={AnotherStore} ..>
   <Counter />
 </Provider>
