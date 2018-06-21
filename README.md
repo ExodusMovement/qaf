@@ -22,24 +22,26 @@ import { createStore } from 'qaf';
 const QafStore = createStore();
 
 // e.g. if you have two stores Foo and Bar
-const QafFoo = createStore(); // class FooStore extends QafFoo
-const QafBar = createStore(); // class BarStore extends QafBar
+const Foo = createStore(); // class FooStore extends Foo {}
+const Bar = createStore(); // class BarStore extends Bar {}
 
 // every store is a typical React class pure component
-class Store extends QafStore {
-  /* .. */
-}
+class Store extends QafStore {}
 
 // or invoke directly
 class Store extends createStore() {
   state = { counter: 0 };
 
-  // actions are regular functions (must be arrow functions though)
+  // actions are regular functions (must be arrow functions, better perf.)
+  // NOTE: avoid having action names that already exist in the state
+  // e.g. counter = () => ..
   inc = () => this.setState(state => ({ counter: state.counter + 1 }));
   dec = () => this.setState(state => ({ counter: state.counter - 1 }));
 
-  // NOTE: avoid having action names that already exist in the state
-  // e.g. counter = () => ..
+  // computed values
+  get sadCounter() {
+    return `${this.state.counter} :(`;
+  }
 
   // lifecycle methods
   componentDidMount() {
@@ -48,13 +50,7 @@ class Store extends createStore() {
 
   // or write a custom logger
   componentDidUpdate() {
-    if (process.env.NODE_ENV !== 'production')
-      console.log('STORE_HAS_BEEN_UPDATED');
-  }
-
-  // computed values
-  get sadCounter() {
-    return `${this.state.counter} :(`;
+    if (process.env.NODE_ENV !== 'production') console.log('I_WAS_UPDATED');
   }
 
   // NOTE: dont't declare `render`, qaf will take care of that for you
@@ -69,13 +65,15 @@ import { Subscribe, subscribe } from 'qaf';
 // a typical react component
 const Counter = ({ store }) => (
   <div>
-    {/* state is available */}
-    {/* notice it's not `store.state.counter` */}
+    {/* state is available, notice it's not `store.state.counter` */}
     <div>{store.counter}</div>
 
     {/* actions are available */}
     <button onClick={store.inc}>+</button>
     <button onClick={store.dec}>-</button>
+
+    {/* computed values are available */}
+    <div>{store.sadCounter}</div>
   </div>
 );
 
