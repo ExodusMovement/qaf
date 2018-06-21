@@ -12,7 +12,9 @@ const FiltersList = () => (
       return (
         <div>
           {['All', 'Active', 'Completed'].map(name => (
-            <Filter {...{ filter, set }}>{name}</Filter>
+            <Filter key={name} {...{ filter, set }}>
+              {name}
+            </Filter>
           ))}
         </div>
       );

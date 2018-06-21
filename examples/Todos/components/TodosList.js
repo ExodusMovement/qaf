@@ -13,13 +13,13 @@ const TodosList = () => (
       const todos = todosStore[filter];
       const { length } = todos;
 
-      let count = filter === 'all' ? '' : ` ${filter}`;
-      count += ` todo${length === 0 || length > 1 ? 's' : ''}`;
+      let count = length;
+      count += filter === 'all' ? '' : ` ${filter}`;
+      count += ` todo${length === 0 || length > 1 ? 's' : ''}.`;
 
       return (
         <div>
-          {length}
-          {count}.
+          {count}
           {todos.map(todo => (
             <Todo key={todo.id} {...{ toggle, remove }} {...todo} />
           ))}

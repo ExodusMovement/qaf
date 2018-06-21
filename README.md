@@ -107,4 +107,4 @@ import { Provider } from 'qaf';
 
 Available [here](/examples).
 
-[![Edit qaf](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/3mz6wrrv5?module=%2Fsrc%2FBasic.js)
+[![Edit qaf](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/3mz6wrrv5?module=%2Fsrc%2FCounter.js)
