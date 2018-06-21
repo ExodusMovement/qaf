@@ -1,8 +1,6 @@
-/* eslint-disable react/prop-types */
-
 import React from 'react';
 
-import { inject } from '../../src';
+import { subscribe } from '../../src';
 
 const Counter = ({ counterStore }) => (
   <div>
@@ -15,4 +13,4 @@ const Counter = ({ counterStore }) => (
   </div>
 );
 
-export default inject('counterStore')(Counter);
+export default subscribe('counterStore')(Counter);

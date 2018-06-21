@@ -1,8 +1,7 @@
 // @flow
 
-import create from './create';
-import inject from './inject';
-import Provider from './Provider';
-import Subscribe from './Subscribe';
+import { createStore } from './createStore';
+import { Provider } from './Provider';
+import { Subscribe, subscribe } from './Subscribe';
 
-export { create as default, inject, Provider, Subscribe };
+export { createStore, Provider, Subscribe, subscribe };

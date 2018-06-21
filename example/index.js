@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from 'react-dom'; // eslint-disable-line import/no-extraneous-dependencies
+import { render } from 'react-dom';
 
 import App from './App';
 

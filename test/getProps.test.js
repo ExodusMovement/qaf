@@ -1,10 +1,10 @@
 // @flow
 
-import qaf from '../src';
-import getProps from '../src/utils/getProps';
+import { createStore } from '../src';
+import { getProps } from '../src/createStore';
 
-describe('getProp', () => {
-  const Foo = class extends qaf() {
+describe('getProps', () => {
+  const Foo = class extends createStore() {
     static staticProp = {};
 
     state = {};
@@ -13,7 +13,7 @@ describe('getProp', () => {
     arrowAsyncFunction = async () => {};
 
     regularFunction() {}
-    async regularAsyncFunction() {} // eslint-disable-line no-empty-function
+    async regularAsyncFunction() {}
 
     componentWillMount() {}
     componentDidMount() {}
@@ -23,9 +23,9 @@ describe('getProp', () => {
     componentWillUnmount() {}
     componentDidCatch() {}
 
-    UNSAFE_componentWillMount() {} // eslint-disable-line camelcase
-    UNSAFE_componentWillReceiveProps() {} // eslint-disable-line camelcase
-    UNSAFE_componentWillUpdate() {} // eslint-disable-line camelcase
+    UNSAFE_componentWillMount() {}
+    UNSAFE_componentWillReceiveProps() {}
+    UNSAFE_componentWillUpdate() {}
 
     get computedValue() {
       return {};

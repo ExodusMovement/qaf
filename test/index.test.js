@@ -4,23 +4,25 @@ import React from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import qaf, { inject, Provider, Subscribe } from '../src';
+import { createStore, Provider, Subscribe, subscribe } from '../src';
 
 describe('qaf', () => {
-  class Store extends qaf() {
+  class Store extends createStore() {
     state = { counter: 0 };
 
     inc = () => this.setState(state => ({ counter: state.counter + 1 }));
     dec = () => this.setState(state => ({ counter: state.counter - 1 }));
   }
 
-  class AnotherStore extends qaf() {
+  class AnotherStore extends createStore() {
     state = { counter: -1 };
   }
 
   const StatelessCounter = (...props) => JSON.stringify(props);
 
-  const CounterWithInject = inject('store', 'anotherStore')(StatelessCounter);
+  const CounterWithInject = subscribe('store', 'anotherStore')(
+    StatelessCounter
+  );
 
   const App = props => (
     <Provider store={Store} anotherStore={AnotherStore} {...props} />

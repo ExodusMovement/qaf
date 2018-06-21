@@ -1,15 +1,20 @@
 // @flow
 
-/* eslint-disable react/prop-types */
-
 import React from 'react';
 
-import compose from './utils/compose';
+import { StoresContext } from './Provider';
 
-import { StoresConsumer } from './context';
+export const compose = (...components) => props =>
+  components.reduceRight(
+    (children, Component) => (...allProps) =>
+      React.createElement(Component, {}, childProps =>
+        children(...allProps.concat(childProps))
+      ),
+    props.children || props.render
+  )();
 
-const Subscribe = ({ children, ...props }) => (
-  <StoresConsumer>
+export const Subscribe = ({ children, ...props }) => (
+  <StoresContext.Consumer>
     {stores => {
       const injected = Object.keys(props);
 
@@ -24,7 +29,25 @@ const Subscribe = ({ children, ...props }) => (
         <Composed render={(...injectedStores) => children(...injectedStores)} />
       );
     }}
-  </StoresConsumer>
+  </StoresContext.Consumer>
 );
 
-export default Subscribe;
+export const subscribe = (...injected) => Component =>
+  React.forwardRef((props, ref) => (
+    <Subscribe
+      {...injected.reduce((obj, store) => ({ ...obj, [store]: true }), {})}>
+      {(...injectedStores) => (
+        <Component
+          {...props}
+          {...{ ref }}
+          {...injectedStores.reduce(
+            (obj, store, index) => ({
+              ...obj,
+              [injected[index]]: store
+            }),
+            {}
+          )}
+        />
+      )}
+    </Subscribe>
+  ));

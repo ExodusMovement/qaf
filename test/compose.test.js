@@ -1,12 +1,10 @@
 // @flow
 
-/* eslint-disable react/prop-types */
-
 import React, { Fragment } from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import compose from '../src/utils/compose';
+import { compose } from '../src/Subscribe';
 
 describe('compose', () => {
   it('composes components with render props', () => {

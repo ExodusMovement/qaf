@@ -1,6 +1,8 @@
 // @flow
 
-export default (obj: {}) => {
+import React from 'react';
+
+export const getProps = obj => {
   const prototype = Object.getPrototypeOf(obj);
 
   const computed = Object.getOwnPropertyNames(prototype).filter(key => {
@@ -17,4 +19,21 @@ export default (obj: {}) => {
     (props, prop) => ({ ...props, [prop]: obj[prop] }),
     {}
   );
+};
+
+export const createStore = () => {
+  const { Provider, Consumer } = React.createContext();
+
+  return class QafStore extends React.PureComponent {
+    static Consumer = Consumer;
+
+    render() {
+      const value = {
+        ...getProps(this),
+        ...this.state
+      };
+
+      return <Provider {...this.props} {...{ value }} />;
+    }
+  };
 };

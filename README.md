@@ -15,23 +15,23 @@ This work is the result of investigating a stores pattern based on React's new c
 ### The store
 
 ```js
-// Store.js
-
-import qaf from 'qaf';
+import { createStore } from 'qaf';
 
 // this creates a store instant with context hooks
 // you should do this for every store you intend to have
-const Qaf = qaf();
+const QafStore = createStore();
 
 // e.g. if you have two stores Foo and Bar
-const FooQaf = qaf(); // class Foo extends FooQaf
-const BarQaf = qaf(); // class Bar extends BarQaf
+const FooQaf = createStore(); // class FooStore extends FooQaf
+const BarQaf = createStore(); // class BarStore extends BarQaf
 
 // every store is a typical React class pure component
-export default class Store extends Qaf { /* .. */ }
+class Store extends QafStore {
+  /* .. */
+}
 
 // or invoke directly
-export default class Store extends qaf() {
+class Store extends createStore() {
   state = { counter: 0 };
 
   // actions are regular functions (must be arrow functions though)
@@ -48,7 +48,8 @@ export default class Store extends qaf() {
 
   // or write a custom logger
   componentDidUpdate() {
-    if (process.env.NODE_ENV !== 'production') console.log('STORE_HAS_BEEN_UPDATED');
+    if (process.env.NODE_ENV !== 'production')
+      console.log('STORE_HAS_BEEN_UPDATED');
   }
 
   // computed values
@@ -63,11 +64,7 @@ export default class Store extends qaf() {
 ### The component
 
 ```js
-// Counter.js
-
-import React from 'react';
-
-import { inject, Subscribe } from 'qaf';
+import { Subscribe, subscribe } from 'qaf';
 
 // a typical react component
 const Counter = ({ store }) => (
@@ -85,7 +82,7 @@ const Counter = ({ store }) => (
 );
 
 // injecting the store by passing its key (as defined in `Provider`) as a string
-export default inject('store', 'anotherStore', ..)(Counter);
+subscribe('store', 'anotherStore', ..)(Counter);
 
 // alternatively, you can use `<Subscribe />`
 <Subscribe store anotherStore>
@@ -96,8 +93,6 @@ export default inject('store', 'anotherStore', ..)(Counter);
 ### The app
 
 ```js
-// App.js
-
 import { Provider } from 'qaf';
 
 import Store from './Store';
@@ -108,8 +103,6 @@ const App = () => (
     <Counter />
   </Provider>
 );
-
-export default App;
 ```
 
 ## Example

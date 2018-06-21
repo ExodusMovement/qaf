@@ -1,12 +1,10 @@
 // @flow
 
-/* eslint-disable react/prop-types */
-
 import React from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import nestify from '../src/utils/nestify';
+import { nestify } from '../src/Provider';
 
 describe('nestify', () => {
   it('nests components', () => {

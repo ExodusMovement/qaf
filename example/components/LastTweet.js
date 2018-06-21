@@ -1,10 +1,8 @@
-/* eslint-disable react/prop-types */
-
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import { Subscribe } from '../../src';
 
-export default class LastTweet extends PureComponent {
+export default class LastTweet extends React.PureComponent {
   // testing refs
   func = () => null;
 
@@ -15,7 +13,6 @@ export default class LastTweet extends PureComponent {
           userStore.signedIn &&
           tweetsStore.tweets.length > 0 && (
             <div>
-              {/* eslint-disable-next-line no-alert */}
               <button onClick={() => alert(tweetsStore.tweets.slice(-1)[0])}>
                 Last tweet
               </button>

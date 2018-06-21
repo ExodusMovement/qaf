@@ -1,12 +1,10 @@
-/* eslint-disable react/prop-types */
+import React from 'react';
 
-import React, { Component } from 'react';
+import styled from 'styled-components';
 
-import styled from 'styled-components'; // eslint-disable-line import/no-extraneous-dependencies
+import { subscribe } from '../../src';
 
-import { inject } from '../../src';
-
-class Tweets extends Component {
+class Tweets extends React.Component {
   state = { tweetInput: 'Hello World!' };
 
   handleChange = e => this.setState({ tweetInput: e.target.value });
@@ -81,4 +79,4 @@ const Input = styled.input`
 //   </Subscribe>
 // );
 
-export default inject('userStore', 'tweetsStore')(Tweets);
+export default subscribe('userStore', 'tweetsStore')(Tweets);

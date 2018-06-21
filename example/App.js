@@ -1,6 +1,6 @@
-import React, { PureComponent, createRef } from 'react';
+import React from 'react';
 
-import styled from 'styled-components'; // eslint-disable-line import/no-extraneous-dependencies
+import styled from 'styled-components';
 
 import { Provider } from '../src';
 
@@ -12,13 +12,13 @@ import Counter from './components/Counter';
 import Tweets from './components/Tweets';
 import LastTweet from './components/LastTweet';
 
-class App extends PureComponent {
+class App extends React.PureComponent {
   componentDidMount() {
     // testing refs
     this.lastTweet.current.func();
   }
 
-  lastTweet = createRef();
+  lastTweet = React.createRef();
 
   render() {
     return (

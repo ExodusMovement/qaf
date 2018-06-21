@@ -1,17 +1,20 @@
 // @flow
 
-/* eslint-disable react/prop-types */
-
 import React from 'react';
 
-import { StoresProvider } from './context';
+export const StoresContext = React.createContext();
 
-import nestify from './utils/nestify';
+export const nestify = (components, children, index = 0) =>
+  React.createElement(
+    components[index],
+    {},
+    index === components.length - 1
+      ? children
+      : nestify(components, children, index + 1)
+  );
 
-const Provider = ({ children, ...stores }) => (
-  <StoresProvider value={stores}>
+export const Provider = ({ children, ...stores }) => (
+  <StoresContext.Provider value={stores}>
     {nestify(Object.values(stores), children)}
-  </StoresProvider>
+  </StoresContext.Provider>
 );
-
-export default Provider;
