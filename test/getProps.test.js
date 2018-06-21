@@ -4,7 +4,7 @@ import { createStore } from '../src';
 import { getProps } from '../src/createStore';
 
 describe('getProps', () => {
-  const Foo = class extends createStore() {
+  class Foo extends createStore() {
     static staticProp = {};
 
     state = {};
@@ -32,7 +32,7 @@ describe('getProps', () => {
     }
 
     render() {}
-  };
+  }
 
   const foo = new Foo();
 
