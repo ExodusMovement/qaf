@@ -69,26 +69,26 @@ class Store extends createStore() {
 import { Subscribe, subscribe } from 'qaf';
 
 // a typical react component
-const Counter = ({ store }) => (
+const Counter = props => (
   <div>
     {/* state is available, notice it's not `store.state.counter` */}
-    <div>{store.counter}</div>
+    <div>{props.store.counter}</div>
 
     {/* actions are available */}
-    <button onClick={store.inc}>+</button>
-    <button onClick={store.dec}>-</button>
+    <button onClick={props.store.inc}>+</button>
+    <button onClick={props.store.dec}>-</button>
 
     {/* computed values are available */}
-    <div>{store.sadCounter}</div>
+    <div>{props.store.sadCounter}</div>
   </div>
 );
 
 // render props pattern: you can use `<Subscribe />` to inject stores
 <Subscribe store anotherStore ..>
-  {(store, anotherStore) => <Counter {...{ store, anotherStore }} />}
+  {(store, anotherStore, ..) => <Counter {...{ store, anotherStore, .. }} />}
 </Subscribe>
 
-// HOC pattern: injecting stores by passing their keys (as defined in `<Provider />`)
+// higher order component pattern: injecting stores by passing their keys (as defined in `<Provider />`)
 subscribe('store', 'anotherStore', ..)(Counter);
 ```
 
