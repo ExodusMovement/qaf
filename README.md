@@ -70,19 +70,17 @@ import { Subscribe, subscribe } from 'qaf';
 const Counter = ({ store }) => (
   <div>
     {/* state is available */}
-    <div>{store.counter}</div>
     {/* notice it's not `store.state.counter` */}
+    <div>{store.counter}</div>
 
     {/* actions are available */}
-    <div>
-      <button onClick={store.inc}>+</button>{' '}
-      <button onClick={store.dec}>-</button>
-    </div>
+    <button onClick={store.inc}>+</button>
+    <button onClick={store.dec}>-</button>
   </div>
 );
 
 // render props pattern: you can use `<Subscribe />` to inject stores
-<Subscribe store anotherStore>
+<Subscribe store anotherStore ..>
   {(store, anotherStore) => <Counter {...{ store, anotherStore }} />}
 </Subscribe>
 
