@@ -22,8 +22,8 @@ import { createStore } from 'qaf';
 const QafStore = createStore();
 
 // e.g. if you have two stores Foo and Bar
-const FooQaf = createStore(); // class FooStore extends FooQaf
-const BarQaf = createStore(); // class BarStore extends BarQaf
+const QafFoo = createStore(); // class FooStore extends QafFoo
+const QafBar = createStore(); // class BarStore extends QafBar
 
 // every store is a typical React class pure component
 class Store extends QafStore {
