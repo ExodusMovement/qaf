@@ -2,12 +2,6 @@
 
 import React from 'react';
 
-// this context is used to track other stores (contexts)
-// essentially, allowing us to have `<Provider />` and `<Subscribe />`
-// we declare the store instances once in `<Provider />`
-// and every `<Subscribe />` will know about them and pick its own
-export const StoresContext = React.createContext();
-
 // since every store renders a context provider, and since we can have many stores
 // things can get deeply nested very quickly
 // this helper takes an array of components and does the nesting for us
@@ -19,6 +13,12 @@ export const nestify = (components, children, index = 0) =>
       ? children
       : nestify(components, children, index + 1)
   );
+
+// this context is used to track other stores (contexts)
+// essentially, allowing us to have `<Provider />` and `<Subscribe />`
+// we declare the store instances once in `<Provider />`
+// and every `<Subscribe />` will know about them and pick its own
+export const StoresContext = React.createContext();
 
 // identical to the typical context provider component
 // except it can handle many contexts together
