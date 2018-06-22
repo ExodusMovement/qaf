@@ -10,7 +10,7 @@ export const compose = (...components) => props =>
   components.reduceRight(
     (children, Component) => (...renderProps) =>
       React.createElement(Component, {}, renderProp =>
-        children(...renderProps.concat(renderProp))
+        children(...[...renderProps, renderProp])
       ),
     props.children || props.render
   )();
