@@ -92,7 +92,7 @@ const Counter = ({ store }) => (
   {(store, anotherStore, ..) => <Counter {...{ store, anotherStore, .. }} />}
 </Subscribe>
 
-// higher order components pattern: injecting stores by passing their keys (as defined in `<Provider />`)
+// higher order components pattern: injecting stores by their keys as defined in `<Provider />`
 // typically we would use it if we wanted access to the store's state or actions
 // in places other than the render function of our component, e.g. lifecycle methods
 subscribe('store', 'anotherStore', ..)(Counter);
@@ -103,7 +103,7 @@ subscribe('store', 'anotherStore', ..)(Counter);
 ```js
 import { Provider } from 'qaf';
 
-// prop name is the key of the store to be used later in `<Subscribe />`
+// the prop name is the key of the store used earlier in `<Subscribe />`
 <Provider store={Store} anotherStore={AnotherStore} ..>
   <Counter />
 </Provider>
