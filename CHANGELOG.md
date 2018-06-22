@@ -1,6 +1,6 @@
-# 0.0.2
+# 0.0.3
 
-- Address possible unintentional renders.
+- Prevent possible unintentional renders.
 - Actions must be referenced in the state now.
 - Computed values are no longer getters (just regular functions).
 - Use Rollup to build the library.
