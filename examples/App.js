@@ -22,8 +22,8 @@ const routes = {
   }
 };
 
-const App = () => (
-  <Router {...{ routes }} base={`${process.env.PUBLIC_URL || ''}/#`} />
-);
+const base = `${process.env.NODE_ENV === 'production' ? '/qaf' : ''}/#`;
+
+const App = () => <Router {...{ routes, base }} />;
 
 export default App;
