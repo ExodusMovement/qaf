@@ -4,7 +4,7 @@ import { Subscribe } from '../../../src';
 
 import Filter from './Filter';
 
-const FiltersList = () => (
+const Filters = () => (
   <Subscribe filterStore>
     {filterStore => {
       const { filter, set } = filterStore;
@@ -22,4 +22,4 @@ const FiltersList = () => (
   </Subscribe>
 );
 
-export default FiltersList;
+export default Filters;

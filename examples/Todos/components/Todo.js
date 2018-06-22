@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Todo = ({ id, text, completed, remove, toggle }) => {
-  const handleOnClick = () => remove(id);
-  const handleOnChange = () => toggle(id);
+  const handleClick = () => remove(id);
+  const handleChange = () => toggle(id);
 
   const textStyle = {
     textDecoration: completed ? 'line-through' : 'none'
@@ -10,8 +10,8 @@ const Todo = ({ id, text, completed, remove, toggle }) => {
 
   return (
     <div>
-      <button onClick={handleOnClick}>Remove</button>{' '}
-      <input type="checkbox" checked={completed} onChange={handleOnChange} />{' '}
+      <button onClick={handleClick}>Remove</button>{' '}
+      <input type="checkbox" checked={completed} onChange={handleChange} />{' '}
       <span style={textStyle}>{text}</span>
     </div>
   );

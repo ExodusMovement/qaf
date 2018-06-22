@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Subscribe } from '../../../src';
 
-const AddTodo = () => (
+const Add = () => (
   <Subscribe todosStore>
     {todosStore => {
       const input = React.createRef();
 
-      const handleOnClick = () => {
+      const handleClick = () => {
         todosStore.add(input.current.value || 'Hello World!');
         input.current.value = '';
       };
@@ -15,11 +15,11 @@ const AddTodo = () => (
       return (
         <div>
           <input ref={input} placeholder="What needs to be done?" />{' '}
-          <button onClick={handleOnClick}>Add</button>{' '}
+          <button onClick={handleClick}>Add</button>{' '}
         </div>
       );
     }}
   </Subscribe>
 );
 
-export default AddTodo;
+export default Add;

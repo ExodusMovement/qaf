@@ -23,7 +23,7 @@ export default class TodosStore extends createStore() {
 
   add = text =>
     this.setState(state => ({
-      todos: state.todos.concat({ id: Date.now(), text, completed: false })
+      todos: [...state.todos, { id: Date.now(), text, completed: false }]
     }));
 
   toggle = id =>

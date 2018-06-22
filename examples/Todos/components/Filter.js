@@ -1,11 +1,11 @@
 import React from 'react';
 
 const Filter = ({ filter, children, set }) => {
-  const handleOnClick = () => set(children.toLowerCase());
+  const handleClick = () => set(children.toLowerCase());
 
   return (
     <span>
-      <button disabled={filter === children} onClick={handleOnClick}>
+      <button disabled={filter === children} onClick={handleClick}>
         {children}
       </button>{' '}
     </span>

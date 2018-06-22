@@ -4,7 +4,7 @@ import { Subscribe } from '../../../src';
 
 import Todo from './Todo';
 
-const TodosList = () => (
+const Todos = () => (
   <Subscribe todosStore filterStore>
     {(todosStore, filterStore) => {
       const { toggle, remove } = todosStore;
@@ -29,4 +29,4 @@ const TodosList = () => (
   </Subscribe>
 );
 
-export default TodosList;
+export default Todos;
