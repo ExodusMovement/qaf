@@ -43,7 +43,7 @@
     "prebuild": "rm -rf lib",
     "build": "rollup -c",
     "preexamples": "rm -rf build",
-    "examples": "parcel build examples/index.html --out-dir build --public-url /qaf/",
+    "examples": "NODE_ENV=production parcel build examples/index.html --out-dir build --public-url /qaf/",
     "predeploy": "yarn examples",
     "deploy": "gh-pages -d build"
   },
