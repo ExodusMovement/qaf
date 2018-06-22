@@ -15,7 +15,6 @@ const createStore = () => {
     static Consumer = StoreContext.Consumer;
 
     render() {
-      // notice we are spreading the state here
       return (
         <StoreContext.Provider value={this.state}>
           {this.props.children}

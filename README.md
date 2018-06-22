@@ -8,7 +8,7 @@
 
 - Based on React's new context API (`16.3.0`).
 - Every store is a React component.
-- Actions, computed values, lifecycle methods and more.
+- Actions, lifecycle methods, computed values and more.
 - No dependencies, all just React goodness.
 - ~2 KB in size, with < 100 lines of code.
 
@@ -36,27 +36,31 @@ const Bar = createStore(); // class BarStore extends Bar {}
 
 // or invoke directly
 class Store extends createStore() {
-  state = { counter: 0 };
+  // everything is defined in the state
+  // components subscribing to the store will have access to everything in it
+  state = {
+    // data
+    counter: 0,
 
-  // actions are regular functions (must be arrow functions, by design for better perf.)
-  // NOTE: avoid having action names that already exist in the state (state is spreaded)
-  // e.g. counter = () => ..
-  inc = () => this.setState(state => ({ counter: state.counter + 1 }));
-  dec = () => this.setState(state => ({ counter: state.counter - 1 }));
+    // actions are regular functions
+    inc: () => this.setState(state => ({ counter: state.counter + 1 })),
+    dec: () => this.setState(state => ({ counter: state.counter - 1 })),
 
-  // computed values, because spreadsheets are cool
-  get sadCounter() {
-    return `${this.state.counter} :(`;
-  }
+    // computed values, because spreadsheets are cool
+    sadCounter: () => `${this.state.counter} :(`
+  };
 
-  // lifecycle methods, all of them, did I mention it's a React component?
+  // lifecycle methods
   componentDidMount() {
-    // do your thing here, e.g. make an async call
+    // make an async call
   }
 
-  // or write a custom logger
   componentDidUpdate() {
-    console.log('UPDATED');
+    // or write a custom logger
+  }
+
+  componentDidUnmount() {
+    // or remove an event listener
   }
 
   // NOTE: dont't declare `render`, Qaf will take care of that for you
@@ -71,7 +75,7 @@ import { Subscribe, subscribe } from 'qaf';
 // a typical react component
 const Counter = ({ store }) => (
   <div>
-    {/* state is available, notice it's not `store.state.counter` */}
+    {/* data is available */}
     <div>{store.counter}</div>
 
     {/* actions are available */}
@@ -79,7 +83,7 @@ const Counter = ({ store }) => (
     <button onClick={store.dec}>-</button>
 
     {/* computed values are available */}
-    <div>{store.sadCounter}</div>
+    <div>{store.sadCounter()}</div>
   </div>
 );
 
