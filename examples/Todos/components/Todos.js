@@ -10,7 +10,7 @@ const Todos = () => (
       const { toggle, remove } = todosStore;
       const { filter } = filterStore;
 
-      const todos = todosStore[filter];
+      const todos = todosStore[filter]();
       const { length } = todos;
 
       let count = length;

@@ -8,14 +8,14 @@ import { createStore, Provider, Subscribe, subscribe } from '../src';
 
 describe('Qaf', () => {
   class Store extends createStore() {
-    state = { counter: 0 };
+    state = {
+      counter: 0,
 
-    inc = () => this.setState(state => ({ counter: state.counter + 1 }));
-    dec = () => this.setState(state => ({ counter: state.counter - 1 }));
+      inc: () => this.setState(state => ({ counter: state.counter + 1 })),
+      dec: () => this.setState(state => ({ counter: state.counter - 1 })),
 
-    get double() {
-      return this.state.counter * 2;
-    }
+      double: () => this.state.counter * 2
+    };
   }
 
   class AnotherStore extends createStore() {
@@ -88,8 +88,8 @@ describe('Qaf', () => {
   });
 
   it('has exposed computed values through subscription', () => {
-    expect(aws.store.double).toBe(0);
-    expect(awr.store.double).toBe(0);
+    expect(aws.store.double()).toBe(0);
+    expect(awr.store.double()).toBe(0);
   });
 
   it('has injected stores', () => {
@@ -105,7 +105,7 @@ describe('Qaf', () => {
   });
 
   it('has injected computed values', () =>
-    expect(awi.store.double).toBeDefined());
+    expect(awi.store.double()).toBeDefined());
 
   it("doesn't overlap stores", () => {
     expect(aws.store.counter).not.toBe(-1);
