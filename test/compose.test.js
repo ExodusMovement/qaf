@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Fragment } from 'react';
 
 import { create as r } from 'react-test-renderer';
