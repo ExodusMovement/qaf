@@ -8,7 +8,7 @@
 
 - Based on React's new context API (`16.3.0`).
 - Every store is a React component.
-- Actions, lifecycle methods, computed values and more.
+- Actions, lifecycle methods and more.
 - No dependencies, all just React goodness.
 - ~2 KB in size, with < 100 lines of code.
 
@@ -39,31 +39,20 @@ class Store extends createStore() {
   // everything is defined in the state
   // components subscribing to the store will have access to everything in it
   state = {
-    // data
+    // state values
     counter: 0,
 
     // actions are regular functions
     inc: () => this.setState(state => ({ counter: state.counter + 1 })),
-    dec: () => this.setState(state => ({ counter: state.counter - 1 })),
-
-    // computed values, because spreadsheets are cool
-    sadCounter: () => `${this.state.counter} :(`
+    dec: () => this.setState(state => ({ counter: state.counter - 1 }))
   };
 
   // lifecycle methods
   componentDidMount() {
-    // make an async call
+    // e.g. make an async call
   }
 
-  componentDidUpdate() {
-    // or write a custom logger
-  }
-
-  componentDidUnmount() {
-    // or remove an event listener
-  }
-
-  // NOTE: dont't declare `render`, Qaf will take care of that for you
+  // NOTE: don't declare `render`, Qaf will take care of that for you
 }
 ```
 
@@ -72,18 +61,14 @@ class Store extends createStore() {
 ```js
 import { Subscribe, subscribe } from 'qaf';
 
-// a typical react component
 const Counter = ({ store }) => (
   <div>
-    {/* data is available */}
+    {/* state values are available */}
     <div>{store.counter}</div>
 
     {/* actions are available */}
     <button onClick={store.inc}>+</button>
     <button onClick={store.dec}>-</button>
-
-    {/* computed values are available */}
-    <div>{store.sadCounter()}</div>
   </div>
 );
 
@@ -93,8 +78,9 @@ const Counter = ({ store }) => (
 </Subscribe>
 
 // higher order components pattern: injecting stores by their keys as defined in `<Provider />`
-// typically we would use it if we wanted access to the store's state or actions
+// typically we would use this if we wanted access to the store's state or actions
 // in places other than the render function of our component, e.g. lifecycle methods
+// note that this is just a thin wrapper around `<Subscribe />`
 subscribe('store', 'anotherStore', ..)(Counter);
 ```
 

@@ -1,16 +1,18 @@
 import React from 'react';
 
 export const createStore = () => {
-  const StoreContext = React.createContext();
+  const { Provider, Consumer } = React.createContext();
 
   return class Store extends React.PureComponent {
-    static Consumer = StoreContext.Consumer;
+    static Consumer = Consumer;
 
     render() {
-      return <StoreContext.Provider {...this.props} value={this.state} />;
+      return <Provider {...this.props} value={this.state} />;
     }
   };
 };
+
+const StoresContext = React.createContext();
 
 export const nestify = (components, children, index = 0) =>
   React.createElement(
@@ -21,21 +23,19 @@ export const nestify = (components, children, index = 0) =>
       : nestify(components, children, index + 1)
   );
 
-const StoresContext = React.createContext();
-
 export const Provider = ({ children, ...stores }) => (
   <StoresContext.Provider value={stores}>
     {nestify(Object.values(stores), children)}
   </StoresContext.Provider>
 );
 
-export const compose = (...components) => props =>
+export const compose = (...components) => ({ children, render }) =>
   components.reduceRight(
-    (children, Component) => (...renderProps) =>
+    (Composed, Component) => (...renderProps) =>
       React.createElement(Component, {}, renderProp =>
-        children(...[...renderProps, renderProp])
+        Composed(...[...renderProps, renderProp])
       ),
-    props.children || props.render
+    children || render
   )();
 
 export const Subscribe = ({ children, render, ...props }) => (

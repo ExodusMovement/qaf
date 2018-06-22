@@ -10,9 +10,7 @@ describe('Qaf', () => {
       counter: 0,
 
       inc: () => this.setState(state => ({ counter: state.counter + 1 })),
-      dec: () => this.setState(state => ({ counter: state.counter - 1 })),
-
-      double: () => this.state.counter * 2
+      dec: () => this.setState(state => ({ counter: state.counter - 1 }))
     };
   }
 
@@ -85,11 +83,6 @@ describe('Qaf', () => {
     expect(awr.store.dec).toBeDefined();
   });
 
-  it('has exposed computed values through subscription', () => {
-    expect(aws.store.double()).toBe(0);
-    expect(awr.store.double()).toBe(0);
-  });
-
   it('has injected stores', () => {
     expect(awi.store).toBeDefined();
     expect(awi.anotherStore).toBeDefined();
@@ -101,9 +94,6 @@ describe('Qaf', () => {
     expect(awi.store.inc).toBeDefined();
     expect(awi.store.dec).toBeDefined();
   });
-
-  it('has injected computed values', () =>
-    expect(awi.store.double()).toBeDefined());
 
   it("doesn't overlap stores", () => {
     expect(aws.store.counter).not.toBe(-1);
