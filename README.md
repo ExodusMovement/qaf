@@ -93,6 +93,8 @@ const Counter = ({ store }) => (
 </Subscribe>
 
 // higher order components pattern: injecting stores by passing their keys (as defined in `<Provider />`)
+// typically we would use it if we wanted access to the store's state or actions
+// in places other than the render function of our component, e.g. lifecycle methods
 subscribe('store', 'anotherStore', ..)(Counter);
 ```
 
