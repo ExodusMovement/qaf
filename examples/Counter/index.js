@@ -3,10 +3,12 @@ import React from 'react';
 import { createStore, Provider, Subscribe } from '../../src';
 
 class Store extends createStore() {
-  state = { counter: 0 };
+  state = {
+    counter: 0,
 
-  inc = () => this.setState(state => ({ counter: state.counter + 1 }));
-  dec = () => this.setState(state => ({ counter: state.counter - 1 }));
+    inc: () => this.setState(state => ({ counter: state.counter + 1 })),
+    dec: () => this.setState(state => ({ counter: state.counter - 1 }))
+  };
 }
 
 const Counter = () => (
