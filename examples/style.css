@@ -5,8 +5,9 @@ body,
 }
 
 body {
+  background: #f5fcff;
   margin: 0;
-  padding: 0;
+  padding: 20px;
 }
 
 body,
@@ -14,9 +15,4 @@ input,
 button {
   color: #333;
   font-family: 'Open Sans', sans-serif;
-}
-
-#root {
-  background: #f5fcff;
-  padding: 20px;
 }
