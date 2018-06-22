@@ -4,7 +4,7 @@ import React from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import { nestify } from '../src/Provider';
+import { nestify } from '../src/qaf';
 
 describe('nestify', () => {
   it('nests components', () => {

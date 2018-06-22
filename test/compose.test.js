@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import { compose } from '../src/Subscribe';
+import { compose } from '../src/qaf';
 
 describe('compose', () => {
   it('composes components with render props', () => {
