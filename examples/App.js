@@ -22,7 +22,7 @@ const routes = {
   }
 };
 
-const base = process.env.NODE_ENV === 'production' ? '/qaf/#' : '/#';
+const base = process.env.NODE_ENV === 'production' ? '/qaf/#' : '';
 
 const App = () => <Router {...{ routes, base }} />;
 
