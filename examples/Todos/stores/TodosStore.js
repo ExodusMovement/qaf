@@ -9,9 +9,7 @@ export default class TodosStore extends createStore() {
     ],
 
     all: () => this.state.todos,
-
     active: () => this.state.todos.filter(todo => !todo.completed),
-
     completed: () => this.state.todos.filter(todo => todo.completed),
 
     add: text =>
