@@ -10,9 +10,9 @@
 - Every store is a React component.
 - Actions, lifecycle methods and more.
 - No dependencies, all just React goodness.
-- ~2 KB in size, with < 100 lines of code.
+- ~2 KB in size, with ~80 lines of code.
 
-## Installation
+## Install
 
 `yarn add qaf`
 
@@ -23,20 +23,14 @@
 ```js
 import { createStore } from 'qaf';
 
-// this creates a store instant with context hooks
-// you should do this for every store you intend to have
+// this creates a store instant with context hooks, you should do it uniquely for every store
 const QafStore = createStore();
 
-// every store is a typical React pure class component
+// every store is a typical React PureComponent
 class Store extends QafStore {}
-
-// e.g. if you have two stores Foo and Bar
-const Foo = createStore(); // class FooStore extends Foo {}
-const Bar = createStore(); // class BarStore extends Bar {}
 
 // or invoke directly
 class Store extends createStore() {
-  // everything is defined in the state
   // components subscribing to the store will have access to everything in it
   state = {
     // state values
@@ -72,15 +66,12 @@ const Counter = ({ store }) => (
   </div>
 );
 
-// render props pattern: you can use `<Subscribe />` to inject stores
+// inject stores by their keys as defined in `<Provider />` to have them as render props
 <Subscribe store anotherStore ..>
   {(store, anotherStore, ..) => <Counter {...{ store, anotherStore, .. }} />}
 </Subscribe>
 
-// higher order components pattern: injecting stores by their keys as defined in `<Provider />`
-// typically we would use this if we wanted access to the store's state or actions
-// in places other than the render function of our component, e.g. lifecycle methods
-// note that this is just a thin wrapper around `<Subscribe />`
+// or though a higher order component, a thin wrapper around `<Subscribe />`
 subscribe('store', 'anotherStore', ..)(Counter);
 ```
 
