@@ -8,7 +8,7 @@ const Add = () => (
       const input = React.createRef();
 
       const add = () => {
-        todosStore.add(input.current.value || 'Hello World!');
+        todosStore.add(input.current.value || '¯\\_(ツ)_/¯');
         input.current.value = '';
       };
 
@@ -18,12 +18,16 @@ const Add = () => (
       return (
         <div>
           <input
+            data-shape="long"
             onKeyPress={handleKeyPress}
             placeholder="What needs to be done?"
             ref={input}
             type="text"
           />
-          <button onClick={handleClick}>Add</button>
+
+          <button data-shape="square" onClick={handleClick}>
+            +
+          </button>
         </div>
       );
     }}

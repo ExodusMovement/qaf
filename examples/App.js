@@ -10,7 +10,7 @@ import './style.css';
 const routes = {
   '/': () => (
     <div>
-      <button onClick={() => navigate('/counter')}>Counter</button>{' '}
+      <button onClick={() => navigate('/counter')}>Counter</button>
       <button onClick={() => navigate('/todos')}>Todos</button>
     </div>
   ),

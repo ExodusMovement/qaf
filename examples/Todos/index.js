@@ -7,13 +7,13 @@ import FilterStore from './stores/FilterStore';
 
 import Add from './components/Add';
 import Todos from './components/Todos';
-import Filters from './components/Filters';
+import Controls from './components/Controls';
 
 const App = () => (
   <Provider todosStore={TodosStore} filterStore={FilterStore}>
     <Add />
     <Todos />
-    <Filters />
+    <Controls />
   </Provider>
 );
 

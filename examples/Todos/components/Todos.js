@@ -10,16 +10,11 @@ const Todos = () => (
       const { toggle, remove } = todosStore;
       const { filter } = filterStore;
 
-      const todos = todosStore[filter]();
-      const { length } = todos;
-
-      let count = length;
-      count += filter !== 'all' ? ` ${filter}` : '';
-      count += ` todo${length === 0 || length > 1 ? 's' : ''}.`;
+      let { todos } = todosStore;
+      todos = filter === 'all' ? todos : todosStore[filter]();
 
       return (
         <div>
-          <h3>{count}</h3>
           {todos.map(todo => (
             <Todo key={todo.id} {...{ toggle, remove }} {...todo} />
           ))}

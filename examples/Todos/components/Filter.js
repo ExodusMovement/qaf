@@ -1,10 +1,12 @@
 import React from 'react';
 
 const Filter = ({ filter, children, set }) => {
-  const handleClick = () => set(children.toLowerCase());
+  const name = children.toLowerCase();
+
+  const handleClick = () => set(name);
 
   return (
-    <button disabled={filter === children} onClick={handleClick}>
+    <button disabled={filter === name} onClick={handleClick}>
       {children}
     </button>
   );

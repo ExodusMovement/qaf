@@ -4,9 +4,10 @@ import { Subscribe } from '../../../src';
 
 import Filter from './Filter';
 
-const Filters = () => (
-  <Subscribe filterStore>
-    {filterStore => {
+const Controls = () => (
+  <Subscribe todosStore filterStore>
+    {(todosStore, filterStore) => {
+      const { todos, clear } = todosStore;
       const { filter, set } = filterStore;
 
       return (
@@ -16,10 +17,14 @@ const Filters = () => (
               {name}
             </Filter>
           ))}
+
+          <button disabled={todos.length === 0} onClick={clear}>
+            Clear
+          </button>
         </div>
       );
     }}
   </Subscribe>
 );
 
-export default Filters;
+export default Controls;

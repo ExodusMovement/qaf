@@ -8,7 +8,6 @@ export default class TodosStore extends createStore() {
       { id: Date.now() + 2, text: 'Hello Qaf!', completed: false }
     ],
 
-    all: () => this.state.todos,
     active: () => this.state.todos.filter(todo => !todo.completed),
     completed: () => this.state.todos.filter(todo => todo.completed),
 
@@ -28,6 +27,8 @@ export default class TodosStore extends createStore() {
     remove: id =>
       this.setState(state => ({
         todos: state.todos.filter(todo => todo.id !== id)
-      }))
+      })),
+
+    clear: () => this.setState({ todos: [] })
   };
 }

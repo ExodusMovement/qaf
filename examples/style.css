@@ -1,13 +1,22 @@
 html,
 body,
 #root {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
   background: #f5fcff;
   margin: 0;
-  padding: 20px;
+  padding: 0;
+}
+
+#root {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  min-width: 400px;
 }
 
 body,
@@ -26,24 +35,48 @@ input[type='text'] {
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
   height: 40px;
   margin-bottom: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   outline: none;
 }
 
 button {
+  width: 90px;
+}
+
+button[data-shape='square'] {
+  width: 40px;
+}
+
+input[type='text'][data-shape='long'] {
+  margin-top: 5px;
+  width: 340px;
+}
+
+input[type='text'][data-shape='small'] {
+  text-align: center;
+  width: 90px;
+}
+
+button:enabled {
   cursor: pointer;
-  width: 96px;
+}
+
+button:disabled {
+  background: #eee;
 }
 
 input[type='text'] {
   padding-left: 20px;
   padding-right: 20px;
-  width: 256px;
+  width: 290px;
 }
 
 .checkbox {
   cursor: pointer;
-  margin-right: 55px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 45px;
   position: relative;
 }
 
@@ -89,15 +122,9 @@ input[type='text'],
   opacity: 0.7;
 }
 
-button:hover,
-input[type='text']:hover,
-input[type='text']:focus,
+button:hover:enabled,
+input[type='text']:hover:enabled,
+input[type='text']:focus:enabled,
 .checkbox-mark:hover {
   opacity: 1;
-}
-
-h3 {
-  color: #61dafb;
-  margin: 0;
-  margin-bottom: 10px;
 }
