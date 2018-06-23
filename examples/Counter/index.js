@@ -15,7 +15,7 @@ const Counter = () => (
   <Subscribe store>
     {store => (
       <div>
-        <div>{store.counter}</div>
+        <h3>{store.counter}</h3>
         <button onClick={store.inc}>+</button>{' '}
         <button onClick={store.dec}>-</button>
       </div>

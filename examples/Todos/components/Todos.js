@@ -19,7 +19,7 @@ const Todos = () => (
 
       return (
         <div>
-          {count}
+          <h3>{count}</h3>
           {todos.map(todo => (
             <Todo key={todo.id} {...{ toggle, remove }} {...todo} />
           ))}

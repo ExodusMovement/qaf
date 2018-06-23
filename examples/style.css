@@ -15,4 +15,89 @@ input,
 button {
   color: #333;
   font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+
+button,
+input[type='text'] {
+  background: #fff;
+  border-radius: 0;
+  border: none;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+  height: 40px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  width: 96px;
+}
+
+input[type='text'] {
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 256px;
+}
+
+.checkbox {
+  cursor: pointer;
+  margin-right: 55px;
+  position: relative;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+.checkbox-mark {
+  background: #eee;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+  height: 40px;
+  position: absolute;
+  width: 40px;
+}
+
+.checkbox input[type='checkbox']:checked ~ .checkbox-mark {
+  background-color: #61dafb;
+}
+
+.checkbox-mark:after {
+  display: none;
+}
+
+.checkbox input[type='checkbox']:checked ~ .checkbox-mark:after {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+.checkbox .checkbox-mark:after {
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  height: 12.5px;
+  left: 16px;
+  top: 10px;
+  transform: rotate(45deg);
+  width: 5px;
+}
+
+button,
+input[type='text'],
+.checkbox-mark {
+  opacity: 0.7;
+}
+
+button:hover,
+input[type='text']:hover,
+input[type='text']:focus,
+.checkbox-mark:hover {
+  opacity: 1;
+}
+
+h3 {
+  color: #61dafb;
+  margin: 0;
+  margin-bottom: 10px;
 }

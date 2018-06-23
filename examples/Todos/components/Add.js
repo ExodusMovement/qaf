@@ -7,15 +7,23 @@ const Add = () => (
     {todosStore => {
       const input = React.createRef();
 
-      const handleClick = () => {
+      const add = () => {
         todosStore.add(input.current.value || 'Hello World!');
         input.current.value = '';
       };
 
+      const handleClick = () => add();
+      const handleKeyPress = e => e.key === 'Enter' && add();
+
       return (
         <div>
-          <input ref={input} placeholder="What needs to be done?" />{' '}
-          <button onClick={handleClick}>Add</button>{' '}
+          <input
+            onKeyPress={handleKeyPress}
+            placeholder="What needs to be done?"
+            ref={input}
+            type="text"
+          />
+          <button onClick={handleClick}>Add</button>
         </div>
       );
     }}

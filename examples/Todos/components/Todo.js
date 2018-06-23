@@ -5,13 +5,18 @@ const Todo = ({ id, text, completed, remove, toggle }) => {
   const handleChange = () => toggle(id);
 
   const textStyle = {
-    textDecoration: completed ? 'line-through' : 'none'
+    height: 40,
+    textDecoration: completed ? 'line-through' : 'none',
+    verticalAlign: 'middle'
   };
 
   return (
     <div>
       <button onClick={handleClick}>Remove</button>{' '}
-      <input type="checkbox" checked={completed} onChange={handleChange} />{' '}
+      <label className="checkbox">
+        <input type="checkbox" checked={completed} onChange={handleChange} />
+        <span className="checkbox-mark" />
+      </label>
       <span style={textStyle}>{text}</span>
     </div>
   );
