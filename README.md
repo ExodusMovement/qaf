@@ -31,7 +31,7 @@ class Store extends QafStore {}
 
 // or invoke directly
 class Store extends createStore() {
-  // components subscribing to the store will have access to everything in it
+  // components subscribing to the store will have access to everything in its state
   state = {
     // state values
     counter: 0,
