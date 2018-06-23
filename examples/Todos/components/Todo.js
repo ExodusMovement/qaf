@@ -12,7 +12,7 @@ const Todo = ({ id, text, completed, remove, toggle }) => {
 
   return (
     <div>
-      <button onClick={handleClick}>Remove</button>{' '}
+      <button onClick={handleClick}>Remove</button>
       <label className="checkbox">
         <input type="checkbox" checked={completed} onChange={handleChange} />
         <span className="checkbox-mark" />

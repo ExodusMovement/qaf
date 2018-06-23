@@ -6,8 +6,13 @@ import { compose } from '../src/qaf';
 
 describe('compose', () => {
   it('composes components with render props', () => {
-    const Foo = props => <Fragment>{props.children({ str: 'foo' })} </Fragment>;
-    const Bar = props => <Fragment>{props.children({ str: 'bar' })} </Fragment>;
+    const Foo = ({ children }) => (
+      <Fragment>{children({ str: 'foo' })} </Fragment>
+    );
+
+    const Bar = ({ children }) => (
+      <Fragment>{children({ str: 'bar' })} </Fragment>
+    );
 
     const Baz = () => (
       <Foo>

@@ -12,13 +12,13 @@
     "react": ">=16.3.0"
   },
   "devDependencies": {
-    "babel-eslint": "8.2.3",
+    "babel-eslint": "8.2.5",
     "babel-plugin-external-helpers": "6.22.0",
     "babel-preset-es2015": "6.24.1",
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-0": "6.24.1",
-    "eslint": "4.19.1",
-    "eslint-config-airbnb": "16.1.0",
+    "eslint": "5.0.0",
+    "eslint-config-airbnb": "17.0.0",
     "eslint-plugin-import": "2.12.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.9.1",
@@ -30,8 +30,8 @@
     "react": "16.4.1",
     "react-dom": "16.4.1",
     "react-test-renderer": "16.4.1",
-    "rollup": "0.61.1",
-    "rollup-plugin-babel": "3.0.4"
+    "rollup": "0.61.2",
+    "rollup-plugin-babel": "3.0.5"
   },
   "scripts": {
     "prestart": "rm -rf .cache dev",

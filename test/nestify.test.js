@@ -10,15 +10,15 @@ describe('nestify', () => {
     const Bar = props => <div {...props} />;
     const Baz = props => <div {...props} />;
 
-    const Nested = props => (
+    const Nested = ({ children }) => (
       <Foo>
         <Bar>
-          <Baz>{props.children}</Baz>
+          <Baz>{children}</Baz>
         </Bar>
       </Foo>
     );
 
-    const Nestified = props => nestify([Foo, Bar, Baz], props.children);
+    const Nestified = ({ children }) => nestify([Foo, Bar, Baz], children);
 
     const nested = r(<Nested>..</Nested>).toJSON();
     const nestified = r(<Nestified>..</Nestified>).toJSON();
