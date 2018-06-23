@@ -1,3 +1,7 @@
+# 0.0.4
+
+- Update build.
+
 # 0.0.3
 
 - Prevent possible unintentional renders.
