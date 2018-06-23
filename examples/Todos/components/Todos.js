@@ -14,7 +14,7 @@ const Todos = () => (
       const { length } = todos;
 
       let count = length;
-      count += filter === 'all' ? '' : ` ${filter}`;
+      count += filter !== 'all' ? ` ${filter}` : '';
       count += ` todo${length === 0 || length > 1 ? 's' : ''}.`;
 
       return (
