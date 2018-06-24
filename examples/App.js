@@ -17,9 +17,11 @@ const Root = () => (
 );
 
 const route = Component => {
+  const breadcrumbsStyle = { position: 'absolute', top: 20, left: 20 };
+
   const Route = ({ ctx: { path } }) => (
     <div>
-      <div style={{ position: 'absolute', top: 20, left: 20 }}>
+      <div style={breadcrumbsStyle}>
         {path !== '/' && (
           <Link {...{ base }} to="/">
             root
