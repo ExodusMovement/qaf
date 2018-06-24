@@ -16,11 +16,12 @@ const route = Component => {
   const Route = ({ ctx: { path } }) => {
     const breadcrumb = path !== '/' ? ` / ${path.split('/')[1]}` : '';
 
-    document.title = `Examples${breadcrumb}`;
+    document.title = `Qaf / Examples${breadcrumb}`;
 
     return (
       <div>
         <div style={breadcrumbsStyle}>
+          <a href="https://github.com/sonaye/qaf">Qaf</a> /{' '}
           {path === '/' ? (
             'Examples'
           ) : (
