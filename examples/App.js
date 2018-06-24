@@ -7,6 +7,8 @@ import Todos from './Todos';
 
 import './style.css';
 
+const base = process.env.NODE_ENV === 'production' ? '/qaf/#' : '';
+
 const Root = () => (
   <div>
     <button onClick={() => navigate('/counter')}>Counter</button>
@@ -18,7 +20,11 @@ const route = Component => {
   const Route = ({ ctx: { path } }) => (
     <div>
       <div style={{ position: 'absolute', top: 20, left: 20 }}>
-        {path !== '/' && <Link href="/">root</Link>}
+        {path !== '/' && (
+          <Link {...{ base }} to="/">
+            root
+          </Link>
+        )}
         {path !== '/' && ` / ${path.split('/')[1]}`}
       </div>
 
@@ -38,8 +44,6 @@ const routes = {
     return null;
   }
 };
-
-const base = process.env.NODE_ENV === 'production' ? '/qaf/#' : '';
 
 const App = () => <Router {...{ routes, base }} />;
 

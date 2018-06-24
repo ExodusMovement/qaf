@@ -27,7 +27,7 @@
     "gh-pages": "1.2.0",
     "jest": "23.1.0",
     "page": "1.8.6",
-    "pagify-it": "0.0.12",
+    "pagify-it": "0.0.13",
     "parcel-bundler": "1.9.2",
     "react": "16.4.1",
     "react-dom": "16.4.1",
