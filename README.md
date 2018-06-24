@@ -23,7 +23,7 @@
 ```js
 import { createStore } from 'qaf';
 
-// this creates a store instance with context hooks, we should do it uniquely for every store
+// this creates a store with context hooks, we should do it uniquely for every store
 const QafStore = createStore();
 
 // every store is a typical React PureComponent
@@ -95,19 +95,15 @@ import { Provider } from 'qaf';
 ```js
 import { createContainer } from 'qaf';
 
-// this creates a container instance with context components, we should do it uniquely for every container
-const FooContainer = createContainer();
-const BarContainer = createContainer();
+// this creates a container with context components, we should do it uniquely for every container
+const QafContainer = createContainer();
 
-// this exposes the following components
-<FooContainer.Provider .. />
-<FooContainer.Subscribe .. />
-<BarContainer.Provider .. />
-<BarContainer.Subscribe .. />
+// which exposes the following components
+<QafContainer.Provider .. />
+<QafContainer.Subscribe .. />
 
-// and the following methods
-FooContainer.subscribe(..);
-BarContainer.subscribe(..);
+// and the following method
+QafContainer.subscribe(..);
 ```
 
 ### Testing
