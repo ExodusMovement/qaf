@@ -31,10 +31,10 @@ const Counter = () => (
   </Subscribe>
 );
 
-const App = () => (
+const CounterApp = () => (
   <Provider store={Store}>
     <Counter />
   </Provider>
 );
 
-export default App;
+export default CounterApp;

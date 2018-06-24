@@ -9,7 +9,7 @@ import Add from './components/Add';
 import Todos from './components/Todos';
 import Controls from './components/Controls';
 
-const App = () => (
+const TodosApp = () => (
   <Provider todosStore={TodosStore} filterStore={FilterStore}>
     <Add />
     <Todos />
@@ -17,4 +17,4 @@ const App = () => (
   </Provider>
 );
 
-export default App;
+export default TodosApp;

@@ -1,21 +1,38 @@
 import React from 'react';
 
-import Router, { redirect, navigate } from 'pagify-it'; // eslint-disable-line import/no-extraneous-dependencies
+import Router, { Link, redirect, navigate } from 'pagify-it'; // eslint-disable-line import/no-extraneous-dependencies
 
 import Counter from './Counter';
 import Todos from './Todos';
 
 import './style.css';
 
-const routes = {
-  '/': () => (
+const Root = () => (
+  <div>
+    <button onClick={() => navigate('/counter')}>Counter</button>
+    <button onClick={() => navigate('/todos')}>Todos</button>
+  </div>
+);
+
+const route = Component => {
+  const Route = ({ ctx: { path } }) => (
     <div>
-      <button onClick={() => navigate('/counter')}>Counter</button>
-      <button onClick={() => navigate('/todos')}>Todos</button>
+      <div style={{ position: 'absolute', top: 20, left: 20 }}>
+        {path !== '/' && <Link href="/">root</Link>}
+        {path !== '/' && ` / ${path.split('/')[1]}`}
+      </div>
+
+      <Component />
     </div>
-  ),
-  '/counter': Counter,
-  '/todos': Todos,
+  );
+
+  return Route;
+};
+
+const routes = {
+  '/': Root,
+  '/counter': route(Counter),
+  '/todos': route(Todos),
   '*': () => {
     redirect('/');
     return null;
