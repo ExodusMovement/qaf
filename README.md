@@ -10,7 +10,7 @@
 - Every store is a React component.
 - Actions, lifecycle methods and more.
 - No dependencies, all just React goodness.
-- ~2 KB in size, with ~80 lines of code.
+- ~2 KB in size, with less than 100 lines of code.
 
 ## Install
 
@@ -23,7 +23,7 @@
 ```js
 import { createStore } from 'qaf';
 
-// this creates a store instant with context hooks, you should do it uniquely for every store
+// this creates a store instance with context hooks, we should do it uniquely for every store
 const QafStore = createStore();
 
 // every store is a typical React PureComponent
@@ -46,7 +46,7 @@ class Store extends createStore() {
     // e.g. make an async call
   }
 
-  // NOTE: don't declare `render`, Qaf will take care of that for you
+  // NOTE: don't declare `render`, Qaf will take care of that
 }
 ```
 
@@ -86,9 +86,33 @@ import { Provider } from 'qaf';
 </Provider>
 ```
 
+## Advanced
+
+### The container
+
+`<Provider />`, `<Subscribe />` and `subscribe()` are all components of a Qaf container, which is a collection of Qaf stores. By default, Qaf exposes a main container that we can immediately put to use, but what if we wanted more than one container?
+
+```js
+import { createContainer } from 'qaf';
+
+// this creates a container instance with context components, we should do it uniquely for every container
+const FooContainer = createContainer();
+const BarContainer = createContainer();
+
+// this exposes the following components
+<FooContainer.Provider .. />
+<FooContainer.Subscribe .. />
+<BarContainer.Provider .. />
+<BarContainer.Subscribe .. />
+
+// and the following methods
+FooContainer.subscribe(..);
+BarContainer.subscribe(..);
+```
+
 ### Testing
 
-Qaf stores are React components, you would test them as you would test any other component ([Enzyme example](/test/testing.test.js)).
+Qaf stores are React components, we would test them as we would test any other component ([Enzyme example](/test/testing.test.js)).
 
 ## Examples
 

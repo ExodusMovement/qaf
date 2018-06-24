@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import { compose } from '../src/qaf';
+import { compose } from '../src/utils';
 
 describe('compose', () => {
   it('composes components with render props', () => {

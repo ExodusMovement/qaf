@@ -1,80 +1,70 @@
 import React from 'react';
 
-export const createStore = () => {
-  const { Provider, Consumer } = React.createContext();
+import { nestify, compose } from './utils';
 
-  return class Store extends React.PureComponent {
-    static Consumer = Consumer;
+export const createStore = () => {
+  const StoreContext = React.createContext();
+
+  class Store extends React.PureComponent {
+    static Consumer = StoreContext.Consumer;
 
     render() {
-      return <Provider {...this.props} value={this.state} />;
+      return <StoreContext.Provider {...this.props} value={this.state} />;
     }
-  };
+  }
+
+  return Store;
 };
 
-const StoresContext = React.createContext();
+export const createContainer = () => {
+  const ContainerContext = React.createContext();
 
-export const nestify = (components, children, index = 0) =>
-  React.createElement(
-    components[index],
-    {},
-    index === components.length - 1
-      ? children
-      : nestify(components, children, index + 1)
+  const Provider = ({ children, ...stores }) => (
+    <ContainerContext.Provider value={stores}>
+      {nestify(Object.values(stores), children)}
+    </ContainerContext.Provider>
   );
 
-export const Provider = ({ children, ...stores }) => (
-  <StoresContext.Provider value={stores}>
-    {nestify(Object.values(stores), children)}
-  </StoresContext.Provider>
-);
+  const Subscribe = ({ children, render, ...props }) => (
+    <ContainerContext.Consumer>
+      {allStores => {
+        const keys = Object.keys(props);
 
-export const compose = (...components) => ({ children, render }) =>
-  components.reduceRight(
-    (Composed, Component) => (...renderProps) =>
-      React.createElement(Component, {}, renderProp =>
-        Composed(...[...renderProps, renderProp])
-      ),
-    children || render
-  )();
+        const Composed = compose(
+          ...Object.keys(allStores)
+            .filter(key => keys.includes(key))
+            .map(key => allStores[key].Consumer)
+        );
 
-export const Subscribe = ({ children, render, ...props }) => (
-  <StoresContext.Consumer>
-    {allStores => {
-      const keys = Object.keys(props);
+        Composed.displayName = `Subscribe(${keys.join(', ')})`;
 
-      const Composed = compose(
-        ...Object.keys(allStores)
-          .filter(key => keys.includes(key))
-          .map(key => allStores[key].Consumer)
-      );
+        return (
+          <Composed
+            render={(...stores) =>
+              children ? children(...stores) : render(...stores)
+            }
+          />
+        );
+      }}
+    </ContainerContext.Consumer>
+  );
 
-      Composed.displayName = `Subscribe(${keys.join(', ')})`;
+  const subscribe = (...keys) => Component =>
+    React.forwardRef((props, ref) => (
+      <Subscribe
+        {...keys.reduce((obj, store) => ({ ...obj, [store]: true }), {})}
+        render={(...stores) => (
+          <Component
+            {...props}
+            {...{ ref }}
+            {...stores.reduce(
+              (obj, store, index) => ({ ...obj, [keys[index]]: store }),
+              {}
+            )}
+          />
+        )}
+      />
+    ));
 
-      return (
-        <Composed
-          render={(...stores) =>
-            children ? children(...stores) : render(...stores)
-          }
-        />
-      );
-    }}
-  </StoresContext.Consumer>
-);
-
-export const subscribe = (...keys) => Component =>
-  React.forwardRef((props, ref) => (
-    <Subscribe
-      {...keys.reduce((obj, store) => ({ ...obj, [store]: true }), {})}
-      render={(...stores) => (
-        <Component
-          {...props}
-          {...{ ref }}
-          {...stores.reduce(
-            (obj, store, index) => ({ ...obj, [keys[index]]: store }),
-            {}
-          )}
-        />
-      )}
-    />
-  ));
+  return { Provider, Subscribe, subscribe };
+};

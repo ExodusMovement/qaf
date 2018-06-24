@@ -2,7 +2,7 @@ import React from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import { nestify } from '../src/qaf';
+import { nestify } from '../src/utils';
 
 describe('nestify', () => {
   it('nests components', () => {

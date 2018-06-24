@@ -2,7 +2,7 @@
   "license": "MIT",
   "name": "qaf",
   "description": "Simple state management for React based on context.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "enzyme-adapter-react-16": "1.1.1",
     "eslint": "5.0.0",
     "eslint-config-airbnb": "17.0.0",
-    "eslint-plugin-import": "2.12.0",
+    "eslint-plugin-import": "2.13.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
     "eslint-plugin-react": "7.9.1",
     "gh-pages": "1.2.0",
