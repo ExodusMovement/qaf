@@ -88,7 +88,7 @@ import { Provider } from 'qaf';
 
 ### Testing
 
-Qaf stores are React components, you would test them as you would test any other component. Here is [an example with Enzyme](/test/testing.test.js).
+Qaf stores are React components, you would test them as you would test any other component ([Enzyme example](/test/testing.test.js)).
 
 ## Examples
 

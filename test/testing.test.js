@@ -7,7 +7,7 @@ import { createStore } from '../src';
 
 configure({ adapter: new Adapter() });
 
-describe('testing example', () => {
+describe('store', () => {
   class Store extends createStore() {
     state = {
       counter: 0,
@@ -23,16 +23,16 @@ describe('testing example', () => {
     wrapper = shallow(<Store />);
   });
 
-  it('init counter', () => {
+  it('initializes counter', () => {
     expect(wrapper.state().counter).toBe(0);
   });
 
-  it('inc counter', () => {
+  it('increments counter', () => {
     wrapper.state().inc();
     expect(wrapper.state().counter).toBe(1);
   });
 
-  it('dec counter', () => {
+  it('decrements counter', () => {
     wrapper.state().dec();
     expect(wrapper.state().counter).toBe(-1);
   });
