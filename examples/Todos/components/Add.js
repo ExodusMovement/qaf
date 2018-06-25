@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Subscribe } from '../../../src';
+import { Subscriber } from '../../../src';
 
 const Add = () => (
-  <Subscribe todosStore>
+  <Subscriber todosStore>
     {todosStore => {
       const input = React.createRef();
 
@@ -31,7 +31,7 @@ const Add = () => (
         </div>
       );
     }}
-  </Subscribe>
+  </Subscriber>
 );
 
 export default Add;

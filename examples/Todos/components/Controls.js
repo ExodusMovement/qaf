@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Subscribe } from '../../../src';
+import { Subscriber } from '../../../src';
 
 import Filter from './Filter';
 
 const Controls = () => (
-  <Subscribe todosStore filterStore>
+  <Subscriber todosStore filterStore>
     {(todosStore, filterStore) => {
       const { todos, clear } = todosStore;
       const { filter, set } = filterStore;
@@ -24,7 +24,7 @@ const Controls = () => (
         </div>
       );
     }}
-  </Subscribe>
+  </Subscriber>
 );
 
 export default Controls;

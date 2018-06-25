@@ -25,7 +25,7 @@ export const createContainer = () => {
     </ContainerContext.Provider>
   );
 
-  const Subscribe = ({ children, render, ...props }) => (
+  const Subscriber = ({ children, render, ...props }) => (
     <ContainerContext.Consumer>
       {allStores => {
         const keys = Object.keys(props);
@@ -36,7 +36,7 @@ export const createContainer = () => {
             .map(key => allStores[key].Consumer)
         );
 
-        Composed.displayName = `Subscribe(${keys.join(', ')})`;
+        Composed.displayName = `Subscriber(${keys.join(', ')})`;
 
         return (
           <Composed
@@ -51,7 +51,7 @@ export const createContainer = () => {
 
   const subscribe = (...keys) => Component =>
     React.forwardRef((props, ref) => (
-      <Subscribe
+      <Subscriber
         {...keys.reduce((obj, store) => ({ ...obj, [store]: true }), {})}
         render={(...stores) => (
           <Component
@@ -66,5 +66,5 @@ export const createContainer = () => {
       />
     ));
 
-  return { Provider, Subscribe, subscribe };
+  return { Provider, Subscriber, subscribe };
 };

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import { createStore, Provider, Subscribe, subscribe } from '../src';
+import { createStore, Provider, Subscriber, subscribe } from '../src';
 
 describe('Qaf', () => {
   class Store extends createStore() {
@@ -24,19 +24,19 @@ describe('Qaf', () => {
     <Provider store={Store} anotherStore={AnotherStore} {...props} />
   );
 
-  const AppWithSubscribe = r(
+  const AppWithSubscriber = r(
     <App>
-      <Subscribe store anotherStore>
+      <Subscriber store anotherStore>
         {(store, anotherStore) => (
           <StatelessCounter {...{ store, anotherStore }} />
         )}
-      </Subscribe>
+      </Subscriber>
     </App>
   );
 
-  const AppWithRender = r(
+  const AppWithSubscriberRender = r(
     <App>
-      <Subscribe
+      <Subscriber
         store
         anotherStore
         render={(store, anotherStore) => (
@@ -46,57 +46,58 @@ describe('Qaf', () => {
     </App>
   );
 
-  const CounterWithInject = subscribe('store', 'anotherStore')(
+  const CounterWithSubscribe = subscribe('store', 'anotherStore')(
     StatelessCounter
   );
 
-  const AppWithInject = r(
+  const AppWithSubscribe = r(
     <App>
-      <CounterWithInject />
+      <CounterWithSubscribe />
     </App>
   );
 
+  let awS = AppWithSubscriber.toTree();
+  let awR = AppWithSubscriberRender.toTree();
   let aws = AppWithSubscribe.toTree();
-  let awr = AppWithRender.toTree();
-  let awi = AppWithInject.toTree();
 
+  awS = awS.rendered.rendered.rendered.rendered.rendered.rendered.props;
+  awR = awR.rendered.rendered.rendered.rendered.rendered.rendered.props;
   aws = aws.rendered.rendered.rendered.rendered.rendered.rendered.props;
-  awr = awr.rendered.rendered.rendered.rendered.rendered.rendered.props;
-  awi = awi.rendered.rendered.rendered.rendered.rendered.rendered.props;
 
-  it('subscribes to stores', () => {
+  it('subscribes to stores through subscriber', () => {
+    expect(awS.store).toBeDefined();
+    expect(awS.anotherStore).toBeDefined();
+    expect(awR.store).toBeDefined();
+    expect(awR.anotherStore).toBeDefined();
+  });
+
+  it('has exposed state through subscriber', () => {
+    expect(awS.store.counter).toBe(0);
+    expect(awR.store.counter).toBe(0);
+  });
+
+  it('has exposed actions through subscriber', () => {
+    expect(awS.store.inc).toBeDefined();
+    expect(awS.store.dec).toBeDefined();
+    expect(awR.store.inc).toBeDefined();
+    expect(awR.store.dec).toBeDefined();
+  });
+
+  it('subscribes to stores through subscribe', () => {
     expect(aws.store).toBeDefined();
     expect(aws.anotherStore).toBeDefined();
-    expect(awr.store).toBeDefined();
-    expect(awr.anotherStore).toBeDefined();
   });
 
-  it('has exposed state through subscription', () => {
-    expect(aws.store.counter).toBe(0);
-    expect(awr.store.counter).toBe(0);
-  });
+  it('has exposed state through subscribe', () =>
+    expect(aws.store.counter).toBe(0));
 
-  it('has exposed actions through subscription', () => {
+  it('has exposed actions through subscribe', () => {
     expect(aws.store.inc).toBeDefined();
     expect(aws.store.dec).toBeDefined();
-    expect(awr.store.inc).toBeDefined();
-    expect(awr.store.dec).toBeDefined();
-  });
-
-  it('has injected stores', () => {
-    expect(awi.store).toBeDefined();
-    expect(awi.anotherStore).toBeDefined();
-  });
-
-  it('has injected state', () => expect(awi.store.counter).toBe(0));
-
-  it('has injected actions', () => {
-    expect(awi.store.inc).toBeDefined();
-    expect(awi.store.dec).toBeDefined();
   });
 
   it("doesn't overlap stores", () => {
-    expect(aws.store.counter).not.toBe(-1);
-    expect(awr.store.counter).not.toBe(-1);
+    expect(awS.store.counter).not.toBe(-1);
+    expect(awR.store.counter).not.toBe(-1);
   });
 });

@@ -31,15 +31,15 @@ const AliceContainer = createContainer();
 const BobContainer = createContainer();
 
 const AliceCounter = () => (
-  <AliceContainer.Subscribe store>
+  <AliceContainer.Subscriber store>
     {store => <Counter {...{ store }} />}
-  </AliceContainer.Subscribe>
+  </AliceContainer.Subscriber>
 );
 
 const BobCounter = () => (
-  <BobContainer.Subscribe store>
+  <BobContainer.Subscriber store>
     {store => <Counter {...{ store }} />}
-  </BobContainer.Subscribe>
+  </BobContainer.Subscriber>
 );
 
 const ContainersApp = () => (

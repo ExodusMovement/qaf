@@ -2,7 +2,7 @@
   "license": "MIT",
   "name": "qaf",
   "description": "Simple state management for React based on context.",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "lib/index.js",
   "repository": {
     "type": "git",

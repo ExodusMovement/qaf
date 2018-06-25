@@ -1,2 +1,2 @@
 export { createStore, createContainer } from './qaf';
-export { Provider, Subscribe, subscribe } from './container';
+export { Provider, Subscriber, subscribe } from './container';

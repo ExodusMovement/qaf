@@ -53,7 +53,7 @@ class Store extends createStore() {
 ### The component
 
 ```js
-import { Subscribe, subscribe } from 'qaf';
+import { Subscriber, subscribe } from 'qaf';
 
 const Counter = ({ store }) => (
   <div>
@@ -67,11 +67,11 @@ const Counter = ({ store }) => (
 );
 
 // inject stores by their keys as defined in `<Provider />` to have them as render props
-<Subscribe store anotherStore ..>
+<Subscriber store anotherStore ..>
   {(store, anotherStore, ..) => <Counter {...{ store, anotherStore, .. }} />}
-</Subscribe>
+</Subscriber>
 
-// or though a higher order component, a thin wrapper around `<Subscribe />`
+// or though a higher order component, a thin wrapper around `<Subscriber />`
 subscribe('store', 'anotherStore', ..)(Counter);
 ```
 
@@ -80,7 +80,7 @@ subscribe('store', 'anotherStore', ..)(Counter);
 ```js
 import { Provider } from 'qaf';
 
-// the prop name is the key of the store used earlier in `<Subscribe />`
+// the prop name is the key of the store used earlier in `<Subscriber />`
 <Provider store={Store} anotherStore={AnotherStore} ..>
   <Counter />
 </Provider>
@@ -90,7 +90,7 @@ import { Provider } from 'qaf';
 
 ### The container
 
-`<Provider />`, `<Subscribe />` and `subscribe()` are all components of a Qaf container, which is a collection of Qaf stores. By default, Qaf exposes a main container that we can immediately put to use, but what if we wanted more than one container?
+`<Provider />`, `<Subscriber />` and `subscribe()` are all components of a Qaf container, which is a collection of Qaf stores. By default, Qaf exposes a main container that we can immediately put to use, but what if we wanted more than one container?
 
 ```js
 import { createContainer } from 'qaf';
@@ -100,7 +100,7 @@ const QafContainer = createContainer();
 
 // which exposes the following components
 <QafContainer.Provider .. />
-<QafContainer.Subscribe .. />
+<QafContainer.Subscriber .. />
 
 // and the following method
 QafContainer.subscribe(..);

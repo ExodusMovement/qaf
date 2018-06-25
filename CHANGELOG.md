@@ -1,3 +1,7 @@
+# 0.0.7
+
+- Rename `<Subscribe />` to `<Subscriber />`.
+
 # 0.0.6
 
 - Introduce containers.

@@ -1,3 +1,3 @@
 import { createContainer } from './qaf';
 
-export const { Provider, Subscribe, subscribe } = createContainer();
+export const { Provider, Subscriber, subscribe } = createContainer();

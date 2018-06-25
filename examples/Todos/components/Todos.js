@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Subscribe } from '../../../src';
+import { Subscriber } from '../../../src';
 
 import Todo from './Todo';
 
 const Todos = () => (
-  <Subscribe todosStore filterStore>
+  <Subscriber todosStore filterStore>
     {(todosStore, filterStore) => {
       const { toggle, remove } = todosStore;
       const { filter } = filterStore;
@@ -21,7 +21,7 @@ const Todos = () => (
         </div>
       );
     }}
-  </Subscribe>
+  </Subscriber>
 );
 
 export default Todos;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { createStore, Provider, Subscribe } from '../../src';
+import { createStore, Provider, Subscriber } from '../../src';
 
 class Store extends createStore() {
   state = {
@@ -12,7 +12,7 @@ class Store extends createStore() {
 }
 
 const Counter = () => (
-  <Subscribe store>
+  <Subscriber store>
     {store => (
       <div>
         <input data-shape="small" type="text" value={store.counter} disabled />
@@ -28,7 +28,7 @@ const Counter = () => (
         </div>
       </div>
     )}
-  </Subscribe>
+  </Subscriber>
 );
 
 const CounterApp = () => (
