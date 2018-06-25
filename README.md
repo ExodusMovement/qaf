@@ -99,7 +99,7 @@ import { Provider } from 'qaf';
 
 ### The container
 
-`<Provider />`, `<Subscriber />` and `subscribe()` are all components of a Qaf container, which is a collection of Qaf stores. By default, Qaf exposes a main container that we can immediately put to use, but what if we wanted more than one container?
+`<Provider />`, `<Subscriber />` and `subscribe()` are all components of a container, which is a collection of store instances. By default, Qaf exposes a main container that we can immediately put to use, but what if we wanted more than one container? (e.g. we need multiple instances of a single store).
 
 ```js
 import { createContainer } from 'qaf';
