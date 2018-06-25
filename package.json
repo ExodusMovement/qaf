@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "name": "qaf",
-  "description": "Simple state management for React based on context.",
+  "description": "Components as stores. Simple state management for React based on context.",
   "version": "0.0.7",
   "main": "lib/index.js",
   "repository": {
