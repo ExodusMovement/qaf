@@ -14,7 +14,7 @@
 
 ## Design
 
-<img src="tree.png" width="600">
+<img src="tree.png" alt="Design" width="600">
 
 - The app has at least a one store, which is just a React component.
 - The app has at least one container (default), which is a collection of store instances.
