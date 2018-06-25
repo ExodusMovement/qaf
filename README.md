@@ -16,8 +16,8 @@
 
 <img src="tree.png" width="600">
 
-- Your app has at least a one store, which is just a React component.
-- Your app has at least one container (default), which is a collection of store instances.
+- The app has at least a one store, which is just a React component.
+- The app has at least one container (default), which is a collection of store instances.
 - Each container has a provider that exposes its store instances to its subscribers.
 - Any component can subscribe to any store instance provided.
 
