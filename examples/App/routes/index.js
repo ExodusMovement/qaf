@@ -8,7 +8,7 @@ import Counter from '../../Counter';
 import Todos from '../../Todos';
 import Containers from '../../Containers';
 
-export const pages = {
+const pages = {
   '/Counter': createRoute(Counter),
   '/Todos': createRoute(Todos),
   '/Containers': createRoute(Containers)
