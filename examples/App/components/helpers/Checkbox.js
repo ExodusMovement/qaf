@@ -51,9 +51,9 @@ const CheckboxLabel = styled.label`
   }
 `;
 
-const Checkbox = ({ checked, onChange }) => (
+const Checkbox = props => (
   <CheckboxLabel>
-    <CheckboxInput {...{ checked, onChange }} />
+    <CheckboxInput {...props} />
     <CheckboxMark />
   </CheckboxLabel>
 );
