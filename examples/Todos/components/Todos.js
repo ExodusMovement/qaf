@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Animated from 'react-animated-transitions'; // eslint-disable-line import/no-extraneous-dependencies
+
 import { Subscriber } from '../../../src';
 
 import Todo from './Todo';
@@ -13,9 +15,15 @@ const Todos = () => (
       let { todos } = todosStore;
       todos = filter === 'all' ? todos : todosStore[filter]();
 
-      return todos.map(todo => (
-        <Todo key={todo.id} {...{ toggle, remove }} {...todo} />
-      ));
+      return (
+        <Animated items>
+          {todos.map(todo => (
+            <Animated key={todo.id} item>
+              <Todo {...{ toggle, remove }} {...todo} />
+            </Animated>
+          ))}
+        </Animated>
+      );
     }}
   </Subscriber>
 );

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Animated from 'react-animated-transitions'; // eslint-disable-line import/no-extraneous-dependencies
+
 import { createStore, createContainer } from '../../src';
 
 import Btn from '../helpers/Btn';
@@ -46,15 +48,17 @@ const BobCounter = () => (
 );
 
 const ContainersApp = () => (
-  <div>
-    <AliceContainer.Provider store={Store}>
-      <AliceCounter />
-    </AliceContainer.Provider>
+  <Animated>
+    <div>
+      <AliceContainer.Provider store={Store}>
+        <AliceCounter />
+      </AliceContainer.Provider>
 
-    <BobContainer.Provider store={Store}>
-      <BobCounter />
-    </BobContainer.Provider>
-  </div>
+      <BobContainer.Provider store={Store}>
+        <BobCounter />
+      </BobContainer.Provider>
+    </div>
+  </Animated>
 );
 
 export default ContainersApp;
