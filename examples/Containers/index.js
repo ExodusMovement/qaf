@@ -2,9 +2,9 @@ import React from 'react';
 
 import { createStore, createContainer } from '../../src';
 
-import Row from '../helpers/Row';
-import Block from '../helpers/Block';
-import Btn from '../helpers/Btn';
+import Row from '../App/components/helpers/Row';
+import Block from '../App/components/helpers/Block';
+import Btn from '../App/components/helpers/Btn';
 
 class Store extends createStore() {
   state = {

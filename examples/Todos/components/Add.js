@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Subscriber } from '../../../src';
 
-import Btn from '../../helpers/Btn';
-import Input from '../../helpers/Input';
+import Btn from '../../App/components/helpers/Btn';
+import Input from '../../App/components/helpers/Input';
 
 const Add = () => (
   <Subscriber todosStore>

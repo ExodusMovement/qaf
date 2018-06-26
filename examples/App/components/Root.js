@@ -2,7 +2,7 @@ import React from 'react';
 
 import { navigate } from 'pagify-it'; // eslint-disable-line import/no-extraneous-dependencies
 
-import Btn from '../../helpers/Btn';
+import Btn from './helpers/Btn';
 
 const Root = ({ pages }) => (
   <div>

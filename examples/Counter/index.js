@@ -2,8 +2,8 @@ import React from 'react';
 
 import { createStore, Provider, Subscriber } from '../../src';
 
-import Block from '../helpers/Block';
-import Btn from '../helpers/Btn';
+import Block from '../App/components/helpers/Block';
+import Btn from '../App/components/helpers/Btn';
 
 class Store extends createStore() {
   state = {

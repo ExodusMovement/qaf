@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Link } from 'pagify-it'; // eslint-disable-line import/no-extraneous-dependencies
 
-import base from '../routes/base';
+import base from '../../routes/base';
 
-import Text from '../../helpers/Text';
+import Text from './Text';
 
 const LinkContainer = Text.withComponent('a').extend`
   color: #61dafb;

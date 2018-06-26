@@ -1,10 +1,7 @@
 import React from 'react';
 
-import Router from 'pagify-it'; // eslint-disable-line import/no-extraneous-dependencies
+import { render } from 'react-dom'; // eslint-disable-line import/no-extraneous-dependencies
 
-import routes from './routes';
-import base from './routes/base';
+import App from './App';
 
-const App = () => <Router {...{ routes, base }} />;
-
-export default App;
+render(<App />, document.getElementById('root'));

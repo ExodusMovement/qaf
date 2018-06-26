@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Btn from '../../helpers/Btn';
+import Btn from '../../App/components/helpers/Btn';
 
 const Filter = ({ filter, children, set }) => {
   const name = children.toLowerCase();

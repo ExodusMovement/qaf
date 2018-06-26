@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Row from '../../helpers/Row';
-import Btn from '../../helpers/Btn';
-import Checkbox from '../../helpers/Checkbox';
-import Block from '../../helpers/Block';
+import Row from '../../App/components/helpers/Row';
+import Btn from '../../App/components/helpers/Btn';
+import Checkbox from '../../App/components/helpers/Checkbox';
+import Block from '../../App/components/helpers/Block';
 
 const Todo = ({ id, text, completed, remove, toggle }) => {
   const handleClick = () => remove(id);

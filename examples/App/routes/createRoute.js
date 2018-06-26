@@ -1,9 +1,8 @@
 import React from 'react';
 
-import Container from '../../helpers/Container';
-
-import Breadcrumb from '../components/Breadcrumb';
-import Breadcrumbs from '../components/Breadcrumbs';
+import Container from '../components/helpers/Container';
+import Breadcrumb from '../components/helpers/Breadcrumb';
+import Breadcrumbs from '../components/helpers/Breadcrumbs';
 
 const createRoute = (Component, props) => {
   const Route = ({ ctx: { path } }) => {

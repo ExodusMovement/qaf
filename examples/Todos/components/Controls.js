@@ -4,7 +4,7 @@ import { Subscriber } from '../../../src';
 
 import Filter from './Filter';
 
-import Btn from '../../helpers/Btn';
+import Btn from '../../App/components/helpers/Btn';
 
 const Controls = () => (
   <Subscriber todosStore filterStore>
