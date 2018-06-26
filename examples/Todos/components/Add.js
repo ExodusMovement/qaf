@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Subscriber } from '../../../src';
 
-import Btn from '../../App/components/helpers/Btn';
-import Input from '../../App/components/helpers/Input';
+import Button from '../../App/components/helpers/Button';
+import TextInput from '../../App/components/helpers/TextInput';
 
 const Add = () => (
   <Subscriber todosStore>
@@ -20,16 +20,17 @@ const Add = () => (
 
       return (
         <div>
-          <Input
+          <TextInput
+            aria-label="Todo Title"
             innerRef={input}
             onKeyPress={handleKeyPress}
             placeholder="What needs to be done?"
             large
           />
 
-          <Btn onClick={handleClick} square>
+          <Button onClick={handleClick} square>
             +
-          </Btn>
+          </Button>
         </div>
       );
     }}

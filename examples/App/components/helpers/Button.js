@@ -1,6 +1,6 @@
 import Text from './Text';
 
-const Btn = Text.withComponent('button').extend`
+const Button = Text.withComponent('button').extend`
   background: #fff;
   border-radius: 0;
   border: none;
@@ -30,4 +30,4 @@ const Btn = Text.withComponent('button').extend`
   }
 `;
 
-export default Btn;
+export default Button;

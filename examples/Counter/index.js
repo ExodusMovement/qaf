@@ -3,7 +3,7 @@ import React from 'react';
 import { createStore, Provider, Subscriber } from '../../src';
 
 import Block from '../App/components/helpers/Block';
-import Btn from '../App/components/helpers/Btn';
+import Button from '../App/components/helpers/Button';
 
 class Store extends createStore() {
   state = {
@@ -21,13 +21,13 @@ const Counter = () => (
         <Block small>{store.counter}</Block>
 
         <div>
-          <Btn onClick={store.inc} square>
+          <Button onClick={store.inc} square>
             +
-          </Btn>
+          </Button>
 
-          <Btn onClick={store.dec} square>
+          <Button onClick={store.dec} square>
             -
-          </Btn>
+          </Button>
         </div>
       </div>
     )}

@@ -4,7 +4,7 @@ import { createStore, createContainer } from '../../src';
 
 import Row from '../App/components/helpers/Row';
 import Block from '../App/components/helpers/Block';
-import Btn from '../App/components/helpers/Btn';
+import Button from '../App/components/helpers/Button';
 
 class Store extends createStore() {
   state = {
@@ -20,13 +20,13 @@ const Counter = ({ store }) => (
     <Block small>{store.counter}</Block>
 
     <div>
-      <Btn onClick={store.inc} square>
+      <Button onClick={store.inc} square>
         +
-      </Btn>
+      </Button>
 
-      <Btn onClick={store.dec} square>
+      <Button onClick={store.dec} square>
         -
-      </Btn>
+      </Button>
     </div>
   </div>
 );

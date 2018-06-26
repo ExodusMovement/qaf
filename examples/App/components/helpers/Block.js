@@ -1,6 +1,6 @@
-import Input from './Input';
+import TextInput from './TextInput';
 
-const Block = Input.withComponent('div').extend`
+const Block = TextInput.withComponent('div').extend`
   align-items: center;
   display: flex;
   justify-content: ${({ small }) => small && 'center'};

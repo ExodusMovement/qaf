@@ -4,7 +4,7 @@ import { Subscriber } from '../../../src';
 
 import Filter from './Filter';
 
-import Btn from '../../App/components/helpers/Btn';
+import Button from '../../App/components/helpers/Button';
 
 const Controls = () => (
   <Subscriber todosStore filterStore>
@@ -20,9 +20,9 @@ const Controls = () => (
             </Filter>
           ))}
 
-          <Btn disabled={todos.length === 0} onClick={clear}>
+          <Button disabled={todos.length === 0} onClick={clear}>
             Clear
-          </Btn>
+          </Button>
         </div>
       );
     }}

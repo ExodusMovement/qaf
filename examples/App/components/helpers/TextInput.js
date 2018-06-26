@@ -1,9 +1,6 @@
-import Btn from './Btn';
+import Button from './Button';
 
-const Input = Btn.withComponent('input').extend.attrs({
-  type: 'text',
-  'aria-label': 'Input'
-})`
+const TextInput = Button.withComponent('input').extend.attrs({ type: 'text' })`
   padding-left: 20px;
   padding-right: 20px;
 
@@ -21,4 +18,4 @@ const Input = Btn.withComponent('input').extend.attrs({
   }
 `;
 
-export default Input;
+export default TextInput;

@@ -2,14 +2,14 @@ import React from 'react';
 
 import { navigate } from 'pagify-it'; // eslint-disable-line import/no-extraneous-dependencies
 
-import Btn from './helpers/Btn';
+import Button from './helpers/Button';
 
 const Root = ({ pages }) => (
   <div>
     {Object.keys(pages).map(path => (
-      <Btn key={path} onClick={() => navigate(path)}>
+      <Button key={path} onClick={() => navigate(path)}>
         {path.split('/')[1]}
-      </Btn>
+      </Button>
     ))}
   </div>
 );

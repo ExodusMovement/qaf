@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Btn from '../../App/components/helpers/Btn';
+import Button from '../../App/components/helpers/Button';
 
 const Filter = ({ filter, children, set }) => {
   const name = children.toLowerCase();
@@ -8,9 +8,9 @@ const Filter = ({ filter, children, set }) => {
   const handleClick = () => set(name);
 
   return (
-    <Btn disabled={filter === name} onClick={handleClick}>
+    <Button disabled={filter === name} onClick={handleClick}>
       {children}
-    </Btn>
+    </Button>
   );
 };
 

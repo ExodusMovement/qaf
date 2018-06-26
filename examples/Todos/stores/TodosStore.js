@@ -3,17 +3,17 @@ import { createStore } from '../../../src';
 export default class TodosStore extends createStore() {
   state = {
     todos: [
-      { id: Date.now(), text: 'Hello World!', completed: true },
-      { id: Date.now() + 1, text: 'Hello React!', completed: true },
-      { id: Date.now() + 2, text: 'Hello Qaf!', completed: false }
+      { id: Date.now(), title: 'Hello World!', completed: true },
+      { id: Date.now() + 1, title: 'Hello React!', completed: true },
+      { id: Date.now() + 2, title: 'Hello Qaf!', completed: false }
     ],
 
     active: () => this.state.todos.filter(todo => !todo.completed),
     completed: () => this.state.todos.filter(todo => todo.completed),
 
-    add: text =>
+    add: title =>
       this.setState(state => ({
-        todos: [...state.todos, { id: Date.now(), text, completed: false }]
+        todos: [...state.todos, { id: Date.now(), title, completed: false }]
       })),
 
     toggle: id =>
