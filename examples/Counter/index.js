@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Animated from 'react-animated-transitions'; // eslint-disable-line import/no-extraneous-dependencies
-
 import { createStore, Provider, Subscriber } from '../../src';
 
 import Block from '../helpers/Block';
@@ -38,11 +36,7 @@ const Counter = () => (
 
 const CounterApp = () => (
   <Provider store={Store}>
-    <Animated>
-      <div>
-        <Counter />
-      </div>
-    </Animated>
+    <Counter />
   </Provider>
 );
 
