@@ -9,8 +9,8 @@ const createRoute = (Component, props) => {
   const Route = ({ ctx: { path } }) => {
     const current = path.split('/')[1];
 
-    document.title = 'Qaf / Examples';
-    document.title += current && ` / ${current}`;
+    document.title = 'Qaf - Examples';
+    document.title += current && ` - ${current}`;
 
     const isRoot = path === '/';
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components'; // eslint-disable-line import/no-extraneous-dependencies
 
-const Container = styled.div`
+const Container = styled.main`
   align-items: center;
   background: #f5fcff;
   display: flex;

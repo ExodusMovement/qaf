@@ -4,8 +4,9 @@ import Animated from 'react-animated-transitions'; // eslint-disable-line import
 
 import { createStore, createContainer } from '../../src';
 
+import Row from '../helpers/Row';
+import Block from '../helpers/Block';
 import Btn from '../helpers/Btn';
-import Input from '../helpers/Input';
 
 class Store extends createStore() {
   state = {
@@ -18,7 +19,7 @@ class Store extends createStore() {
 
 const Counter = ({ store }) => (
   <div>
-    <Input value={store.counter} disabled small />
+    <Block small>{store.counter}</Block>
 
     <div>
       <Btn onClick={store.inc} square>
@@ -49,7 +50,7 @@ const BobCounter = () => (
 
 const ContainersApp = () => (
   <Animated>
-    <div>
+    <Row>
       <AliceContainer.Provider store={Store}>
         <AliceCounter />
       </AliceContainer.Provider>
@@ -57,7 +58,7 @@ const ContainersApp = () => (
       <BobContainer.Provider store={Store}>
         <BobCounter />
       </BobContainer.Provider>
-    </div>
+    </Row>
   </Animated>
 );
 

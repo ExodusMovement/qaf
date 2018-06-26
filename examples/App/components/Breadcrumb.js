@@ -23,7 +23,7 @@ const Breadcrumb = ({ children, disabled, to, external, last }) => (
     {disabled || !to ? (
       children
     ) : external ? (
-      <LinkContainer href={to} target="_blank">
+      <LinkContainer href={to} target="_blank" rel="noopener noreferrer">
         {children}
       </LinkContainer>
     ) : (

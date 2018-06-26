@@ -1,23 +1,24 @@
 import React from 'react';
 
+import Row from '../../helpers/Row';
 import Btn from '../../helpers/Btn';
 import Checkbox from '../../helpers/Checkbox';
-import Input from '../../helpers/Input';
+import Block from '../../helpers/Block';
 
 const Todo = ({ id, text, completed, remove, toggle }) => {
   const handleClick = () => remove(id);
   const handleChange = () => toggle(id);
 
   return (
-    <div>
+    <Row>
       <Btn onClick={handleClick} square>
         -
       </Btn>
 
       <Checkbox checked={completed} onChange={handleChange} />
 
-      <Input value={text} strikethrough={completed} disabled />
-    </div>
+      <Block strikethrough={completed}>{text}</Block>
+    </Row>
   );
 };
 

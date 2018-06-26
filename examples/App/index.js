@@ -5,8 +5,6 @@ import Router from 'pagify-it'; // eslint-disable-line import/no-extraneous-depe
 import routes from './routes';
 import base from './routes/base';
 
-import './style.css';
-
 const App = () => <Router {...{ routes, base }} />;
 
 export default App;
