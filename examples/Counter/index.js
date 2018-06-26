@@ -2,6 +2,9 @@ import React from 'react';
 
 import { createStore, Provider, Subscriber } from '../../src';
 
+import Btn from '../helpers/Btn';
+import Input from '../helpers/Input';
+
 class Store extends createStore() {
   state = {
     counter: 0,
@@ -15,16 +18,16 @@ const Counter = () => (
   <Subscriber store>
     {store => (
       <div>
-        <input data-shape="small" type="text" value={store.counter} disabled />
+        <Input value={store.counter} disabled small />
 
         <div>
-          <button data-shape="square" onClick={store.inc}>
+          <Btn onClick={store.inc} square>
             +
-          </button>
+          </Btn>
 
-          <button data-shape="square" onClick={store.dec}>
+          <Btn onClick={store.dec} square>
             -
-          </button>
+          </Btn>
         </div>
       </div>
     )}

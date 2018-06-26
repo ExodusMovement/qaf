@@ -2,6 +2,9 @@ import React from 'react';
 
 import { Subscriber } from '../../../src';
 
+import Btn from '../../helpers/Btn';
+import Input from '../../helpers/Input';
+
 const Add = () => (
   <Subscriber todosStore>
     {todosStore => {
@@ -17,17 +20,16 @@ const Add = () => (
 
       return (
         <div>
-          <input
-            data-shape="long"
+          <Input
+            innerRef={input}
             onKeyPress={handleKeyPress}
             placeholder="What needs to be done?"
-            ref={input}
-            type="text"
+            large
           />
 
-          <button data-shape="square" onClick={handleClick}>
+          <Btn onClick={handleClick} square>
             +
-          </button>
+          </Btn>
         </div>
       );
     }}

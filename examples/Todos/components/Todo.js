@@ -1,25 +1,22 @@
 import React from 'react';
 
+import Btn from '../../helpers/Btn';
+import Checkbox from '../../helpers/Checkbox';
+import Input from '../../helpers/Input';
+
 const Todo = ({ id, text, completed, remove, toggle }) => {
   const handleClick = () => remove(id);
   const handleChange = () => toggle(id);
 
-  const textStyle = {
-    textDecoration: completed ? 'line-through' : 'none'
-  };
-
   return (
     <div>
-      <button data-shape="square" onClick={handleClick}>
+      <Btn onClick={handleClick} square>
         -
-      </button>
+      </Btn>
 
-      <label className="checkbox">
-        <input type="checkbox" checked={completed} onChange={handleChange} />
-        <span className="checkbox-mark" />
-      </label>
+      <Checkbox checked={completed} onChange={handleChange} />
 
-      <input type="text" style={textStyle} value={text} disabled />
+      <Input value={text} strikethrough={completed} disabled />
     </div>
   );
 };

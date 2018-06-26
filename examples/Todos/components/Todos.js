@@ -13,13 +13,9 @@ const Todos = () => (
       let { todos } = todosStore;
       todos = filter === 'all' ? todos : todosStore[filter]();
 
-      return (
-        <div>
-          {todos.map(todo => (
-            <Todo key={todo.id} {...{ toggle, remove }} {...todo} />
-          ))}
-        </div>
-      );
+      return todos.map(todo => (
+        <Todo key={todo.id} {...{ toggle, remove }} {...todo} />
+      ));
     }}
   </Subscriber>
 );
