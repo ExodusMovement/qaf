@@ -1,6 +1,9 @@
 import Btn from './Btn';
 
-const Input = Btn.withComponent('input').extend.attrs({ type: 'text' })`
+const Input = Btn.withComponent('input').extend.attrs({
+  type: 'text',
+  'aria-label': 'Input'
+})`
   padding-left: 20px;
   padding-right: 20px;
 
