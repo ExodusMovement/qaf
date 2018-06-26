@@ -11,10 +11,7 @@ const Button = Text.withComponent('button').extend`
   margin-right: 5px;
   opacity: 0.7;
   outline: none;
-
-  ${({ square }) => `
-    width: ${square ? 40 : 90}}px;
-  `};
+  width: ${({ square }) => square ? 40 : 90}px;
 
   &:enabled {
     cursor: pointer;
