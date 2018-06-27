@@ -1,3 +1,7 @@
+# 0.0.9
+
+- Add Typescript definitions.
+
 # 0.0.8
 
 - Introduce containers.

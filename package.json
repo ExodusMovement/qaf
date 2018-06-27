@@ -2,8 +2,9 @@
   "license": "MIT",
   "name": "qaf",
   "description": "Components as stores. Simple state management for React based on context.",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sonaye/qaf.git"
@@ -32,7 +33,7 @@
     "react": "16.4.1",
     "react-dom": "16.4.1",
     "react-test-renderer": "16.4.1",
-    "rollup": "0.61.2",
+    "rollup": "0.62.0",
     "rollup-plugin-babel": "3.0.5",
     "styled-components": "3.3.3"
   },
@@ -45,6 +46,7 @@
     "postcoverage": "open -a Chrome coverage/lcov-report/index.html",
     "prebuild": "rm -rf lib",
     "build": "rollup -c",
+    "postbuild": "cp src/index.d.ts lib/index.d.ts",
     "preexamples": "rm -rf build",
     "examples": "NODE_ENV=production parcel build examples/App/index.html --out-dir build --public-url /qaf/",
     "predeploy": "yarn examples",
