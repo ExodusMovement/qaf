@@ -1,4 +1,4 @@
-import styled from 'styled-components'; // eslint-disable-line import/no-extraneous-dependencies
+import styled from 'styled-components';
 
 const Container = styled.main`
   align-items: center;

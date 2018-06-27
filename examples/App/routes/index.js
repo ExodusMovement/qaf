@@ -1,4 +1,4 @@
-import { redirect } from 'pagify-it'; // eslint-disable-line import/no-extraneous-dependencies
+import { redirect } from 'pagify-it';
 
 import createRoute from './createRoute';
 

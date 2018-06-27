@@ -1,4 +1,4 @@
-import styled from 'styled-components'; // eslint-disable-line import/no-extraneous-dependencies
+import styled from 'styled-components';
 
 const Breadcrumbs = styled.div`
   left: 20px;

@@ -1,4 +1,4 @@
-import styled from 'styled-components'; // eslint-disable-line import/no-extraneous-dependencies
+import styled from 'styled-components';
 
 const Text = styled.span`
   color: #333;

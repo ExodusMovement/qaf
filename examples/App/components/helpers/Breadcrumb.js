@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link } from 'pagify-it'; // eslint-disable-line import/no-extraneous-dependencies
+import { Link } from 'pagify-it';
 
 import base from '../../routes/base';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styled from 'styled-components'; // eslint-disable-line import/no-extraneous-dependencies
+import styled from 'styled-components';
 
 const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
   display: none;

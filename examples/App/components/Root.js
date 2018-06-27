@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { navigate } from 'pagify-it'; // eslint-disable-line import/no-extraneous-dependencies
+import { navigate } from 'pagify-it';
 
 import Button from './helpers/Button';
 

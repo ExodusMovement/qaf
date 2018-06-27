@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Router from 'pagify-it'; // eslint-disable-line import/no-extraneous-dependencies
+import Router from 'pagify-it';
 
 import routes from './routes';
 import base from './routes/base';
