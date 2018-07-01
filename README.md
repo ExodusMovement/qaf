@@ -80,7 +80,7 @@ const Counter = ({ store }) => (
   {(store, anotherStore, ..) => <Counter {...{ store, anotherStore, .. }} />}
 </Subscriber>
 
-// or though a higher order component, a thin wrapper around `<Subscriber />`
+// or through a higher order component, a thin wrapper around `<Subscriber />`
 subscribe('store', 'anotherStore', ..)(Counter);
 ```
 
