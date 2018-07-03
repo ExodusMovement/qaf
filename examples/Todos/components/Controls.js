@@ -14,7 +14,7 @@ const Controls = () => (
 
       return (
         <div>
-          {['All', 'Active', 'Completed'].map(name => (
+          {['All', 'Ongoing', 'Completed'].map(name => (
             <Filter key={name} {...{ filter, set }}>
               {name}
             </Filter>

@@ -15,7 +15,7 @@ const pages = {
 };
 
 export default {
-  '/': createRoute(Root, { pages }),
+  '/': createRoute(Root, { pages: Object.keys(pages) }),
   ...pages,
   '*': () => {
     redirect('/');

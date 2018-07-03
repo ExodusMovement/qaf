@@ -8,7 +8,7 @@ export default class TodosStore extends createStore() {
       { id: Date.now() + 2, title: 'Hello Qaf!', completed: false }
     ],
 
-    active: () => this.state.todos.filter(todo => !todo.completed),
+    ongoing: () => this.state.todos.filter(todo => !todo.completed),
     completed: () => this.state.todos.filter(todo => todo.completed),
 
     add: title =>

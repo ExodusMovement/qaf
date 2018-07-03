@@ -8,10 +8,6 @@ const TextInput = Button.withComponent('input').extend.attrs({ type: 'text' })`
   &:enabled {
     cursor: text;
   }
-
-  &:disabled {
-    background: #fff;
-  }
 `;
 
 export default TextInput;
