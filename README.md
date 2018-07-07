@@ -23,7 +23,9 @@
 
 ## Install
 
-`yarn add qaf`
+```bash
+yarn add qaf
+```
 
 ## Usage
 
