@@ -4,7 +4,7 @@
 
 <img src="qaf.svg" alt="Qaf logo" width="96">
 
-## Quick facts
+## Features
 
 - Based on React's new context API (`16.3.0`).
 - Every store is a React component.
