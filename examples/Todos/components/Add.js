@@ -15,7 +15,6 @@ const Add = () => (
         input.current.value = '';
       };
 
-      const handleClick = () => add();
       const handleKeyPress = e => e.key === 'Enter' && add();
 
       return (
@@ -28,7 +27,7 @@ const Add = () => (
             large
           />
 
-          <Button onClick={handleClick} square>
+          <Button onClick={add} square>
             +
           </Button>
         </div>
