@@ -1,3 +1,7 @@
+# 0.0.10
+
+- Introduce singular containers.
+
 # 0.0.9
 
 - Add Typescript definitions.

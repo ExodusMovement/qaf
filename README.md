@@ -117,6 +117,43 @@ const QafContainer = createContainer();
 QafContainer.subscribe(..);
 ```
 
+### Singular containers
+
+Singular containers are a stripped-down version of Qaf containers, where the app uses one single store that houses all the shared state, actions and lifecycle methods. Singular containers are more performant, they utilize one context instead of having multiple contexts (one for each store) and require less computations (no internal component composition and nesting). However, -and as implied in the terminology- we are limited to the usage of one store only.
+
+<img src="singular.png" alt="Singular container design" width="600">
+
+- The app has one store, which is just a React component.
+- The store acts as a provider that exposes its instance to its subscribers.
+- Any component can subscribe to the store instance provided.
+
+```js
+import { createSingularContainer } from 'qaf';
+
+const { SingularStore, Subscriber, subscribe } = createSingularContainer();
+
+// no invocation here, direct inheritance
+class Store extends SingularStore {
+  state = {
+    counter: 0,
+
+    inc: () => this.setState(state => ({ counter: state.counter + 1 })),
+    dec: () => this.setState(state => ({ counter: state.counter - 1 }))
+  };
+}
+
+// no need to pass any keys
+<Subscriber>{store => <Counter {...{ store }} />}</Subscriber>;
+
+// or with a HOC
+subscribe(Counter);
+
+// one provider for the whole app
+<Store>
+  <Counter />
+</Store>;
+```
+
 ### Testing
 
 Qaf stores are React components, we would test them as we would test any other component ([Enzyme example](/test/testing.test.js)).

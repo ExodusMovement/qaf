@@ -20,19 +20,39 @@ type SubscriberType = React.SFC<
   }
 >;
 
-type subscribeType = (
+type SubscribeType = (
   ...stores: string[]
 ) => (Component: React.ComponentType<any>) => SubscriberType;
 
 type QafContainer = {
   Provider: ProviderType;
   Subscriber: SubscriberType;
-  subscribe: subscribeType;
+  subscribe: SubscribeType;
+};
+
+type QafSingularStore = React.PureComponent<{
+  children: React.ReactNode;
+}>;
+
+type SingularSubscriber = React.SFC<{
+  children(store: QafStoreInstance): React.ReactNode;
+  render(store: QafStoreInstance): React.ReactNode;
+}>;
+
+type SingularSubscribe = (
+  Component: React.ComponentType<any>
+) => SingularSubscriber;
+
+type QafSingularContainer = {
+  QafStore: QafSingularStore;
+  Subscriber: SingularSubscriber;
+  subscribe: SingularSubscribe;
 };
 
 export function createStore(): QafStore;
 export function createContainer(): QafContainer;
+export function createSingularContainer(): QafSingularContainer;
 
 export const Provider: ProviderType;
 export const Subscriber: SubscriberType;
-export const subscribe: subscribeType;
+export const subscribe: SubscribeType;
