@@ -117,7 +117,7 @@ const QafContainer = createContainer();
 QafContainer.subscribe(..);
 ```
 
-### Singular containers
+### The singular container
 
 Singular containers are a stripped-down version of Qaf containers, where the app uses one single store that houses all the shared state, actions and lifecycle methods. Singular containers are more performant, they utilize one context instead of having multiple contexts (one for each store) and require less computations (no internal component composition and nesting). However, -and as implied in the terminology- we are limited to the usage of one store only.
 
@@ -130,6 +130,7 @@ Singular containers are a stripped-down version of Qaf containers, where the app
 ```js
 import { createSingularContainer } from 'qaf';
 
+// this creates a singular container with context components, this is only done once
 const { SingularStore, Subscriber, subscribe } = createSingularContainer();
 
 // no invocation here, direct inheritance
