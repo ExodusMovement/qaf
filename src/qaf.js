@@ -87,7 +87,7 @@ export const createSingularContainer = () => {
   const subscribe = Component =>
     React.forwardRef((props, ref) => (
       <Subscriber
-        render={store => <Component {...props} {...{ ref }} {...{ store }} />}
+        render={store => <Component {...props} {...{ ref, store }} />}
       />
     ));
 
