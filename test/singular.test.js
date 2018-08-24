@@ -2,9 +2,11 @@ import React from 'react';
 
 import { create as r } from 'react-test-renderer';
 
-import { createSingularContainer } from '../src';
+import { createContainer } from '../src';
 
-const { SingularStore, Subscriber, subscribe } = createSingularContainer();
+const { SingularStore, Subscriber, subscribe } = createContainer({
+  singular: true
+});
 
 describe('Qaf singular', () => {
   class Store extends SingularStore {

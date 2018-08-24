@@ -16,7 +16,34 @@ export const createStore = () => {
   return Store;
 };
 
-export const createContainer = () => {
+const createSingularContainer = () => {
+  const SingularContext = React.createContext();
+
+  class SingularStore extends React.PureComponent {
+    render() {
+      return <SingularContext.Provider {...this.props} value={this.state} />;
+    }
+  }
+
+  const Subscriber = ({ children, render }) => (
+    <SingularContext.Consumer>
+      {store => (children ? children(store) : render(store))}
+    </SingularContext.Consumer>
+  );
+
+  const subscribe = Component =>
+    React.forwardRef((props, ref) => (
+      <Subscriber
+        render={store => <Component {...props} {...{ ref, store }} />}
+      />
+    ));
+
+  return { SingularStore, Subscriber, subscribe };
+};
+
+export const createContainer = ({ singular = false } = {}) => {
+  if (singular) return createSingularContainer();
+
   const ContainerContext = React.createContext();
 
   const Provider = ({ children, ...stores }) => (
@@ -67,29 +94,4 @@ export const createContainer = () => {
     ));
 
   return { Provider, Subscriber, subscribe };
-};
-
-export const createSingularContainer = () => {
-  const SingularContext = React.createContext();
-
-  class SingularStore extends React.PureComponent {
-    render() {
-      return <SingularContext.Provider {...this.props} value={this.state} />;
-    }
-  }
-
-  const Subscriber = ({ children, render }) => (
-    <SingularContext.Consumer>
-      {store => (children ? children(store) : render(store))}
-    </SingularContext.Consumer>
-  );
-
-  const subscribe = Component =>
-    React.forwardRef((props, ref) => (
-      <Subscriber
-        render={store => <Component {...props} {...{ ref, store }} />}
-      />
-    ));
-
-  return { SingularStore, Subscriber, subscribe };
 };

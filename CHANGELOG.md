@@ -1,3 +1,21 @@
+# 0.0.11
+
+- **Breaking**: Simplified the API for creating a singular store.
+
+```js
+// before
+import { createSingularContainer } from 'qaf';
+
+const { SingularStore, Subscriber, subscribe } = createSingularContainer();
+
+// after
+import { createContainer } from 'qaf';
+
+const { SingularStore, Subscriber, subscribe } = createContainer({
+  singular: true
+});
+```
+
 # 0.0.10
 
 - Introduce singular containers.

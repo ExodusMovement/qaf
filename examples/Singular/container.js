@@ -1,6 +1,8 @@
-import { createSingularContainer } from '../../src';
+import { createContainer } from '../../src';
 
-const { SingularStore, Subscriber, subscribe } = createSingularContainer();
+const { SingularStore, Subscriber, subscribe } = createContainer({
+  singular: true
+});
 
 export default class Store extends SingularStore {
   state = {

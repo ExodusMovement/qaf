@@ -49,9 +49,15 @@ type QafSingularContainer = {
   subscribe: SingularSubscribe;
 };
 
+type ContainerConfig = {
+  singular: boolean;
+};
+
 export function createStore(): QafStore;
-export function createContainer(): QafContainer;
-export function createSingularContainer(): QafSingularContainer;
+
+export function createContainer(
+  config: ContainerConfig
+): QafContainer | QafSingularContainer;
 
 export const Provider: ProviderType;
 export const Subscriber: SubscriberType;

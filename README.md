@@ -128,10 +128,12 @@ Singular containers are a stripped-down version of Qaf containers, where the app
 - Any component can subscribe to the store instance provided.
 
 ```js
-import { createSingularContainer } from 'qaf';
+import { createContainer } from 'qaf';
 
 // this creates a singular container with context components, this is only done once
-const { SingularStore, Subscriber, subscribe } = createSingularContainer();
+const { SingularStore, Subscriber, subscribe } = createContainer({
+  singular: true
+});
 
 // no invocation here, direct inheritance
 class Store extends SingularStore {
