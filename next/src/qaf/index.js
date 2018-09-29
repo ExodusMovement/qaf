@@ -11,30 +11,39 @@ export default () => {
     }
   }
 
-  Store.ref = React.createRef()
+  // no support for createRef in Enzyme yet it seems
+  // revert to an older API for now (overwrite)
+
+  // Store.ref = React.createRef()
+
+  let storeRef
+
+  Store.ref = ref => {
+    storeRef = ref
+  }
 
   Store.getState = () => Store.dispatch({ type: 'getState' })
 
   // TODO: make it more stable
   // https://stackoverflow.com/a/50019873/5470921
   Store.dispatch = ({ type, ...payload }) => {
-    if (!Store.ref.current) {
+    if (!storeRef) {
       throw new Error(
         `Action \`${type}\` was fired without a valid store reference or before the store is mounted (too early).`
       )
     }
 
-    if (!Store.ref.current[type]) {
+    if (!storeRef[type]) {
       throw new Error(
         `Action \`${type}\` doesn't exist in the store. Double-check the action name.`
       )
     }
 
-    if (typeof Store.ref.current[type] !== 'function') {
+    if (typeof storeRef[type] !== 'function') {
       throw new Error(`Action \`${type}\` is not a function.`)
     }
 
-    return Store.ref.current[type](payload)
+    return storeRef[type](payload)
   }
 
   Store.Subscribe = ({ children, render }) => (

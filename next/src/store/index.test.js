@@ -3,15 +3,10 @@
 import Store from '.'
 
 describe('store', () => {
-  let wrapper, s, storeRef
-
-  // no support from createRef in Enzyme yet it seems
-  Store.ref = ref => {
-    storeRef = ref
-  }
+  let wrapper, s
 
   beforeEach(() => {
-    wrapper = mount(<Store ref={storeRef} />)
+    wrapper = mount(<Store ref={Store.ref} />)
     s = () => wrapper.state
   })
 
