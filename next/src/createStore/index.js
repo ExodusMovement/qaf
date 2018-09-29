@@ -12,7 +12,7 @@ export default () => {
   }
 
   // no support for createRef in Enzyme yet it seems
-  // revert to an older API for now
+  // revert to the old API for now
 
   // Store.ref = React.createRef()
 
@@ -28,22 +28,24 @@ export default () => {
     </ctx.Consumer>
   )
 
-  // done like this to preserve displayName
+  // implemented like this to preserve displayName
   Store.Subscribe = Subscribe
 
-  Store.subscribe = (Comp, prop = 'store') =>
+  Store.subscribe = (Comp: React.ReactElement, prop: string = 'store') =>
     React.forwardRef((props, ref) => (
       <Store.Subscribe
         render={store => <Comp {...props} {...{ ref, [prop]: store }} />}
       />
     ))
 
+  // TODO: make tests work
+
   // TODO: make it more stable
   // https://stackoverflow.com/a/50019873/5470921
 
   // TODO: make it promise-based (?)
   // TODO: look into supporting middleware (?)
-  Store.dispatch = ({ type, ...payload }) => {
+  Store.dispatch = ({ type, ...payload }: { type: string, payload: any[] }) => {
     if (!storeRef) {
       throw new Error(
         `Action \`${type}\` was fired without a valid store reference or before the store is mounted (too early).`

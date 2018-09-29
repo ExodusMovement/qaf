@@ -10,7 +10,7 @@ describe('store', () => {
     s = () => wrapper.state
   })
 
-  it('init counter', () => {
+  it('init', () => {
     expect(s().counter).toBe(0)
   })
 
