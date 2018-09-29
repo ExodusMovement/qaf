@@ -15,7 +15,7 @@ const Counter = () => (
           {store.counter}
         </button>
 
-        <button onClick={() => Store.dispatch({ type: 'DEC_COUNTER1' })}>
+        <button onClick={() => Store.dispatch({ type: 'DEC_COUNTER' })}>
           -
         </button>
 
