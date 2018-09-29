@@ -22,11 +22,14 @@ export default () => {
     storeRef = ref
   }
 
-  Store.Subscribe = ({ children, render }) => (
+  const Subscribe = ({ children, render }) => (
     <ctx.Consumer>
       {store => (children ? children(store) : render(store))}
     </ctx.Consumer>
   )
+
+  // done like this to preserve displayName
+  Store.Subscribe = Subscribe
 
   Store.subscribe = (Comp, prop = 'store') =>
     React.forwardRef((props, ref) => (
