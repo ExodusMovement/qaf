@@ -1,6 +1,6 @@
 /* global React, mount */
 
-import Store from '.'
+import Store, { dispatch } from '.'
 
 describe('store', () => {
   let wrapper, s
@@ -14,18 +14,18 @@ describe('store', () => {
     expect(s().counter).toBe(0)
   })
 
-  it('inc', () => {
-    Store.dispatch({ type: 'INCREMENT' })
+  it('inc', async () => {
+    await dispatch({ type: 'INC' })
     expect(s().counter).toBe(1)
   })
 
-  it('dec', () => {
-    Store.dispatch({ type: 'DECREMENT' })
+  it('dec', async () => {
+    await dispatch({ type: 'DEC' })
     expect(s().counter).toBe(-1)
   })
 
-  it('set', () => {
-    Store.dispatch({ type: 'SET', value: 99 })
+  it('set', async () => {
+    await dispatch({ type: 'SET', value: 99 })
     expect(s().counter).toBe(99)
   })
 })

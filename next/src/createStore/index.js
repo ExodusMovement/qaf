@@ -4,8 +4,6 @@ export default () => {
   const ctx = React.createContext()
 
   class Store extends React.PureComponent {
-    getState = () => this.state
-
     render () {
       return <ctx.Provider {...this.props} value={this.state} />
     }
@@ -22,18 +20,18 @@ export default () => {
     storeRef = ref
   }
 
-  const Subscribe = ({ children, render }) => (
+  const Subscriber = ({ children, render }) => (
     <ctx.Consumer>
       {store => (children ? children(store) : render(store))}
     </ctx.Consumer>
   )
 
   // implemented like this to preserve displayName
-  Store.Subscribe = Subscribe
+  Store.Subscriber = Subscriber
 
-  Store.withSubscribe = (Comp: React.ReactElement, prop: string = 'store') =>
+  Store.withSubscriber = (Comp: React.ReactElement, prop: string = 'store') =>
     React.forwardRef((props, ref) => (
-      <Store.Subscribe
+      <Store.Subscriber
         render={store => <Comp {...props} {...{ ref, [prop]: store }} />}
       />
     ))
@@ -43,7 +41,6 @@ export default () => {
   // TODO: make it more stable
   // https://stackoverflow.com/a/50019873/5470921
 
-  // TODO: make it promise-based (?)
   // TODO: look into supporting middleware (?)
   Store.dispatch = ({ type, ...payload }: { type: string, payload: {} }) => {
     if (!storeRef) {
@@ -62,10 +59,12 @@ export default () => {
       throw new Error(`Action \`${type}\` is not a function.`)
     }
 
-    return storeRef[type](payload)
+    return new Promise(resolve =>
+      storeRef.setState(state => storeRef[type](state, payload), resolve)
+    )
   }
 
-  Store.getState = () => Store.dispatch({ type: 'getState' })
+  Store.getState = () => storeRef.state
 
   return Store
 }

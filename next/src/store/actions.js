@@ -1,11 +1,6 @@
 import { dispatch } from '.'
 
-export const incCounter = () => {
-  dispatch({ type: 'INCREMENT' })
-}
-export const decCounter = () => {
-  dispatch({ type: 'DECREMENT' })
-}
-export const setCounter = (value: number) => {
-  dispatch({ type: 'SET', value })
-}
+export const inc = () => dispatch({ type: 'INC' })
+export const dec = () => dispatch({ type: 'DEC' })
+
+export const set = (value: number) => dispatch({ type: 'SET', value })
