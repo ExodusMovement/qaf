@@ -15,12 +15,12 @@ describe('store', () => {
   })
 
   it('inc', () => {
-    Store.dispatch({ type: 'INC' })
+    Store.dispatch({ type: 'INCREMENT' })
     expect(s().counter).toBe(1)
   })
 
   it('dec', () => {
-    Store.dispatch({ type: 'DEC' })
+    Store.dispatch({ type: 'DECREMENT' })
     expect(s().counter).toBe(-1)
   })
 
