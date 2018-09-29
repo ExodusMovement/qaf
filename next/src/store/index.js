@@ -1,4 +1,4 @@
-import createStore from '../qaf'
+import createStore from '../createStore'
 
 export default class Store extends createStore() {
   state = {
