@@ -13,5 +13,5 @@ export default class Store extends createStore() {
     this.setState(state => ({ counter: state.counter - 1 }))
   }
 
-  SET_COUNTER = ({ counter }) => this.setState({ counter })
+  SET_COUNTER = ({ value }) => this.setState({ counter: value })
 }

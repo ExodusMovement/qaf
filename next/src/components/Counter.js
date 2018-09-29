@@ -2,15 +2,23 @@ import React from 'react'
 
 import Store from '../store'
 
-import { incCounter, decCounter, setCounter } from '../store/actions'
-
 const Counter = () => (
   <Store.Subscribe>
     {store => (
       <div>
-        <button onClick={incCounter}>+</button>
-        <button onClick={() => setCounter(0)}>{store.counter}</button>
-        <button onClick={decCounter}>-</button>
+        <button onClick={() => Store.dispatch({ type: 'INC_COUNTER' })}>
+          +
+        </button>
+
+        <button
+          onClick={() => Store.dispatch({ type: 'SET_COUNTER', value: 0 })}>
+          {store.counter}
+        </button>
+
+        <button onClick={() => Store.dispatch({ type: 'DEC_COUNTER1' })}>
+          -
+        </button>
+
         <button onClick={() => console.log(Store.getState())}>!</button>
       </div>
     )}

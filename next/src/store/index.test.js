@@ -30,7 +30,7 @@ describe('store', () => {
   })
 
   it('set counter', () => {
-    Store.dispatch({ type: 'SET_COUNTER', counter: 99 })
+    Store.dispatch({ type: 'SET_COUNTER', value: 99 })
     expect(s().counter).toBe(99)
   })
 })
