@@ -5,13 +5,10 @@ export default class Store extends createStore() {
     counter: 0
   }
 
-  INC_COUNTER = () => {
-    this.setState(state => ({ counter: state.counter + 1 }))
-  }
+  INC = () => this.setState(state => ({ counter: state.counter + 1 }))
+  DEC = () => this.setState(state => ({ counter: state.counter - 1 }))
 
-  DEC_COUNTER = () => {
-    this.setState(state => ({ counter: state.counter - 1 }))
-  }
-
-  SET_COUNTER = ({ value }) => this.setState({ counter: value })
+  SET = ({ value }) => this.setState({ counter: value })
 }
+
+export const { Subscribe, subscribe, dispatch, getState } = Store

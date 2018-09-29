@@ -14,18 +14,18 @@ describe('store', () => {
     expect(s().counter).toBe(0)
   })
 
-  it('inc counter', () => {
-    Store.dispatch({ type: 'INC_COUNTER' })
+  it('inc', () => {
+    Store.dispatch({ type: 'INC' })
     expect(s().counter).toBe(1)
   })
 
-  it('dec counter', () => {
-    Store.dispatch({ type: 'DEC_COUNTER' })
+  it('dec', () => {
+    Store.dispatch({ type: 'DEC' })
     expect(s().counter).toBe(-1)
   })
 
-  it('set counter', () => {
-    Store.dispatch({ type: 'SET_COUNTER', value: 99 })
+  it('set', () => {
+    Store.dispatch({ type: 'SET', value: 99 })
     expect(s().counter).toBe(99)
   })
 })
