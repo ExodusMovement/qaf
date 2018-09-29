@@ -45,7 +45,7 @@ export default () => {
 
   // TODO: make it promise-based (?)
   // TODO: look into supporting middleware (?)
-  Store.dispatch = ({ type, ...payload }: { type: string, payload: any[] }) => {
+  Store.dispatch = ({ type, ...payload }: { type: string, payload: {} }) => {
     if (!storeRef) {
       throw new Error(
         `Action \`${type}\` was fired without a valid store reference or before the store is mounted (too early).`
