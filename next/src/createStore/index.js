@@ -31,7 +31,7 @@ export default () => {
   // implemented like this to preserve displayName
   Store.Subscribe = Subscribe
 
-  Store.subscribe = (Comp: React.ReactElement, prop: string = 'store') =>
+  Store.withSubscribe = (Comp: React.ReactElement, prop: string = 'store') =>
     React.forwardRef((props, ref) => (
       <Store.Subscribe
         render={store => <Comp {...props} {...{ ref, [prop]: store }} />}

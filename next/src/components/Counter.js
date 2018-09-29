@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { subscribe, dispatch, getState } from '../store'
+import { withSubscribe, dispatch, getState } from '../store'
 
 const Counter = ({ store }) => (
   <div>
@@ -12,4 +12,4 @@ const Counter = ({ store }) => (
   </div>
 )
 
-export default subscribe(Counter)
+export default withSubscribe(Counter)

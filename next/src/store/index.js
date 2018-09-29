@@ -11,4 +11,4 @@ export default class Store extends createStore() {
   SET = ({ value }: { value: number }) => this.setState({ counter: value })
 }
 
-export const { Subscribe, subscribe, dispatch, getState } = Store
+export const { Subscribe, withSubscribe, dispatch, getState } = Store
