@@ -59,9 +59,9 @@ export default () => {
       throw new Error(`Action \`${type}\` is not a function.`)
     }
 
-    return new Promise(resolve =>
+    return new Promise(resolve => {
       storeRef.setState(state => storeRef[type](state, payload), resolve)
-    )
+    })
   }
 
   Store.getState = () => storeRef.state
