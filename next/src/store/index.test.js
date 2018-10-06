@@ -13,18 +13,18 @@ describe('store', () => {
     expect(wrapper.state().counter).toBe(0)
   })
 
-  it('inc', async () => {
-    await dispatch({ type: 'INC' })
+  it('inc', () => {
+    dispatch({ type: 'INC' })
     expect(wrapper.state().counter).toBe(1)
   })
 
-  it('dec', async () => {
-    await dispatch({ type: 'DEC' })
+  it('dec', () => {
+    dispatch({ type: 'DEC' })
     expect(wrapper.state().counter).toBe(-1)
   })
 
-  it('set', async () => {
-    await dispatch({ type: 'SET', value: 99 })
+  it('set', () => {
+    dispatch({ type: 'SET', value: 99 })
     expect(wrapper.state().counter).toBe(99)
   })
 })

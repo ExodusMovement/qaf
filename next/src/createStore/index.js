@@ -9,25 +9,15 @@ export default () => {
     }
   }
 
-  // no support for createRef in Enzyme yet it seems
-  // revert to the old API for now
+  Store.ref = React.createRef()
 
-  // Store.ref = React.createRef()
-
-  let storeRef
-
-  Store.ref = ref => {
-    storeRef = ref
-  }
-
-  const Subscriber = ({ children, render }) => (
+  Store.Subscriber = ({ children, render }) => (
     <ctx.Consumer>
       {store => (children ? children(store) : render(store))}
     </ctx.Consumer>
   )
 
-  // implemented like this to preserve displayName
-  Store.Subscriber = Subscriber
+  Store.Subscriber.displayName = 'Subscriber'
 
   Store.withSubscriber = (Comp: React.ReactElement, prop: string = 'store') =>
     React.forwardRef((props, ref) => (
@@ -40,31 +30,27 @@ export default () => {
 
   // TODO: make it more stable
   // https://stackoverflow.com/a/50019873/5470921
-
-  // TODO: look into supporting middleware (?)
   Store.dispatch = ({ type, ...payload }: { type: string, payload: {} }) => {
-    if (!storeRef) {
+    if (!Store.ref.current) {
       throw new Error(
         `Action \`${type}\` was fired without a valid store reference or before the store is mounted (too early).`
       )
     }
 
-    if (!storeRef[type]) {
+    if (!Store.ref.current[type]) {
       throw new Error(
         `Action \`${type}\` doesn't exist in the store. Double-check the action name.`
       )
     }
 
-    if (typeof storeRef[type] !== 'function') {
+    if (typeof Store.ref.current[type] !== 'function') {
       throw new Error(`Action \`${type}\` is not a function.`)
     }
 
-    return new Promise(resolve => {
-      storeRef.setState(state => storeRef[type](state, payload), resolve)
-    })
+    return Store.ref.current[type](payload)
   }
 
-  Store.getState = () => storeRef.state
+  Store.getState = () => Store.ref.current.state
 
   return Store
 }
